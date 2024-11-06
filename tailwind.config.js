@@ -12,9 +12,15 @@ export default {
     ],
     theme: {
         extend: {
+            colors: {
+                gold: '#C69043', 
+              },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'Présentation1': "url('/img/Présentation1.jpg')",
+              }
         },
     },
     plugins: [

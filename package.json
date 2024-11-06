@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "@tailwindcss/forms": "^0.5.9",
-        "flowbite": "^2.5.2"
+        "flowbite": "^2.5.2",
+        "font-awesome": "^4.7.0"
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Votre Titre Par Défaut')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -55,22 +56,19 @@
                 navbar.classList.toggle('hidden');
             });
         </script>
-          <!-- Top Section -->
-    <div class="container mx-auto p-8 bg-slate-700">
-        <div class="grid grid-cols-2 gap-4">
-            <!-- Left Content -->
-            <div class="flex flex-col items-start">
-                <h1 class="text-2xl font-bold">Lorem</h1>
-                <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Button</button>
-            </div>
-            <!-- Right Image Section -->
-            <div class="flex justify-center items-center">
-                <div class="relative w-48 h-48">
-                    <img src="img/balance.jpg" alt="Circle Image" class="rounded-full w-full h-full object-cover ring-2 ring-gray-300 dark:ring-gray-500">
+          <div class="bg-cover "style="background-image: url('img/Présentation1.jpg'); height: 400px">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col items-start m-16">
+                    <h1 class="text-3xl md:text-sm font-bold mb-4 text-gold text-center">Une équipe au cœur de votre stratégie</h1>
+                    <button class="md:text-sm bg-gold text-white rounded">Parler à un Avocat</button>
+                </div>
+                <div class="flex justify-end items-center">
+                    <div class="relative w-48 h-48 m-10">
+                        <img src="{{ asset('img/balance.jpg') }}" alt="Circle Image" class="rounded-full w-full h-full object-cover ring-2 ring-gray-300 dark:ring-gray-500">
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>        
     </header>
 
     <main>
@@ -84,7 +82,7 @@
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
             <!-- Section Image -->
             <div class="mb-4 md:mb-0">
-                <img src="chemin/vers/image.png" alt="Logo de NC & Associés" class="w-32">
+                <img src="{{asset('img/Cabinet.png')}}" class="h-16" alt="Logo" />
             </div>
     
             <!-- Section Liens -->
@@ -97,28 +95,31 @@
     
         <!-- Ligne de séparation -->
         <div class="border-t border-gray-700 my-4"></div>
-    
-        <!-- Section Adresse et icônes -->
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-            <address class="mb-4 md:mb-0" aria-label="Adresse">
-                123 Rue Exemple, Paris, France
-            </address>
-            
-            <!-- Icônes sociales -->
-            <div class="flex space-x-4" aria-label="Liens vers les réseaux sociaux">
-                <a href="#" class="text-white hover:text-gray-400" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#" class="text-white hover:text-gray-400" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="#" class="text-white hover:text-gray-400" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </div>
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="#" class="text-white hover:text-gray-400" aria-label="Twitter">
+                <address class="mb-4 md:mb-0" aria-label="Adresse">
+                    123 Rue Exemple, Paris, France
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </address>
+            </a>
         </div>
-    
-        <!-- Section Copyright -->
+            
+            <div class="flex justify-center space-x-4" aria-label="Liens vers les réseaux sociaux">
+                <div class="flex space-x-4" aria-label="Liens vers les réseaux sociaux">
+                    <a href="#" class="text-white hover:text-gray-400" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-400" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-400" aria-label="Twitter">
+                        <i class="fa-brands fa-x"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-400" aria-label="Twitter">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
         <div class="text-center mt-4">
             <p>&copy; 2024 NC & Associés. Tous droits réservés.</p>
         </div>

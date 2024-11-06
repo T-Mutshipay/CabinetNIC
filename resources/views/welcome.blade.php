@@ -1,109 +1,176 @@
 <x-layouts.app>
-    @section('title', 'Titre de la Page')
+    @section('title', 'N.I.C & Associes')
     @section('services')
     <div class="p-8 flex justify-center">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-4 text-center">Nos domaines</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 m-4">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Nos Services</h2>
+            <div class="border-t border-gold my-4"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Service 1 -->
                 <div class="flex flex-col items-center">
-                    <img class="h-auto max-w-56 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+                    <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
+                        <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
                     <div class="mt-2 text-center">
-                        <p class="text-black">Maitre Associé</p>
+                        <h1 class="text-xl md:text-2xl font-bold mb-4">Conseil juridique</h1>
                     </div>
                 </div>
+        
+                <!-- Service 2 -->
                 <div class="flex flex-col items-center">
-                    <img class="h-auto max-w-56 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+                    <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
+                        <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
                     <div class="mt-2 text-center">
-                        <p class="text-black">Membre de l'Équipe</p>
+                        <h1 class="text-xl md:text-2xl font-bold mb-4">Rédaction des actes juridiques</h1>
+                        <p class="text-center text-sm md:text-base">Administrative, préjuridictionnelle, transactionnelle <br> et assistance judiciaire</p>
                     </div>
                 </div>
+        
+                <!-- Service 3 -->
                 <div class="flex flex-col items-center">
-                    <img class="h-auto max-w-56 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+                    <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
+                        <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
                     <div class="mt-2 text-center">
-                        <p class="text-black">Collaborateur</p>
+                        <h1 class="text-xl md:text-2xl font-bold mb-4">Représentation extrajudiciaire</h1>
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
     @endsection
     
     @section('team')  
-    {{-- <img class="h-auto max-w-56 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt=""> --}}
-    <div class="bg-red-600">
-        <h2 class="text-3xl font-bold text-center mb-6">Notre Equipe</h2>
-    </div>
-    <section class="p-16">
+    <section class=" m-14">
         <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-5">
-                <div class="rounded-lg shadow-lg">
-                    <div class="relative">
-                        <div class=" absolute inset-4 flex items-center justify-center ">
-                            <img class="h-auto max-w-56 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Notre Equipe</h2>
+            <div class="border-t border-gold  my-4"></div>
+        </div>
+        <div class="container mx-auto">
+            <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 relative overflow-visible">
+                <!-- Article 1 -->
+                <div class="mt-20">
+                    <div class="bg-white rounded-lg shadow-lg overflow-visible relative">
+                        <div class="flex items-center justify-center relative">
+                            <img src="{{asset('img/agent.png')}}" alt="Titre de l'article 1" class=" object-cover absolute -top-20">
+                        </div>
+                        <div class="p-10 mt-24 text-center">
+                            <h3 class="text-xl font-semibold mt-5">Avocat Associé 1</h3>
+                            <p class="text-gray-600 mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
                         </div>
                     </div>
-                    div.border
-                    <div class="m-16">
-                        <p class="text-gray-600 mt-12">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                        <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
+                </div>
+                <div class="mt-20">
+                    <div class="bg-white rounded-lg shadow-lg overflow-visible relative">
+                        <div class="flex items-center justify-center relative">
+                            <img src="{{asset('img/agent.png')}}" alt="Titre de l'article 1" class=" object-cover absolute -top-20">
+                        </div>
+                        <div class="p-10 mt-24 text-center">
+                            <h3 class="text-xl font-semibold mt-5">Avocat Associé 1</h3>
+                            <p class="text-gray-600 mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="mt-20">
+                    <div class="bg-white rounded-lg shadow-lg overflow-visible relative">
+                        <div class="flex items-center justify-center relative">
+                            <img src="{{asset('img/agent.png')}}" alt="Titre de l'article 1" class=" object-cover absolute -top-20">
+                        </div>
+                        <div class="p-10 mt-24 text-center">
+                            <h3 class="text-xl font-semibold mt-5">Avocat Associé 1</h3>
+                            <p class="text-gray-600 mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20">
+                    <div class="bg-white rounded-lg shadow-lg overflow-visible relative">
+                        <div class="flex items-center justify-center relative">
+                            <img src="{{asset('img/agent.png')}}" alt="Titre de l'article 1" class=" object-cover absolute -top-20">
+                        </div>
+                        <div class="p-10 mt-24 text-center">
+                            <h3 class="text-xl font-semibold mt-5">Avocat Associé 1</h3>
+                            <p class="text-gray-600 mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20">
+                    <div class="bg-white rounded-lg shadow-lg overflow-visible relative">
+                        <div class="flex items-center justify-center relative">
+                            <img src="{{asset('img/agent.png')}}" alt="Titre de l'article 1" class=" object-cover absolute -top-20">
+                        </div>
+                        <div class="p-10 mt-24 text-center">
+                            <h3 class="text-xl font-semibold mt-5">Avocat Associé 1</h3>
+                            <p class="text-gray-600 mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- <div class="mt-20">
+                    <div class="bg-white rounded-lg shadow-lg overflow-visible relative">
+                        <div class="flex items-center justify-center relative">
+                            <img src="{{asset('img/avocat1.jpg')}}" alt="Avocat" class=" rounded-md w-2/3 h-auto object-cover absolute -top-20">
+                        </div>
+                        <div class="p-4 mt-24 text-center">
+                            <h3 class="text-xl font-semibold mt-5">Avocat Associé 1</h3>
+                            <p class="text-gray-600 mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
+                        </div>
+                    </div>
+                </div> --}}
+                {{-- <div class="mt-20">
+                    <div class="bg-white rounded-lg shadow-lg overflow-visible relative">
+                        <div class="flex items-center justify-center relative">
+                            <img src="{{asset('img/avocat2.jpg')}}" alt="Avocat" class=" rounded-md w-58 h-40 object-cover absolute -top-20">
+                        </div>
+                        <div class="p-4 mt-24 text-center">
+                            <h3 class="text-xl font-semibold mt-5">Avocat Associé 1</h3>
+                            <p class="text-gray-600 mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>  
         </div>
     </section>
-    </div>
     @endsection
     @section('articles')
-    <section class="p-6 bg-gray-100">
+    <section class="m-16">
         <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-6">Actualités et Articles</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Actualités et Articles</h2>
+            <div class="border-t border-gold  my-4"></div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Article 1 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="img/article1.jpg" alt="Titre de l'article 1" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold">Titre de l'article 1</h3>
-                        <p class="text-gray-600 mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                    </div>
-                </div>
-                <!-- Article 2 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="img/article2.jpg" alt="Titre de l'article 2" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold">Titre de l'article 2</h3>
-                        <p class="text-gray-600 mt-2">Un bref extrait de l'article 2 pour donner un aperçu du contenu.</p>
-                    </div>
-                </div>
-                <!-- Article 3 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="img/article3.jpg" alt="Titre de l'article 3" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold">Titre de l'article 3</h3>
-                        <p class="text-gray-600 mt-2">Un bref extrait de l'article 3 pour donner un aperçu du contenu.</p>
-                    </div>
-                </div>
-                <!-- Article 4 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="img/article4.jpg" alt="Titre de l'article 4" class="w-full h-48 object-cover">
-                    <div class="p-4">
+                    <img src="img/article4.jpg" alt="Titre de l'article 4" class="w-full md:w-1/2 h-48 md:h-auto object-cover">
+                    <div class=p-1 flex flex-col justify-center">
                         <h3 class="text-xl font-semibold">Titre de l'article 4</h3>
-                        <p class="text-gray-600 mt-2">Un bref extrait de l'article 4 pour donner un aperçu du contenu.</p>
+                        <p class="text-gray-600 mt-1">Un bref extrait de l'article 4 pour donner un aperçu du contenu.</p>
                     </div>
                 </div>
-                <!-- Article 5 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="img/article5.jpg" alt="Titre de l'article 5" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold">Titre de l'article 5</h3>
-                        <p class="text-gray-600 mt-2">Un bref extrait de l'article 5 pour donner un aperçu du contenu.</p>
+                    <img src="img/article4.jpg" alt="Titre de l'article 4" class="w-full md:w-1/2 h-48 md:h-auto object-cover">
+                    <div class=p-1 flex flex-col justify-center">
+                        <h3 class="text-xl font-semibold">Titre de l'article 4</h3>
+                        <p class="text-gray-600 mt-1">Un bref extrait de l'article 4 pour donner un aperçu du contenu.</p>
                     </div>
                 </div>
-                <!-- Article 6 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="img/article6.jpg" alt="Titre de l'article 6" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold">Titre de l'article 6</h3>
-                        <p class="text-gray-600 mt-2">Un bref extrait de l'article 6 pour donner un aperçu du contenu.</p>
+                <div class=" bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="img/article4.jpg" alt="Titre de l'article 4" class="w-full md:w-1/2 h-48 md:h-auto object-cover">
+                    <div class=p-1  justify-center">
+                        <h3 class="text-xl font-semibold">Titre de l'article 4</h3>
+                        <p class="text-gray-600 mt-1">Un bref extrait de l'article 4 pour donner un aperçu du contenu.</p>
                     </div>
                 </div>
             </div>
@@ -111,7 +178,12 @@
     </section>
     @endsection
     @section('content')
-
+    <div class="p-8 flex justify-center">
+        <div class="container mx-auto">
+            <h2 class=" text-6xl font-bold mb-4 text-gold text-center">Nos domaines</h2>
+            <div class="border-t border-gold  my-4"></div>
+        </div>
+    </div>
     @endsection
     @section('commentaire')
     <div class="p-8">
