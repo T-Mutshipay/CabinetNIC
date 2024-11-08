@@ -27,7 +27,7 @@
                         <ul id="navbar-default" class="hidden w-full md:flex md:w-auto font-medium mt-4 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                             <li>
                                 <a href="" class="flex items-center py-2 px-3 text-gray-900 rounded hover:bg-gold dark:text-gray-400 dark:hover:text-white">                  
-                                    <span>Administration</span>
+                                    <span>Accueil</span>
                                 </a>
                             </li>
                             <li>
@@ -55,7 +55,7 @@
                     <div class="flex flex-col md:flex-row items-center justify-between gap-8">
                         <div class="flex flex-col items-center md:items-start">
                             <h1 class="text-4xl font-bold text-gold text-center md:text-left mt-10 md:mt-0">Une équipe au coeur de votre stratégie</h1>
-                            <button class="mt-6 md:text-sm bg-gold text-white rounded px-6 py-2">Parler à un Avocat</button>
+                            <button class="mt-6 md:text-sm bg-gold text-white rounded px-6 py-2" data-modal-target="static-modal" data-modal-toggle="static-modal">Parler à un Avocat</button>
                         </div>
                         <div class="flex justify-center md:justify-end">
                             <div class="relative w-48 h-48 md:w-56 md:h-56 mt-20">

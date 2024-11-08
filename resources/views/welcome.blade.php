@@ -183,7 +183,7 @@
                         <p class="text-gray-600 mt-1">Un bref extrait de l'article 4 pour donner un aperçu du contenu.</p>
                     </div>
                     <div class="flex float-end m-3">
-                        <a href="#" class="mt-6 md:text-sm bg-gold text-white rounded px-6 py-2">voir plus</a>
+                        <a href="{{ route('articles') }}" class="mt-6 md:text-sm bg-gold text-white rounded px-6 py-2">voir plus</a>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
