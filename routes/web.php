@@ -11,3 +11,5 @@ Route::get('/articles', function () {
 Route::get('/avocats',function(){
     return view('avocats');
 })->name('avocats');
+
+require __DIR__.'/web_actus.php';
