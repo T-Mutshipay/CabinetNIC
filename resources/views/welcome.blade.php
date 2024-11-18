@@ -56,7 +56,7 @@
     @endsection
     @section('team')  
     <section class="m-14">
-        <div class="p-8 bg-gray-100 rounded-md dark:bg-slate-500">
+        <div class="p-8 bg-gray-100 rounded-md">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-5xl font-bold text-gold mb-4">Rencontrez Notre Équipe d'Avocats</h2>
                 <p class="text-lg md:text-xl text-gray-800">
@@ -87,7 +87,6 @@
                         <div class="p-10 mt-24 text-center">
                             <h3 class="text-xl font-semibold mt-5">Avocat Associé</h3>
                             <p class="text-gray dark:text-black mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                            <a href="{{ route('avocats') }}" class="mt-10 flex flex-col text-center md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">à propos</a>
                         </div>
                     </div>
                 </div>
@@ -99,7 +98,6 @@
                         <div class="p-10 mt-24 text-center">
                             <h3 class="text-xl font-semibold mt-5">Avocat Associé</h3>
                             <p class="text-gray dark:text-black mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                            <a href="{{ route('avocats') }}" class="mt-10 flex flex-col text-center md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">à propos</a>
                         </div>
                     </div>
                 </div>
@@ -111,8 +109,6 @@
                         <div class="p-10 mt-24 text-center">
                             <h3 class="text-xl font-semibold mt-5">Avocat Associé</h3>
                             <p class="text-gray dark:text-black mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                            <a href="{{ route('avocats') }}" class="mt-10 flex flex-col text-center md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">à propos</a>
-                    
                         </div>
                     </div>
                 </div>
@@ -124,8 +120,6 @@
                         <div class="p-10 mt-24 text-center">
                             <h3 class="text-xl font-semibold mt-5">Avocat Associé</h3>
                             <p class="text-gray dark:text-black mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                            <a href="{{ route('avocats') }}" class="mt-10 flex flex-col text-center md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">à propos</a>
-                    
                         </div>
                     </div>
                 </div>
@@ -153,13 +147,16 @@
                         </div>
                     </div>
                 </div> --}}
-            </div>  
+            </div>
+            <div class="flex items-end m-3">
+                <a href="{{ route('avocats') }}" class="mt-6 md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">voir toute l'épique</a>
+            </div>
         </div>
     </section>
     @endsection
     @section('articles')
     <section class="m-4">
-        <div class="p-4 bg-gray-100 rounded-md dark:bg-slate-500 m-4">
+        <div class="p-4 bg-gray-100 rounded-md m-4">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-5xl font-bold text-gold mb-4">L'Importance de Rester Informé</h2>
                 <p class="text-lg md:text-xl text-gray-800">
@@ -230,7 +227,7 @@
         <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Les domaines d'interventions</h2>
         <div class="border-t border-gold  my-4"></div>
     </div>
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center bg-blue-950">
         <div id="carousel" class="relative w-full m-4 overflow-hidden rounded-lg">
             <div class="flex transition-transform duration-300 ease-in-out" id="carousel-content">
                 <!-- Grid Container 1 -->
@@ -360,7 +357,7 @@
     @section('commentaire')
     <div class="container mx-auto p-6 mt-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white p-6 dark:bg-slate-500 rounded-md">
+            <div class="bg-white p-6 rounded-md">
                 <h2 class="text-2xl font-semibold text-gray-800 mb-4">Nous laisser un message</h2>
                  <form action="#" method="POST">
                     <div class="mb-4">
@@ -382,7 +379,7 @@
                     </div>
                 </form>
             </div>
-            <div class="bg-white dark:bg-slate-500 rounded-md p-6 space-y-4">
+            <div class="bg-white rounded-md p-6 space-y-4">
                 <h2 class="text-2xl font-semibold text-gray-800 mb-4">Commentaires</h2>
                 <div class="border-b pb-4">
                     <p class="text-lg font-semibold text-gray-800">Jean Dupont</p>
