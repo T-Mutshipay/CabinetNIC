@@ -10,9 +10,9 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-        <body class=" dark:bg-slate-300">
+        <body class="">
             <header class="relative bg-cover bg-center bg-no-repeat h-screen md:h-[80vh]" style="background-image: url('img/fond.jpg');">
-                <nav class="border-gray-200 bg-white dark:bg-slate-300" dark:border-gray-700">
+                <nav class="border-gray-200 bg-white" dark:border-gray-700">
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
                         <a href="{{ route('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="{{asset('img/Cabinet.png')}}" class="h-16" alt="Logo" />
