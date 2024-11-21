@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActualiteController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+Route::get('/', [ActualiteController::class, 'index'])->name('/');
 Route::get('/articles', function () {
     return view('articles');
 })->name('articles'); 
