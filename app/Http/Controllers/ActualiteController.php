@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avocat;
 use App\Models\Actualite;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class ActualiteController extends Controller
     public function index()
     {
         $actualites = Actualite::all();
-        return view('welcome', compact('actualites'));
+        $avocats = Avocat::all();
+        return view('welcome', compact('actualites', 'avocats'));
     }
 
 
