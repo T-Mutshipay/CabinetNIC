@@ -19,7 +19,7 @@ class Commentaire extends Model
         return $this->belongsTo(Actualite::class);
     }
 
-    public function avocat()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
