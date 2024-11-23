@@ -12,32 +12,34 @@
     </head>
         <body class="">
             <header class="relative bg-cover bg-center bg-no-repeat h-screen md:h-[80vh]" style="background-image: url('{{ asset('img/fond.jpg') }}');">
-                <nav class="border-gray-200 bg-white dark:border-gray-700">
-                    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
-                        <a href="{{ route('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse"> 
-                            <img src="{{ asset('img/Cabinet.png') }}" class="h-16" alt="Logo" /> 
-                            <span class="self-center text-center text-3xl font-semibold whitespace-nowrap dark:text-black">N.I.C & Associés</span>
-                        </a>
-                        <button id="hamburger" class="md:hidden flex items-center p-2 text-gray-900 rounded-lg bg-black focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-white" aria-controls="navbar-default" aria-expanded="false">
+                <nav class="border-b border-gray-200 bg-white dark:border-gray-700">
+                    <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
+                        <a href="{{ route('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
+                            <img src="{{ asset('img/Cabinet.png') }}" class="h-16" alt="Logo" />
+                            <span class="text-xl md:text-3xl font-semibold whitespace-nowrap dark:text-black">
+                                N.I.C & Associés
+                            </span>
+                        </a>                
+                        <button id="hamburger" class="md:hidden p-2 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-white" aria-controls="navbar-default" aria-expanded="false">
                             <span class="sr-only">Ouvrir le menu</span>
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                             </svg>
                         </button>
-                        <ul id="navbar-default" class="hidden w-full md:flex md:w-auto font-medium mt-4 rounded-lg dark:border-gray-700">
+                        <ul id="navbar-default" class="hidden md:flex space-x-6 font-medium text-lg">
                             <li>
-                                <a href="{{ route('/') }}" class="flex items-center text-2xl py-2 px-3 text-gray-900 rounded hover:bg-gold dark:text-black dark:hover:text-white">                  
-                                    <span>Accueil</span>
+                                <a href="{{ route('/') }}" class="text-gray-900 hover:text-gold dark:text-black dark:hover:text-white">
+                                    Accueil
                                 </a>
                             </li>
                             <li>
-                                <a href="#services" class="flex items-center py-2 px-3 text-2xl text-gray-900 rounded hover:bg-gold dark:text-black dark:hover:text-white">                  
-                                    <span>Nos services</span>
+                                <a href="#services" class="text-gray-900 hover:text-gold dark:text-black dark:hover:text-white">
+                                    Nos services
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="flex items-center py-2 px-3 text-gray-900 rounded text-2xl hover:bg-gold dark:text-black dark:hover:text-white">                  
-                                    <span>Honoraires</span>
+                                <a href="" class="text-gray-900 hover:text-gold dark:text-black dark:hover:text-white">
+                                    Honoraires
                                 </a>
                             </li>
                         </ul>
