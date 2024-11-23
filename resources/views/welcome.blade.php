@@ -45,7 +45,7 @@
                     </div>
 
                     <!-- Service 3: Assistance et Représentation Judiciaire -->
-                    <div class="flex flex-col items-centerm-1">
+                    <div class="flex flex-col items-center m-1">
                         <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
                             <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -69,37 +69,24 @@
     @endsection
     @section('team')
         <div class="p-8 bg-gray-100 rounded-md">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl md:text-5xl font-bold text-gold mb-4">Rencontrez Notre Équipe d'Avocats</h2>
-                <p class="text-lg md:text-xl text-gray-800 leading-relaxed text-justify">
-                    Chez <span class="font-semibold">N.I.C & Associés</span>, notre équipe d'avocats est composée de
-                    professionnels hautement qualifiés et
-                    passionnés, dévoués à défendre vos droits et à vous offrir les meilleurs conseils juridiques. Chacun
-                    de nos avocats possède une expertise approfondie dans divers domaines du droit, vous assurant une
-                    assistance juridique complète et adaptée à vos besoins spécifiques.
-                </p>
-                <p class="text-lg md:text-xl text-gray-800 leading-relaxed text-justify">
-                    Notre équipe se distingue par son approche collaborative et personnalisée. Nous croyons fermement
-                    que chaque client est unique, et nous nous efforçons de comprendre vos besoins et vos objectifs pour
-                    vous fournir des solutions juridiques sur mesure. Que vous soyez confronté à des questions complexes
-                    de droit commercial, à des litiges familiaux, ou à des défis de conformité réglementaire, notre
-                    équipe est prête à vous assister avec professionnalisme et compassion.
-                </p>
-                <p class="text-lg md:text-xl text-gray-800 leading-relaxed text-justify">
-                    Notre engagement envers l'excellence se reflète dans nos valeurs fondamentales : <span
-                        class="font-semibold">intégrité,
-                        transparence et dévouement</span>. Nous sommes fiers de notre réputation de cabinet d'avocats de
-                    confiance,
-                    reconnu pour notre expertise et notre capacité à obtenir des résultats favorables pour nos clients.
-                    En travaillant avec nous, vous bénéficiez non seulement de nos connaissances juridiques
-                    approfondies, mais aussi de notre réseau de ressources et de notre engagement indéfectible à
-                    protéger vos intérêts.
-                </p>
-                <p class="text-lg md:text-xl text-gray-800 leading-relaxed text-justify">
-                    Explorez notre site pour en savoir plus sur chacun de nos avocats et découvrez comment notre équipe
-                    peut vous aider à naviguer dans le paysage juridique avec confiance et assurance. Bienvenue chez
-                    <span class="font-semibold">N.I.C & Associés</span>, où votre réussite est notre priorité.
-                </p>
+            <div class="container mx-auto text-start p-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-gold mb-6">
+                    Rencontrez notre équipe d'avocats
+                </h2>
+                <div class="text-lg md:text-xl text-gray-800 text-justify space-y-6">
+                    <p>
+                        Chez <span class="font-semibold">N.I.C & Associés</span>, notre équipe est composée d’avocats hautement qualifiés et passionnés, dédiés à défendre vos droits et à offrir des conseils juridiques adaptés à vos besoins. Chaque membre de notre équipe possède une expertise approfondie dans des domaines variés du droit, garantissant une assistance complète et personnalisée.
+                    </p>
+                    <p>
+                        Nous privilégions une approche collaborative et sur mesure, car chaque client est unique. Que vous fassiez face à des problématiques complexes en droit commercial, à des litiges familiaux, ou à des défis liés à la conformité réglementaire, notre équipe vous accompagne avec professionnalisme et empathie.
+                    </p>
+                    <p>
+                        Nos valeurs fondamentales – <span class="font-semibold">intégrité, transparence et dévouement</span> – reflètent notre engagement envers l’excellence. Nous sommes fiers de notre réputation de cabinet d’avocats de confiance, reconnu pour sa capacité à obtenir des résultats favorables pour nos clients.
+                    </p>
+                    <p>
+                        Découvrez nos avocats et comment <span class="font-semibold">N.I.C & Associés</span> peut vous aider à naviguer dans le paysage juridique avec assurance. Votre réussite est notre priorité.
+                    </p>
+                </div>
             </div>
         </div>
         <section class="m-14">
@@ -112,78 +99,19 @@
                     class="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 relative overflow-visible">
                     @if ($avocats->count() > 0)
                         @foreach ($avocats as $item)
-                            <div class="mt-20">
-                                <div
-                                    class="bg-white dark:bg-slate-500 rounded-sm border border-gold shadow-lg overflow-visible relative">
-                                    <div class="flex items-center justify-center relative">
-                                        <img src="{{ asset("storage/$item->image") ?? asset('img/agent.png') }}"
-                                            alt="Avocat" class=" object-cover absolute -top-20">
-                                    </div>
-                                    <div class="p-10 mt-24 text-center">
-                                        <h3 class="text-xl font-semibold mt-5">{{ $item->nom_complet }}</h3>
-                                        <p class="text-gray dark:text-black mt-2">{{ $item->description }}</p>
-                                    </div>
+                        <div class="mt-20">
+                            <div class="bg-white dark:bg-slate-500 rounded-sm border border-gold shadow-lg overflow-visible relative">
+                                <div class="flex items-center justify-center relative">
+                                    <img src="{{ asset($item->image) }}" alt="Avocat" class="object-cover absolute -top-20 w-56 h-56 border-4 border-white shadow-lg">
+                                </div>
+                                <div class="p-10 mt-24 text-center">
+                                    <h3 class="text-xl font-semibold mt-5">{{ $item->nom_complet }}</h3>
+                                    <p class="text-gray dark:text-black mt-2">{{ $item->description }}</p>
                                 </div>
                             </div>
+                        </div>
                         @endforeach
                     @endif
-                    {{-- <div class="mt-20">
-                    <div class="bg-white dark:bg-slate-500 rounded-sm border border-gold shadow-lg overflow-visible relative">
-                        <div class="flex items-center justify-center relative">
-                            <img src="{{asset('img/agent.png')}}" alt="Avocat" class=" object-cover absolute -top-20">
-                        </div>
-                        <div class="p-10 mt-24 text-center">
-                            <h3 class="text-xl font-semibold mt-5">Avocat Associé</h3>
-                            <p class="text-gray dark:text-black mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                        </div>
-                    </div>
-                </div> --}}
-                    {{-- <div class="mt-20">
-                <div class="bg-white dark:bg-slate-500 rounded-sm border border-gold shadow-lg overflow-visible relative">
-                    <div class="flex items-center justify-center relative">
-                        <img src="{{asset('img/agent.png')}}" alt="Avocat" class=" object-cover absolute -top-20">
-                    </div>
-                    <div class="p-10 mt-24 text-center">
-                        <h3 class="text-xl font-semibold mt-5">Avocat Associé</h3>
-                        <p class="text-gray dark:text-black mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-20">
-                <div class="bg-white dark:bg-slate-500 rounded-sm border border-gold shadow-lg overflow-visible relative">
-                    <div class="flex items-center justify-center relative">
-                        <img src="{{asset('img/agent.png')}}" alt="Avocat" class=" object-cover absolute -top-20">
-                    </div>
-                    <div class="p-10 mt-24 text-center">
-                        <h3 class="text-xl font-semibold mt-5">Avocat Associé</h3>
-                        <p class="text-gray dark:text-black mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                    </div>
-                </div>
-            </div> --}}
-                    {{-- <div class="mt-20">
-                <div class="bg-white rounded-lg shadow-lg overflow-visible relative">
-                    <div class="flex items-center justify-center relative">
-                        <img src="{{asset('img/avocat1.jpg')}}" alt="Avocat" class=" rounded-md w-2/3 h-auto object-cover absolute -top-20">
-                    </div>
-                    <div class="p-4 mt-24 text-center">
-                        <h3 class="text-xl font-semibold mt-5">Avocat Associé 1</h3>
-                        <p class="text-gray dark:text-black mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                        <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
-                    </div>
-            </div>
-            </div> --}}
-                    {{-- <div class="mt-20">
-                <div class="bg-white rounded-lg shadow-lg overflow-visible relative">
-                    <div class="flex items-center justify-center relative">
-                        <img src="{{asset('img/avocat2.jpg')}}" alt="Avocat" class=" rounded-md w-58 h-40 object-cover absolute -top-20">
-                    </div>
-                    <div class="p-4 mt-24 text-center">
-                        <h3 class="text-xl font-semibold mt-5">Avocat Associé 1</h3>
-                        <p class="text-gray dark:text-black mt-2">Un bref extrait de l'article 1 pour donner un aperçu du contenu.</p>
-                        <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Lire plus</a>
-                    </div>
-                </div>
-            </div> --}}
                 </div>
                 <div class="flex items-end m-3">
                     <a href="{{ route('avocats') }}"
@@ -195,37 +123,28 @@
     @endsection
     @section('articles')
         <div class="p-4 bg-gray-100 rounded-md m-4">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl md:text-5xl font-bold text-gold mb-4">L'Importance de Rester Informé</h2>
-                <p class="text-lg md:text-xl text-gray-800 text-justify">
-                    Dans un monde en constante évolution, rester informé des dernières actualités et des développements
-                    juridiques est essentiel. Chez <span class="font-semibold">N.I.C & Associés</span>, nous comprenons
-                    l'importance de vous tenir à jour
-                    avec les informations qui peuvent impacter vos décisions et votre quotidien. C'est pourquoi nous
-                    avons créé cette section "Actualités et Articles".
-                </p>
-                <p class="text-lg md:text-xl text-gray-800 mt-4 text-justify">
-                    Cette section est dédiée à vous fournir des analyses approfondies, des conseils pratiques et des
-                    mises à jour sur les changements législatifs. Nos experts partagent leurs connaissances et leurs
-                    perspectives pour vous aider à naviguer dans le paysage juridique complexe. Que vous soyez un
-                    professionnel du droit, un entrepreneur, ou un particulier, vous trouverez ici des ressources
-                    précieuses pour rester informé et prendre des décisions éclairées.
-                </p>
-                <p class="text-lg md:text-xl text-gray-800 mt-4 text-justify">
-                    Parcourez nos articles pour découvrir des études de cas, des commentaires d'experts et des
-                    informations exclusives sur les tendances actuelles du droit. Nous sommes déterminés à vous fournir
-                    un contenu de qualité, pertinent et à jour. Votre connaissance est notre priorité, et nous sommes
-                    ici pour vous aider à chaque étape.
-                </p>
-                <p class="text-lg md:text-xl text-gray-800 mt-4 text-justify">
-                    Bienvenue dans notre section "Actualités et Articles" – votre source d'informations juridiques
-                    fiables et instructives.
-                </p>
+            <div class="container mx-auto text-center p-6">
+                <h2 class="text-4xl md:text-5xl text-start font-bold text-gold mb-6">
+                    L'Importance de rester informé
+                </h2>
+
+                <div class="text-lg md:text-xl text-gray-800 text-justify space-y-6">
+                    <p>
+                        Le monde évolue rapidement, et être informé des dernières actualités et développements juridiques est essentiel pour prendre des décisions éclairées. Chez <span class="font-semibold">N.I.C & Associés</span>, nous mettons à votre disposition une section dédiée aux <strong>actualités et articles</strong>, pour vous tenir à jour des informations qui impactent votre quotidien.
+                    </p>
+                    <p>
+                        Vous y trouverez des analyses approfondies, des conseils pratiques et des mises à jour sur les changements législatifs. Nos experts partagent leurs perspectives pour vous aider à naviguer dans le paysage juridique, que vous soyez professionnel, entrepreneur ou particulier.
+                    </p>
+                    <p>
+                        Explorez cette section pour découvrir des études de cas, des commentaires d'experts et des tendances actuelles du droit. Notre objectif est de vous fournir un contenu fiable, pertinent et à jour pour vous accompagner dans vos décisions.
+                    </p>
+                    <p class="font-semibold">
+                        Bienvenue dans notre section "Actualités et Articles" – votre source d'informations juridiques précieuses.
+                    </p>
+                </div>
             </div>
         </div>
-
         <section class="m-4">
-
             <div class="container mx-auto mt-10">
                 <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Actualités et Articles</h2>
                 <div class="border-t border-gold my-4"></div>
@@ -233,10 +152,10 @@
                     @if ($actualites->count() > 0)
                         @foreach ($actualites as $item)
                             <div class="bg-white dark:bg-gray-200 rounded-lg shadow-lg overflow-hidden border border-gold">
-                                <img src="{{ asset("storage/$item->image") ?? asset('img/fond.jpg') }}"
+                                <img src="{{ asset("$item->image") ?? asset('img/fond.jpg') }}"
                                     alt="Titre de l'article 4" class="w-full h-60 object-cover">
                                 <div class="p-4 flex flex-col justify-center">
-                                    <h3 class="text-xl font-semibold">{{ $item->titre }}</h3>
+                                    <h3 class="text-xl font-semibold">{{ $item }}</h3>
                                     <p class="text-gray dark:text-black mt-1">{{ Str::limit($item->contenu, 20) }} ...</p>
                                 </div>
                                 <div class="flex float-end m-3">
@@ -247,47 +166,6 @@
                             </div>
                         @endforeach
                     @endif
-                    {{-- <div class="bg-white dark:bg-gray-200 rounded-lg shadow-lg overflow-hidden border border-black">
-                    <img src="{{ asset('img/fond.jpg') }}" alt="Titre de l'article 4" class="w-full h-60 object-cover">
-                    <div class="p-4 flex flex-col justify-center">
-                        <h3 class="text-xl font-semibold">Titre de l'article 4</h3>
-                        <p class="text-gray dark:text-black mt-1">Un bref extrait de l'article 4 pour donner un aperçu
-                            du contenu.</p>
-                    </div>
-                    <div class="flex float-end m-3">
-                        <a href="#"
-                            class="mt-6 md:text-sm  bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">voir
-                            plus</a>
-                    </div>
-                </div> --}}
-                    {{-- <div class="bg-white dark:bg-gray-200 rounded-lg shadow-lg overflow-hidden border border-black">
-                    <img src="{{ asset('img/fond.jpg') }}" alt="Titre de l'article 4"
-                        class="w-full h-60 object-cover">
-                    <div class="p-4 flex flex-col justify-center">
-                        <h3 class="text-xl font-semibold">Titre de l'article 4</h3>
-                        <p class="text-gray dark:text-black mt-1">Un bref extrait de l'article 4 pour donner un aperçu
-                            du contenu.</p>
-                    </div>
-                    <div class="flex float-end m-3">
-                        <a href="#"
-                            class="mt-6 md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">voir
-                            plus</a>
-                    </div>
-                </div>
-                <div class="bg-white dark:bg-gray-200 rounded-lg shadow-lg overflow-hidden border border-black">
-                    <img src="{{ asset('img/fond.jpg') }}" alt="Titre de l'article 4"
-                        class="w-full h-60 object-cover">
-                    <div class="p-4 flex flex-col justify-center">
-                        <h3 class="text-xl font-semibold">Titre de l'article 4</h3>
-                        <p class="text-gray dark:text-black mt-1">Un bref extrait de l'article 4 pour donner un aperçu
-                            du contenu.</p>
-                    </div>
-                    <div class="flex float-end m-3">
-                        <a href="#"
-                            class="mt-6 md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">voir
-                            plus</a>
-                    </div>
-                </div> --}}
                 </div>
             </div>
         </section>
@@ -457,7 +335,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white p-6 rounded-md">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Nous laisser un message</h2>
-                    <form action="#" method="POST">
+                    <form action="{{route('comment.store')}}" method="POST">
+                        @csrf
                         <div class="mb-4">
                             <label for="name"
                                 class="block text-sm font-medium dark:text-black text-gray-800">Nom</label>
@@ -487,23 +366,26 @@
                 </div>
                 <div class="bg-white rounded-md p-6 space-y-4">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Commentaires</h2>
-                    <div class="border-b pb-4">
-                        <p class="text-lg font-semibold text-gray-800">Jean Dupont</p>
-                        <p class="text-sm text-gray dark:text-black">email@example.com</p>
-                        <p class="text-gray-800 mt-2">Ceci est un exemple de commentaire. Le contenu du commentaire peut
-                            être assez long pour tester la mise en page.</p>
-                    </div>
-                    <div class="border-b pb-4">
-                        <p class="text-lg font-semibold text-gray-800">Marie Durand</p>
-                        <p class="text-sm text-gray dark:text-black">marie.durand@example.com</p>
-                        <p class="text-gray-800 mt-2">Un autre exemple de commentaire. Le formulaire de commentaire est
-                            simple et facile à utiliser.</p>
-                    </div>
-                    <div class="border-b pb-4">
-                        <p class="text-lg font-semibold text-gray-800">Pierre Martin</p>
-                        <p class="text-sm text-gray dark:text-black">pierre.martin@example.com</p>
-                        <p class="text-gray-800 mt-2">Ce formulaire est vraiment pratique pour soumettre des commentaires
-                            sur le site.</p>
+                    <div class="overflow-y-auto max-h-96 space-y-4">
+                        @foreach ($commentaires as $item)
+                            <div class=" shadow-md rounded-md p-4 border border-gray-200">
+                                <p class="text-lg text-black font-semibold">
+                                    Nom complet : {{$item->user->name}}
+                                </p>
+                                <p class="text-md text-gray-700">
+                                    Sujet : 
+                                    @if ($item->actualite_id != null)
+                                        {{$item->actualite->titre}}
+                                    @endif
+                                </p>
+                                <p class="text-sm text-gray-600">
+                                    Email : {{$item->user->email}}
+                                </p>
+                                <p class="text-gray-800 mt-2">
+                                    Commentaire : {{$item->contenu}}
+                                </p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

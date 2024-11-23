@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CommentaireController extends Controller
@@ -27,7 +29,30 @@ class CommentaireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation des données entrantes
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email', 
+            // 'actualite_id' => 'required|integer', 
+            'comment' => 'required|string|max:500', 
+        ]);
+        $user = User::where('email', $request->email)->first();
+            if (!$user) {
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                ]);
+            }
+            $commentaire = Commentaire::create([
+                'actualite_id' => $request->actualite_id,
+                'user_id' => $user->id, 
+                'contenu' => $request->comment,
+            ]);
+            dd($user);
+            return response()->json([
+                'message' => 'Commentaire ajouté avec succès.',
+                'commentaire' => $commentaire,
+            ], 201); 
     }
 
     /**

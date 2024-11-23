@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Avocat;
 use App\Models\Actualite;
+use App\Models\Commentaire;
 use Illuminate\Http\Request;
 
 class ActualiteController extends Controller
@@ -12,10 +13,11 @@ class ActualiteController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        $commentaires = Commentaire::all();
         $actualites = Actualite::all();
         $avocats = Avocat::all();
-        return view('welcome', compact('actualites', 'avocats'));
+        return view('welcome', compact('actualites', 'avocats','commentaires'));
     }
 
 
