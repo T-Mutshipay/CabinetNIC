@@ -155,7 +155,7 @@
                                 <img src="{{ asset("$item->image") ?? asset('img/fond.jpg') }}"
                                     alt="Titre de l'article 4" class="w-full h-60 object-cover">
                                 <div class="p-4 flex flex-col justify-center">
-                                    <h3 class="text-xl font-semibold">{{ $item }}</h3>
+                                    <h3 class="text-xl font-semibold">{{ $item->titre}}</h3>
                                     <p class="text-gray dark:text-black mt-1">{{ Str::limit($item->contenu, 20) }} ...</p>
                                 </div>
                                 <div class="flex float-end m-3">
