@@ -29,13 +29,13 @@ class CommentaireController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation des données entrantes
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email', 
-            // 'actualite_id' => 'required|integer', 
-            'comment' => 'required|string|max:500', 
-        ]);
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email', 
+        'comment' => 'required|string|max:500', 
+        'actualite_id' => 'nullable|integer|exists:actualites,id',
+    ]);
+
         $user = User::where('email', $request->email)->first();
             if (!$user) {
                 $user = User::create([
@@ -43,17 +43,18 @@ class CommentaireController extends Controller
                     'email' => $request->email,
                 ]);
             }
-            $commentaire = Commentaire::create([
-                'actualite_id' => $request->actualite_id,
+            $commentData = [
                 'user_id' => $user->id, 
                 'contenu' => $request->comment,
-            ]);
-            dd($user);
-            return response()->json([
-                'message' => 'Commentaire ajouté avec succès.',
-                'commentaire' => $commentaire,
-            ], 201); 
+            ];
+        if ($request->has('actualite_id')) {
+            $commentData['actualite_id'] = $request->actualite_id;
+        }
+        $commentaire = Commentaire::create($commentData);
+        // return response()->json(['message' => 'Commentaire ajouté avec succès.', 'commentaire' => $commentaire,], 201); 
+        return redirect()->back();
     }
+
 
     /**
      * Display the specified resource.
