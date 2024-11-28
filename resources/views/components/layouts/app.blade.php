@@ -54,18 +54,23 @@
                     });
                 </script>
                 <div class="container mx-auto px-4">
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-1">
                         <div class="flex flex-col items-center md:items-start">
-                            <h1 class="text-4xl font-bold text-gold text-center md:text-left mt-10 md:mt-4">Une équipe au coeur de votre stratégie</h1>
-                            <button class="mt-6 md:text-sm bg-gold text-white rounded px-6 py-2" data-modal-target="static-modal" data-modal-toggle="static-modal">Parler à un Avocat</button>
+                            <h1 class="text-4xl font-bold text-gold text-center md:text-left md:mt-4">
+                                Une équipe au coeur de votre stratégie
+                            </h1>
+                            <button class="mt-3 md:mt-1 bg-gold text-white rounded px-6 py-2" data-modal-target="static-modal" data-modal-toggle="static-modal">
+                                Parler à un Avocat
+                            </button>
                         </div>
-                        <div class="flex justify-center md:justify-end">
-                            <div class="relative w-48 h-48 md:w-56 md:h-56 m-36">
-                                <img src="{{ asset('img/balance.jpg') }}" alt="Circle Image" class="rounded-full w-full h-full object-cover ring-4 ring-gray-300 dark:ring-gray-500">
+                        <div class="flex justify-center md:justify-end mt-3 md:mt-0">
+                            <div class="relative w-56 h-56 md:w-32 md:h-32 sm:w-40 sm:h-40">
+                                <img src="{{ asset('img/balance.jpg') }}" alt="Circle Image" class="rounded-full mt-20 w-full h-full object-cover ring-4 ring-gray-300 dark:ring-gray-500">
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </header>
             
             <main>
@@ -77,18 +82,20 @@
             </main>
             <footer class="bg-gray-800 text-white py-8">
                 <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="flex flex-col items-center md:items-start mb-4 md:mb-0">
+                    <div class="flex flex-col items-center m-1 md:items-start mb-4 md:mb-0">
                         <img src="{{asset('img/Cabinet.png')}}" class="h-16" alt="Logo" />
                     </div>
             
-                    <nav class="flex flex-col md:flex-row justify-center md:justify-end text-center space-y-2 md:space-y-0 md:space-x-4">
+                    <nav class="flex flex-col md:flex-row items-center md:justify-end text-center space-y-2 md:space-y-0 md:space-x-4">
                         <a href="#team" class="py-2 px-3 text-white rounded hover:bg-gold dark:hover:bg-gold block">Nos Avocats</a>
                         <a href="#" class="py-2 px-3 text-white rounded hover:bg-gold dark:hover:bg-gold block">Nos Honoraires</a>
                     </nav>
                     
-                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <div class="flex flex-col items-center md:items-start text-justify md:text-left">
                         <h3 class="text-lg font-semibold mb-2">À Propos</h3>
-                        <p class="text-sm md:text-base">N.i.C & Associés est un cabinet d'avocats dédié à la défense de vos droits et à la fourniture de conseils juridiques de qualité.</p>
+                        <p class="text-sm md:text-base m-2">N.i.C & Associés est un cabinet d'avocats dédié à la défense de vos droits et à la fourniture de conseils juridiques de qualité.
+                            appétence: droit judiciaire, droit du recouvrement, droit de la propriété intellectuelle, droit du travail, contentieux fiscal et administratifs, droit de la communication audiovisuelle et droit des affaires en général
+                        </p>
                     </div>
                 </div>
             
