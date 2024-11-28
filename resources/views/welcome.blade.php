@@ -159,7 +159,7 @@
                                     <p class="text-gray dark:text-black mt-1">{{ Str::limit($item->contenu, 20) }} ...</p>
                                 </div>
                                 <div class="flex float-end m-3">
-                                    <a href="{{ route('articles') }}"
+                                    <a href="{{ route('actualites.show', $item->id) }}"
                                         class="mt-6 md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">voir
                                         plus</a>
                                 </div>
@@ -373,9 +373,10 @@
                                     Nom complet : {{$item->user->name}}
                                 </p>
                                 <p class="text-md text-gray-700">
-                                    Sujet : 
-                                    @if ($item->actualite_id != null)
-                                        {{$item->actualite->titre}}
+                                    @if ($item->actualite)
+                                        <p class="text-md text-gray-700"> actualité : {{ $item->actualite->titre }}</p>
+                                    @else
+                                        <p class="text-md text-gray-700">Pas d'actualité associée</p>
                                     @endif
                                 </p>
                                 <p class="text-sm text-gray-600">
