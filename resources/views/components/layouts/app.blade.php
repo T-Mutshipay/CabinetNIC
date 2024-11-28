@@ -10,16 +10,16 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-        <body class="">
+        <body class=" bg-slate-300">
             <header class="relative bg-cover bg-center bg-no-repeat h-screen md:h-[80vh]" style="background-image: url('{{ asset('img/fond.jpg') }}');">
-                <nav class="border-b border-gray-200 bg-white dark:border-gray-700">
+                <nav class="border-b border-gray-200 bg-white  dark:bg-gray-900">
                     <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
                         <a href="{{ route('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="{{ asset('img/Cabinet.png') }}" class="h-16" alt="Logo" />
-                            <span class="text-xl md:text-3xl font-semibold whitespace-nowrap dark:text-black">
+                            <span class="text-xl md:text-2xl font-semibold whitespace-nowrap text-gray-900 dark:text-white">
                                 N.I.C & Associés
                             </span>
-                        </a>                
+                        </a>
                         <button id="hamburger" class="md:hidden p-2 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-white" aria-controls="navbar-default" aria-expanded="false">
                             <span class="sr-only">Ouvrir le menu</span>
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -28,17 +28,17 @@
                         </button>
                         <ul id="navbar-default" class="hidden md:flex space-x-6 font-medium text-lg">
                             <li>
-                                <a href="{{ route('/') }}" class="text-gray-900 hover:text-gold dark:text-black dark:hover:text-white">
+                                <a href="{{ route('/') }}" class="text-gray-900 hover:text-gold dark:text-white dark:hover:text-yellow-500">
                                     Accueil
                                 </a>
                             </li>
                             <li>
-                                <a href="#services" class="text-gray-900 hover:text-gold dark:text-black dark:hover:text-white">
+                                <a href="#services" class="text-gray-900 hover:text-gold dark:text-white dark:hover:text-yellow-500">
                                     Nos services
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="text-gray-900 hover:text-gold dark:text-black dark:hover:text-white">
+                                <a href="#" class="text-gray-900 hover:text-gold dark:text-white dark:hover:text-yellow-500">
                                     Honoraires
                                 </a>
                             </li>
@@ -48,7 +48,6 @@
                 <script>
                     const hamburger = document.getElementById('hamburger');
                     const navbar = document.getElementById('navbar-default');
-                
                     hamburger.addEventListener('click', () => {
                         navbar.classList.toggle('hidden');
                     });
@@ -64,14 +63,14 @@
                             </button>
                         </div>
                         <div class="flex justify-center md:justify-end mt-3 md:mt-0">
-                            <div class="relative w-56 h-56 md:w-32 md:h-32 sm:w-40 sm:h-40">
-                                <img src="{{ asset('img/balance.jpg') }}" alt="Circle Image" class="rounded-full mt-20 w-full h-full object-cover ring-4 ring-gray-300 dark:ring-gray-500">
+                            <div class="relative w-56 h-56 md:w-48 md:h-48 sm:w-40 sm:h-40 p-2 ">
+                                <img src="{{ asset('img/balance.jpg') }}" alt="Circle Image" class="rounded-full w-full h-40 object-cover ring-4 ring-gray-300 dark:ring-gray-500">
                             </div>
                         </div>
                     </div>
                 </div>
-                
             </header>
+            
             
             <main>
                 @yield('services')

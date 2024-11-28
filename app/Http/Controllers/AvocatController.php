@@ -13,7 +13,7 @@ class AvocatController extends Controller
     public function index()
     {
         $avocats = Avocat::all();
-        return view('welcome', compact('avocats'));
+        return view('avocats', compact('avocats'));
     }
 
     /**
