@@ -15,22 +15,22 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5 space-y-4">
-                <div class="bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="bg-white rounded-lg shadow">
                     <div class="p-6 text-center">
                         <p>Choisissez une méthode pour nous contacter :</p>
                         <ul class="space-x-4 mt-4 flex justify-center">
                             <li>
-                                <a href="mailto:contact@votre-cabinet.com" class="flex items-center justify-center text-black hover:bg-yellow-500 hover:text-white p-2 rounded transition-all duration-200">
+                                <a href="mailto:contact@votre-cabinet.com" class="flex items-center justify-center text-red-700 hover:bg-yellow-500 hover:text-white p-2 rounded transition-all duration-200">
                                     <i class="fa fa-envelope fa-3x" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://wa.me/1234567890" target="_blank" class="flex items-center justify-center text-black hover:bg-yellow-500 hover:text-white p-2 rounded transition-all duration-200">
+                                <a href="https://wa.me/1234567890" target="_blank" class="flex items-center justify-center text-green-500 hover:bg-yellow-500 hover:text-white p-2 rounded transition-all duration-200">
                                     <i class="fab fa-whatsapp fa-3x"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="tel:+1234567890" class="flex items-center justify-center text-black hover:bg-yellow-500 hover:text-white p-2 rounded transition-all duration-200">
+                                <a href="tel:+1234567890" class="flex items-center justify-center text-green-500 hover:bg-yellow-500 hover:text-white p-2 rounded transition-all duration-200">
                                     <i class="fa fa-phone fa-3x" aria-hidden="true"></i>
                                 </a>
                             </li>
