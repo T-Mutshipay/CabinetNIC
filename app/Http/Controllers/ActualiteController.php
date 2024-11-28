@@ -55,9 +55,10 @@ class ActualiteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $actualites = Actualite::findOrFail($id); 
+        return view('articles', compact('actualites'));
     }
 
     /**
