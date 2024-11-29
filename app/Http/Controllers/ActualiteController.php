@@ -14,8 +14,8 @@ class ActualiteController extends Controller
      */
     public function index()
     {   
-        $commentaires = Commentaire::all();
-        $actualites = Actualite::all();
+        $commentaires = Commentaire::orderBy('created_at', 'desc')->get();
+        $actualites = Actualite::orderBy('created_at','desc')->get();
         $avocats = Avocat::all();
         return view('welcome', compact('actualites', 'avocats','commentaires'));
     }
