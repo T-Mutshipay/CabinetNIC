@@ -12,6 +12,7 @@ class Avocat extends Model
     protected $fillable = [
         'nom_complet', 
         'email', 
+        'role',
         'description', 
         'image'
     ];
