@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom_complet');
             $table->string('email')->unique();
+            $table->string('role')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
