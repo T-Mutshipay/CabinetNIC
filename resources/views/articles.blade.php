@@ -1,16 +1,14 @@
 <x-layouts.app>
-@section('title', 'Résultats des Élections aux États-Unis')
-
 @section('content')
 <div class="container mx-auto p-4">
     <!-- En-tête de l'article -->
     @if ($actualites)
-        <div class="bg-blue-600 text-white p-4 rounded-lg mb-4">
-            <h1 class="text-2xl font-bold">{{ $actualites->titre }}</h1>
-            <p class="mt-2">{{ $actualites->description }}</p>
+        <div class=" text-black p-4 mb-4">
+            <h1 class=" text-6xl font-bold">{{ $actualites->titre }}</h1>
+            <p class="mt-2 text-2xl">{{ $actualites->description }}</p>
         </div>
 
-        <article class="bg-white p-6 rounded-lg shadow-md">
+        <article class="bg-white p-6 rounded-md shadow-md shadow-slate-800">
             {{ $actualites->contenu }}
         </article>
 
