@@ -9,9 +9,12 @@ Route::get('/', [ActualiteController::class, 'index'])->name('/');
 Route::get('/articles', function () {
     return view('articles');
 })->name('articles');
-Route::get('/honoraires', function(){
-    return view('honoraires');
+
+Route::get('/honoraires', function () {
+   $file = public_path('honoraire.pdf');
+   return response()->file($file); 
 })->name('honoraires');
+
 Route::get('/avocats', [AvocatController::class, 'index'])->name('avocats');
 
 Route::post('/', [CommentaireController::class, 'store'])->name('comment.store');
