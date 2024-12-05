@@ -96,7 +96,7 @@
                     
                     <div class="flex flex-col items-center md:items-start text-justify md:text-left">
                         <h3 class="text-lg font-semibold mb-2">À Propos</h3>
-                        <p class="text-sm md:text-base m-2">N.i.C & Associés est un cabinet d'avocats dédié à la défense de vos droits et à la fourniture de conseils juridiques de qualité.
+                        <p class="text-sm md:text-base m-2">N.I.C & Associés est un cabinet d'avocats dédié à la défense de vos droits et à la fourniture de conseils juridiques de qualité.
                             appétence: droit judiciaire, droit du recouvrement, droit de la propriété intellectuelle, droit du travail, contentieux fiscal et administratifs, droit de la communication audiovisuelle et droit des affaires en général
                         </p>
                     </div>
@@ -131,7 +131,7 @@
                 </div>
             
                 <div class="text-center mt-4">
-                    <p>&copy; <span id="currentYear"></span> N.i.C & Associés. Tous droits réservés.</p>
+                    <p>&copy; <span id="currentYear"></span> N.I.C & Associés. Tous droits réservés.</p>
                 </div>
             </footer>
             <x-contacts/>

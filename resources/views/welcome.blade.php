@@ -23,8 +23,27 @@
                             </p>
                         </div>
                     </div>
-
-                    <!-- Service 2: Assistance et Représentation Extrajudiciaire -->
+                    
+                    <!-- Service 2: Assistance et Représentation Judiciaire -->
+                    <div class="flex flex-col items-center m-1">
+                        <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
+                            <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="mt-2 text-center">
+                            <h1 class="text-xl md:text-2xl font-bold mb-4">Assistance et Représentation Judiciaire</h1>
+                            <p class="text-center text-sm md:text-base">
+                                Assistance judiciaire, Représentation judiciaire
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3: Assistance et Représentation Extrajudiciaire -->
                     <div class="flex flex-col items-center m-1">
                         <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
                             <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true"
@@ -44,24 +63,6 @@
                         </div>
                     </div>
 
-                    <!-- Service 3: Assistance et Représentation Judiciaire -->
-                    <div class="flex flex-col items-center m-1">
-                        <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
-                            <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <div class="mt-2 text-center">
-                            <h1 class="text-xl md:text-2xl font-bold mb-4">Assistance et Représentation Judiciaire</h1>
-                            <p class="text-center text-sm md:text-base">
-                                Assistance judiciaire, Représentation judiciaire
-                            </p>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -106,14 +107,14 @@
                                 </div>
                                 <div class="p-10 mt-24 text-center">
                                     <h3 class="text-xl font-semibold mt-5">{{ $item->nom_complet }}</h3>
-                                    <p class="text-gray dark:text-black mt-2">{{ $item->description }}</p>
+                                    <p class="text-gray text-center dark:text-black mt-2">{{ $item->description }}</p>
                                 </div>
                             </div>
                         </div>
                         @endforeach
                     @endif
                 </div>
-                <div class="flex items-end m-3">
+                <div class="flex justify-end m-3">
                     <a href="{{ route('avocats') }}"
                         class="mt-6 md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">voir toute
                         l'épique</a>
@@ -124,11 +125,11 @@
     @section('articles')
         <div class="p-4 bg-gray-100 rounded-md m-4">
             <div class="container mx-auto text-center p-6">
-                <h2 class="text-4xl md:text-5xl text-start font-bold text-gold mb-6">
+                <h2 class="text-4xl md:text-xl text-start font-bold text-gold mb-6">
                     L'Importance de rester informé
                 </h2>
 
-                <div class="text-lg md:text-xl text-gray-800 text-justify space-y-6">
+                <div class="text-lg md:text-xl sm:text-xs text-gray-800 text-justify space-y-6">
                     <p>
                         Le monde évolue rapidement, et être informé des dernières actualités et développements juridiques est essentiel pour prendre des décisions éclairées. Chez <span class="font-semibold">N.I.C & Associés</span>, nous mettons à votre disposition une section dédiée aux <strong>actualités et articles</strong>, pour vous tenir à jour des informations qui impactent votre quotidien.
                     </p>
@@ -148,24 +149,29 @@
             <div class="container mx-auto mt-10">
                 <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Actualités et Articles</h2>
                 <div class="border-t border-gold my-4"></div>
-                <div class="grid grid-cols-1 sm:grid-cols-  2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    @if ($actualites->count() > 0)
-                        @foreach ($actualites as $item)
-                            <div class="bg-white dark:bg-gray-200 rounded-lg shadow-lg overflow-hidden border border-gold">
-                                <img src="{{ asset("$item->image") ?? asset('img/fond.jpg') }}"
-                                    alt="Titre de l'article 4" class="w-full h-60 object-cover">
-                                <div class="p-4 flex flex-col justify-center">
-                                    <h3 class="text-xl font-semibold">{{ $item->titre}}</h3>
-                                    <p class="text-gray dark:text-black mt-1">{{ Str::limit($item->contenu, 20) }} ...</p>
+                <div class="container mx-auto border border-black p-4">
+                    <!-- Champ de recherche -->
+                    <div class="flex justify-center mb-4">
+                        <input type="text" id="search" placeholder="Rechercher des articles..." class="p-2 border rounded">
+                    </div>
+                
+                    <div class="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="articles-container">
+                        @if ($actualites->count() > 0)
+                            @foreach ($actualites as $item)
+                                <div class="bg-white dark:bg-gray-200 rounded-lg shadow-lg overflow-hidden border border-gold flex flex-col article">
+                                    <img src="{{ asset("$item->image") ?? asset('img/fond.jpg') }}" alt="Titre de l'article 4" class="w-full h-60 object-cover">
+                                    <div class="p-4 flex flex-col justify-center flex-grow">
+                                        <h3 class="text-xl font-semibold">{{ $item->titre }}</h3>
+                                        <p class="text-gray dark:text-black mt-1">{{ Str::limit($item->contenu, 20) }} ...</p>
+                                    </div>
+                                    <div class="mt-auto m-3">
+                                        <a href="{{ route('actualites.show', $item->id) }}" class="md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">Voir plus</a>
+                                    </div>
                                 </div>
-                                <div class="flex float-end m-3">
-                                    <a href="{{ route('actualites.show', $item->id) }}"
-                                        class="mt-6 md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">voir
-                                        plus</a>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endif
+                            @endforeach
+                        @endif
+                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -297,7 +303,7 @@
                             </div>
                         </div>
                         <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
+                        class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
                             <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
                                 <i class="fas fa-users fa-2x"></i>
                             </div>
@@ -341,7 +347,7 @@
                             <label for="name"
                                 class="block text-sm font-medium dark:text-black text-gray-800">Nom</label>
                             <input type="text" id="name" name="name"
-                                class="mt-1 block w-full px-3 py-2 border dark:bg-slate-500 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2focus:border-transparent"
+                            class="mt-1 block w-full px-3 py-2 border dark:bg-slate-500 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2focus:border-transparent"
                                 required>
                         </div>
                         <div class="mb-4">
@@ -353,12 +359,12 @@
                         <div class="mb-4">
                             <label for="comment" class="block text-sm font-medium text-gray-800">Commentaire</label>
                             <textarea id="comment" name="comment" rows="4"
-                                class="mt-1 block w-full px-3 py-2 border dark:bg-slate-500 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:border-transparent"
+                            class="mt-1 block w-full px-3 py-2 border dark:bg-slate-500 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:border-transparent"
                                 required></textarea>
                         </div>
                         <div class="text-center">
                             <button type="submit"
-                                class="bg-slate-800 text-white py-2 px-6 rounded-lg hover:bg-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-opacity-50">
+                            class="bg-slate-800 text-white py-2 px-6 rounded-lg hover:bg-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-opacity-50">
                                 Soumettre
                             </button>
                         </div>
@@ -415,4 +421,30 @@
         const width = carouselContent.children[0].offsetWidth;
         carouselContent.style.transform = `translateX(-${currentIndex * width}px)`;
     }
+</script>
+
+    
+<script>
+        document.getElementById('search').addEventListener('input', function() {
+            var query = this.value.toLowerCase();
+            var articles = document.querySelectorAll('.article');
+    
+            articles.forEach(function(article) {
+                var title = article.querySelector('h3').innerText.toLowerCase();
+                if (title.includes(query)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    
+        window.addEventListener('load', function() {
+            var articlesContainer = document.getElementById('articles-container');
+            var articles = articlesContainer.children;
+            if (articles.length > 4) {
+                articlesContainer.style.maxHeight = '600px';
+                articlesContainer.style.overflowY = 'scroll';
+            }
+        });            
 </script>

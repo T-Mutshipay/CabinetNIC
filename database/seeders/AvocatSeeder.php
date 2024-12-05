@@ -47,6 +47,7 @@ class AvocatSeeder extends Seeder
                 'email' => 'sophia.smith@example.com',
                 'description' => 'Conseillère juridique spécialisée en conformité réglementaire.',
                 'image' => 'img/agent.png',
+                'role' => 'Avocat',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
