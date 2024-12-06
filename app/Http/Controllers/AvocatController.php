@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avocat;
+use App\Models\Collaborateur;
 use Illuminate\Http\Request;
 
 class AvocatController extends Controller
@@ -10,11 +11,14 @@ class AvocatController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
+        $collaborateurs = Collaborateur::all();
         $avocats = Avocat::all();
-        return view('avocats', compact('avocats'));
+        return view('avocats', compact('avocats', 'collaborateurs'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
