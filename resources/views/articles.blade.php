@@ -25,7 +25,7 @@ S428.08,149.227,351.173,149.227z" />
             <p class="mt-2 text-2xl">{{ $actualites->description }}</p>
         </div>
 
-        <article class="bg-white p-6 rounded-md shadow-md shadow-slate-800">
+        <article class="bg-white p-6 rounded-md shadow-md ">
             {{ $actualites->contenu }}
         </article>
 
