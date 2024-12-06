@@ -6,9 +6,6 @@ use App\Http\Controllers\AvocatController;
 use App\Http\Controllers\CommentaireController;
 
 Route::get('/', [ActualiteController::class, 'index'])->name('/');
-Route::get('/articles', function () {
-    return view('articles');
-})->name('articles');
 
 Route::get('/honoraires', function () {
    $file = public_path('honoraire.pdf');
