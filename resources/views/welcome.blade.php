@@ -71,10 +71,10 @@
     @section('team')
         <div class="p-8 bg-gray-100 rounded-md">
             <div class="container mx-auto text-start p-6">
-                <h2 class="text-4xl md:text-5xl font-bold text-gold mb-6">
+                <h2 class="text-3xl font-bold text-gold mb-6">
                     Rencontrez notre équipe d'avocats
                 </h2>
-                <div class="text-lg md:text-xl text-gray-800 text-justify space-y-6">
+                <div class="md:text-lg text-base text-gray-800 text-justify space-y-6">
                     <p>
                         Chez <span class="font-semibold">N.I.C & Associés</span>, notre équipe est composée d’avocats hautement qualifiés et passionnés, dédiés à défendre vos droits et à offrir des conseils juridiques adaptés à vos besoins. Chaque membre de notre équipe possède une expertise approfondie dans des domaines variés du droit, garantissant une assistance complète et personnalisée.
                     </p>
@@ -125,11 +125,11 @@
     @section('articles')
         <div class="p-4 bg-gray-100 rounded-md m-4">
             <div class="container mx-auto text-center p-6">
-                <h2 class="text-4xl md:text-xl text-start font-bold text-gold mb-6">
+                <h2 class="text-3xl  text-start font-bold text-gold mb-6">
                     L'Importance de rester informé
                 </h2>
 
-                <div class="text-lg md:text-xl sm:text-xs text-gray-800 text-justify space-y-6">
+                <div class="md:text-lg text-base sm:text-xs text-gray-800 text-justify space-y-6">
                     <p>
                         Le monde évolue rapidement, et être informé des dernières actualités et développements juridiques est essentiel pour prendre des décisions éclairées. Chez <span class="font-semibold">N.I.C & Associés</span>, nous mettons à votre disposition une section dédiée aux <strong>actualités et articles</strong>, pour vous tenir à jour des informations qui impactent votre quotidien.
                     </p>
@@ -149,7 +149,7 @@
             <div class="container mx-auto mt-10">
                 <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Actualités et Articles</h2>
                 <div class="border-t border-gold my-4"></div>
-                <div class="container mx-auto border border-black p-4">
+                <div class="container mx-auto border p-4">
                     <!-- Champ de recherche -->
                     <div class="flex justify-center mb-4">
                         <input type="text" id="search" placeholder="Rechercher des articles..." class="p-2 border rounded">
@@ -193,8 +193,7 @@
                             </div>
                             <div class="mt-12">
                                 <span class="text-lg font-semibold">Droit des affaires</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Notre cabinet offre des conseils
-                                    juridiques pour les entreprises de toutes tailles.</p>
+                                <p class="text-sm text-gray dark:text-black mt-2">Notre cabinet offre des conseils juridiques pour les entreprises de toutes tailles.</p>
                             </div>
                         </div>
                         <div
@@ -204,8 +203,7 @@
                             </div>
                             <div class="mt-12">
                                 <span class="text-lg font-semibold">Droit des sociétés</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Nous assistons dans la création et la
-                                    gestion des sociétés.</p>
+                                <p class="text-sm text-gray  dark:text-black mt-2">Nous assistons dans la création et la gestion des sociétés.</p>
                             </div>
                         </div>
                         <div
@@ -215,8 +213,7 @@
                             </div>
                             <div class="mt-12">
                                 <span class="text-lg font-semibold">Droit du travail et de la sécurité sociale</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Nos experts vous accompagnent dans la
-                                    gestion des relations de travail.</p>
+                                <p class="text-sm text-gray dark:text-black mt-2">Nos experts vous accompagnent dans la gestion des relations de travail.</p>
                             </div>
                         </div>
                         <div
@@ -226,8 +223,7 @@
                             </div>
                             <div class="mt-12">
                                 <span class="text-lg font-semibold">Droit bancaire</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Nous proposons des services en matière de
-                                    régulation bancaire et financière.</p>
+                                <p class="text-sm text-gray dark:text-black mt-2">Nous proposons des services en matière de régulation bancaire et financière.</p>
                             </div>
                         </div>
                         <div
@@ -236,10 +232,8 @@
                                 <i class="fas fa-lightbulb fa-2x"></i>
                             </div>
                             <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit de la propriété intellectuelle et
-                                    industrielle</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Protection et gestion de vos actifs
-                                    immatériels.</p>
+                                <span class="text-lg font-semibold">Droit de la propriété intellectuelle et industrielle</span>
+                                <p class="text-sm text-gray dark:text-black mt-2">Protection et gestion de vos actifs immatériels.</p>
                             </div>
                         </div>
                         <div
@@ -248,10 +242,8 @@
                                 <i class="fas fa-gavel fa-2x"></i>
                             </div>
                             <div class="mt-12">
-                                <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures
-                                    judiciaires</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Accompagnement complet dans les démarches
-                                    judiciaires.</p>
+                                <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures judiciaires</span>
+                                <p class="text-sm text-gray dark:text-black mt-2">Accompagnement complet dans les démarches judiciaires.</p>
                             </div>
                         </div>
                     </div>
@@ -263,10 +255,8 @@
                                 <i class="fas fa-cogs fa-2x"></i>
                             </div>
                             <div class="mt-12">
-                                <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures
-                                    administratives</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Nous facilitons les démarches
-                                    administratives complexes.</p>
+                                <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures administratives</span>
+                                <p class="text-sm text-gray dark:text-black mt-2">Nous facilitons les démarches administratives complexes.</p>
                             </div>
                         </div>
                         <div
@@ -276,8 +266,7 @@
                             </div>
                             <div class="mt-12">
                                 <span class="text-lg font-semibold">Droit de la télécommunication</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Conseils spécialisés dans les
-                                    technologies de l'information.</p>
+                                <p class="text-sm text-gray dark:text-black mt-2">Conseils spécialisés dans les technologies de l'information.</p>
                             </div>
                         </div>
                         <div
@@ -287,8 +276,7 @@
                             </div>
                             <div class="mt-12">
                                 <span class="text-lg font-semibold">Droit immobilier</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Assistance dans les transactions et
-                                    litiges immobiliers.</p>
+                                <p class="text-sm text-gray dark:text-black mt-2">Assistance dans les transactions et litiges immobiliers.</p>
                             </div>
                         </div>
                         <div
@@ -298,8 +286,7 @@
                             </div>
                             <div class="mt-12">
                                 <span class="text-lg font-semibold">Recouvrement de créances civiles et commerciales</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Solutions efficaces pour le recouvrement
-                                    de créances.</p>
+                                <p class="text-sm text-gray dark:text-black mt-2">Solutions efficaces pour le recouvrement de créances.</p>
                             </div>
                         </div>
                         <div
@@ -309,8 +296,7 @@
                             </div>
                             <div class="mt-12">
                                 <span class="text-lg font-semibold">Droit de la famille</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Accompagnement juridique dans les
-                                    affaires familiales.</p>
+                                <p class="text-sm text-gray dark:text-black mt-2">Accompagnement juridique dans les affaires familiales.</p>
                             </div>
                         </div>
                         <div
