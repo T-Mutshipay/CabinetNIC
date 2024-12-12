@@ -18,9 +18,7 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
-            backgroundImage: {
-                'Présentation1': "url('/img/Présentation1.jpg')",
-              }
+
         },
     },
     plugins: [
