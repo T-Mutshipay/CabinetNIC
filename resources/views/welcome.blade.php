@@ -69,7 +69,7 @@
         </div>
     @endsection
     @section('team')
-        <div class="p-8 bg-gray-100 rounded-md">
+        <div class="p-8 bg-gray-100">
             <div class="container mx-auto text-start p-6">
                 <h2 class="text-3xl font-bold text-gold mb-6">
                     Rencontrez notre équipe d'avocats
@@ -123,8 +123,9 @@
         </section>
     @endsection
     @section('articles')
-        <div class="p-4 bg-gray-100 rounded-md m-4">
-            <div class="container mx-auto text-center p-6">
+    <div class="p-8 bg-gray-100">
+        <div class="container mx-auto text-start p-6">
+            <h2 class="text-3xl font-bold text-gold mb-6">
                 <h2 class="text-3xl  text-start font-bold text-gold mb-6">
                     L'Importance de rester informé
                 </h2>
@@ -145,6 +146,8 @@
                 </div>
             </div>
         </div>
+        
+    </div>
         <section class="m-4">
             <div class="container mx-auto mt-10">
                 <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Actualités et Articles</h2>
@@ -325,7 +328,7 @@
     @section('commentaire')
         <div class="container mx-auto p-6 mt-10">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-md">
+                <div class="bg-white dark:bg-slate-300 p-6 rounded-md">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Nous laisser un message</h2>
                     <form action="{{route('comment.store')}}" method="POST">
                         @csrf
@@ -356,7 +359,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="bg-white rounded-md p-6 space-y-4">
+                <div class="bg-white dark:bg-slate-300 rounded-md p-6 space-y-4">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Commentaires</h2>
                     <div class="overflow-y-auto max-h-96 space-y-4">
                         @foreach ($commentaires as $item)
