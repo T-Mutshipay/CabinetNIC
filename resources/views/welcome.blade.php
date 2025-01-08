@@ -161,14 +161,14 @@
                     <div class="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="articles-container">
                         @if ($actualites->count() > 0)
                             @foreach ($actualites as $item)
-                                <div class="bg-white dark:bg-gray-200 rounded-lg shadow-lg overflow-hidden border border-gold flex flex-col article">
+                                <div class="bg-white dark:bg-gray-200 shadow-lg overflow-hidden flex flex-col article">
                                     <img src="{{ asset("$item->image") ?? asset('img/fond.jpg') }}" alt="Titre de l'article 4" class="w-full h-60 object-cover">
                                     <div class="p-4 flex flex-col justify-center flex-grow">
                                         <h3 class="text-xl font-semibold">{{ $item->titre }}</h3>
                                         <p class="text-gray dark:text-black mt-1">{{ Str::limit($item->contenu, 20) }} ...</p>
                                     </div>
-                                    <div class="mt-auto m-3">
-                                        <a href="{{ route('actualites.show', $item->id) }}" class="md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">Voir plus</a>
+                                    <div class="mt-auto m-3 flex justify-end ">
+                                        <a href="{{ route('actualites.show', $item->id) }}" class=" md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">Voir plus</a>
                                     </div>
                                 </div>
                             @endforeach

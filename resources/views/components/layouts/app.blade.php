@@ -85,19 +85,16 @@
                 @yield('commentaire')
             </main>
             <footer class="absolute w-full bg-gray-800 text-white py-4">
-                <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="flex flex-col items-center m-1 md:items-start mb-4 md:mb-0">
                         <img src="{{asset('img/Cabinet.png')}}" class="h-16" alt="Logo" />
                     </div>
-        
-                    <nav class="flex flex-col md:flex-row items-center md:justify-end text-center space-y-2 md:space-y-0 md:space-x-4">
-                        <a href="#team" class="py-2 px-3 text-white rounded hover:bg-gold block">Nos Avocats</a>
-                        <a href="#" class="py-2 px-3 text-white rounded hover:bg-gold block">Nos Honoraires</a>
-                    </nav>
                     
-                    <div class="flex flex-col items-center md:items-start text-justify md:text-left">
-                        <h3 class="text-lg font-semibold mb-2">À Propos</h3>
-                        <p class="text-sm md:text-base m-2">N.I.C & Associés est un cabinet d'avocats dédié à la défense de vos droits et à la fourniture de conseils juridiques de qualité.
+                    <div class="flex justify-end space-y-2 md:space-y-0 md:space-x-4">
+                        <p class="text-sm md:text-base m-2">
+                            <span class="font-bold text-2xl">À Propos</span> : 
+                            <br>
+                            N.I.C & Associés est un cabinet d'avocats dédié à la défense de vos droits et à la fourniture de conseils juridiques de qualité.
                             appétence: droit judiciaire, droit du recouvrement, droit de la propriété intellectuelle, droit du travail, contentieux fiscal et administratifs, droit de la communication audiovisuelle et droit des affaires en général
                         </p>
                     </div>
