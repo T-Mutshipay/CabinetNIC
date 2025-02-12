@@ -1,4 +1,5 @@
 <?php
+ Barryvdh\Snappy\ServiceProvider::class;
 
 return [
 

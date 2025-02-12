@@ -1,68 +1,60 @@
 <x-layouts.app>
-@section('content')
-<div class="flex justify-end m-2">
-    <a href="{{ route('/') }}" class="bg-blue-700 p-2 text-white rounded">
-        <svg fill="#fff" version="1.1" id="Layer_1" class="h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 490.693 490.693" xml:space="preserve">
-            <g>
-                <g>
-                    <path d="M351.173,149.227H36.4L124.827,60.8c4.053-4.267,3.947-10.987-0.213-15.04c-4.16-3.947-10.667-3.947-14.827,0
-L3.12,152.427c-4.16,4.16-4.16,10.88,0,15.04l106.667,106.667c4.267,4.053,10.987,3.947,15.04-0.213
-c3.947-4.16,3.947-10.667,0-14.827L36.4,170.56h314.773c65.173,0,118.187,57.387,118.187,128s-53.013,128-118.187,128h-94.827
-c-5.333,0-10.133,3.84-10.88,9.067c-0.96,6.613,4.16,12.267,10.56,12.267h95.147c76.907,0,139.52-66.987,139.52-149.333
-S428.08,149.227,351.173,149.227z" />
-                </g>
-            </g>
-        </svg>
-    </a>         
-</div>
-<div class="container mx-auto p-4">
-    <!-- En-tête de l'article -->
-    @if ($actualites)
-        <div class=" text-black p-4 mb-4">
-            <h1 class=" text-6xl font-bold">{{ $actualites->titre }}</h1>
-            <p class="mt-2 text-2xl">{{ $actualites->description }}</p>
+    @section('content')
+    <div class="bg-white dark:bg-gray-900 min-h-screen">
+        <div class="flex justify-end m-4">
+            <a href="{{ route('/') }}" 
+                class="flex items-center space-x-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                <svg class="w-5 h-5 rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+                <span class="font-semibold">Retour</span>
+            </a>         
         </div>
-
-        <article class="bg-white p-6 rounded-md shadow-md ">
-            {{ $actualites->contenu }}
-        </article>
-
-        <div id="commentSection" class="m-6">
-            <h2 class="text-xl font-semibold mb-4">Commentaires</h2>
-            <form action="{{ route('comment.store') }}" method="POST">
-                @csrf
-                <input type="hidden" name="actualite_id" value="{{ $actualites->id }}">
-                <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-gray-800 dark:text-white">Nom</label>
-                    <input type="text" id="name" name="name"
-                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white"
-                           required>
+        <div class="container mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+            <!-- En-tête de l'article -->
+            @if ($actualites)
+                <div class="text-black dark:text-white p-4 mb-6">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">{{ $actualites->titre }}</h1>
+                    <p class="mt-2 text-xl md:text-2xl text-gray-700 dark:text-gray-300">{{ $actualites->description }}</p>
                 </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-gray-800 dark:text-white">Email</label>
-                    <input type="email" id="email" name="email"
-                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white"
-                           required>
-                </div>
-                <div class="mb-4">
-                    <label for="comment" class="block text-sm font-medium text-gray-800 dark:text-white">Commentaire</label>
-                    <textarea id="comment" name="comment" rows="4"
-                              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white"
-                              required></textarea>
-                </div>
-                <div class="text-center">
-                    <button type="submit"
-                            class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                        Soumettre
-                    </button>
-                </div>
-            </form>
-        </div>
         
-    @endif
-</div>
-
-@endsection
-</x-layouts.app>
+                <article class="bg-white dark:bg-gray-700 p-6 rounded-md shadow-md text-gray-800 dark:text-gray-200">
+                    {{ $actualites->contenu }}
+                </article>
+        
+                <div id="commentSection" class="mt-8 p-6 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-sm">
+                    <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Commentaires</h2>
+                    <form action="{{ route('comment.store') }}" method="POST" class="space-y-4">
+                        @csrf
+                        <input type="hidden" name="actualite_id" value="{{ $actualites->id }}">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-800 dark:text-gray-200">Nom</label>
+                            <input type="text" id="name" name="name"
+                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-600 dark:text-white"
+                                   required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-800 dark:text-gray-200">Email</label>
+                            <input type="email" id="email" name="email"
+                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-600 dark:text-white"
+                                   required>
+                        </div>
+                        <div>
+                            <label for="comment" class="block text-sm font-medium text-gray-800 dark:text-gray-200">Commentaire</label>
+                            <textarea id="comment" name="comment" rows="4"
+                                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-600 dark:text-white"
+                                      required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit"
+                                    class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 transform hover:scale-105">
+                                Soumettre
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            @endif
+        </div>
+    </div>
+    @endsection
+    </x-layouts.app>

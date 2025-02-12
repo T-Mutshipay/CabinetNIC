@@ -4,7 +4,7 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Nos services</h2>
                 <div class="border-t border-gold my-4"></div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                <div class="text-gold grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                     <!-- Service 1: Consultations et Conseils Juridiques -->
                     <div class="flex flex-col items-center m-1">
                         <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
@@ -69,159 +69,232 @@
         </div>
     @endsection
     @section('team')
-        <div class="p-8 bg-gray-100">
-            <div class="container mx-auto text-start p-6">
-                <h2 class="text-3xl font-bold text-gold mb-6">
-                    Rencontrez notre équipe d'avocats
-                </h2>
-                <div class="md:text-lg text-base text-gray-800 text-justify space-y-6">
-                    <p>
-                        Chez <span class="font-semibold">N.I.C & Associés</span>, notre équipe est composée d’avocats hautement qualifiés et passionnés, dédiés à défendre vos droits et à offrir des conseils juridiques adaptés à vos besoins. Chaque membre de notre équipe possède une expertise approfondie dans des domaines variés du droit, garantissant une assistance complète et personnalisée.
-                    </p>
-                    <p>
-                        Nous privilégions une approche collaborative et sur mesure, car chaque client est unique. Que vous fassiez face à des problématiques complexes en droit commercial, à des litiges familiaux, ou à des défis liés à la conformité réglementaire, notre équipe vous accompagne avec professionnalisme et empathie.
-                    </p>
-                    <p>
-                        Nos valeurs fondamentales – <span class="font-semibold">intégrité, transparence et dévouement</span> – reflètent notre engagement envers l’excellence. Nous sommes fiers de notre réputation de cabinet d’avocats de confiance, reconnu pour sa capacité à obtenir des résultats favorables pour nos clients.
-                    </p>
-                    <p>
-                        Découvrez nos avocats et comment <span class="font-semibold">N.I.C & Associés</span> peut vous aider à naviguer dans le paysage juridique avec assurance. Votre réussite est notre priorité.
-                    </p>
+        <div class="relative overflow-hidden bg-gradient-to-br from-slate-900 to-blue-900 py-16 dark:from-slate-800 dark:to-slate-900">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-20 max-w-4xl">
+                    <div class="mb-12">
+                        <h2 class="mb-8 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+                            <span class="bg-gradient-to-r from-gold to-amber-200 bg-clip-text text-transparent">
+                                Rencontrez notre équipe d'avocats
+                            </span>
+                        </h2>
+                        
+                        <div class="space-y-8 text-lg text-gray-100">
+                            <p class="leading-relaxed">
+                                Chez <span class="font-semibold text-gold">N.I.C & Associés</span>, notre équipe allie expertise et passion pour défendre vos droits. 
+                                <span class="block mt-2 text-amber-100">Chaque cas est unique, chaque solution sur mesure.</span>
+                            </p>
+                            
+                            <div class="rounded-lg bg-black/10 p-6 backdrop-blur-sm">
+                                <svg class="mb-4 h-8 w-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                                <p class="font-medium text-white">Nos valeurs : <span class="text-gold">Intégrité</span>, <span class="text-gold">Transparence</span>, <span class="text-gold">Excellence</span></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <section class="m-14">
-            <div id="team" class="container mx-auto">
-                <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Notre équipe</h2>
-                <div class="border-t border-gold  my-4"></div>
-            </div>
-            <div class="container mx-auto mt-10">
-                <div
-                    class="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 relative overflow-visible">
-                    @if ($avocats->count() > 0)
-                        @foreach ($avocats as $item)
-                        <div class="mt-20">
-                            <div class="bg-white dark:bg-slate-500 rounded-sm border border-gold shadow-lg overflow-visible relative">
-                                <div class="flex items-center justify-center relative">
-                                    <img src="{{ asset($item->image) }}" alt="Avocat" class="object-cover absolute -top-20 w-56 h-56 border-4 border-white shadow-lg">
-                                </div>
-                                <div class="p-10 mt-24 text-center">
-                                    <h3 class="text-xl font-semibold mt-5">{{ $item->nom_complet }}</h3>
-                                    <p class="text-gray text-center dark:text-black mt-2">{{ $item->description }}</p>
+
+        <section class="relative -mt-24 pb-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="rounded-xl bg-white shadow-2xl dark:bg-slate-800">
+                    <div class="px-8 py-16 sm:px-12">
+                        <h2 class="mb-12 text-center text-4xl font-bold md:text-5xl">
+                            <span class="bg-gradient-to-r from-gold to-amber-300 bg-clip-text text-transparent">
+                                Notre Équipe
+                            </span>
+                        </h2>
+
+                        <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+                            @foreach ($avocats as $item)
+                            <div class="group relative">
+                                <div class="absolute -inset-1 rounded-xl bg-gradient-to-r from-gold/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                                
+                                <div class="relative h-full rounded-xl border border-gray-100 bg-white shadow-md transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800 mt-28">
+                                    <div class="relative -mt-16 flex justify-center">
+                                        <div class="relative h-40 w-40 overflow-hidden rounded-full border-4 border-white shadow-2xl dark:border-slate-800">
+                                            <img src="{{ asset($item->image) }}" alt="{{ $item->nom_complet }}" 
+                                                class="h-full w-full object-cover transition-transform duration-500 hover:scale-110">
+                                        </div>
+                                    </div>
+
+                                    <div class="px-6 pb-8 pt-6 text-center">
+                                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ $item->nom_complet }}</h3>
+                                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">{{ $item->role }}</p>
+                                        
+                                        <div class="mt-4 text-gray-600 dark:text-gray-400">
+                                            <svg class="mx-auto h-5 w-5 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                                            </svg>
+                                            <p class="mt-3 text-sm leading-relaxed">{{ $item->description }}</p>
+                                        </div>
+
+                                        <div class="mt-6 flex justify-center space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                            <a href="#" class="text-gray-400 hover:text-gold">
+                                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.234 3.072h5.159v-6.629h-2.547v-2.705h2.547v-2.005c0-2.621 1.582-4.051 3.974-4.051 1.129 0 2.102.084 2.385.122v2.747h-1.632c-1.281 0-1.531.614-1.531 1.51v1.977h3.063l-.399 2.705h-2.664v6.629h5.315v-7.757h3.923v-3.995h-3.923v-2.959c0-1.075.322-1.811 1.901-1.811h2.039v-3.946h-2.765c-3.304 0-4.966 1.938-4.966 5.168v3.539h-3.062v3.995h3.062v7.757h-6.054z"/></svg>
+                                            </a>
+                                            <a href="#" class="text-gray-400 hover:text-gold">
+                                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085c.626 1.935 2.444 3.35 4.604 3.35a9.89 9.89 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63a9.935 9.935 0 002.46-2.548l-.047-.02z"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
-                        @endforeach
-                    @endif
-                </div>
-                <div class="flex justify-end m-3">
-                    <a href="{{ route('avocats') }}"
-                        class="mt-6 md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">voir toute
-                        l'épique</a>
+
+                        <div class="mt-16 flex justify-center">
+                            <a href="{{ route('avocats') }}" 
+                            class="flex items-center rounded-full bg-gradient-to-r from-gold to-amber-300 px-8 py-3 font-semibold text-slate-900 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
+                                <span>Voir toute l'équipe</span>
+                                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     @endsection
     @section('articles')
-    <div class="p-8 bg-gray-100">
-        <div class="container mx-auto text-start p-6">
-            <h2 class="text-3xl font-bold text-gold mb-6">
-                <h2 class="text-3xl  text-start font-bold text-gold mb-6">
-                    L'Importance de rester informé
-                </h2>
-
-                <div class="md:text-lg text-base sm:text-xs text-gray-800 text-justify space-y-6">
-                    <p>
-                        Le monde évolue rapidement, et être informé des dernières actualités et développements juridiques est essentiel pour prendre des décisions éclairées. Chez <span class="font-semibold">N.I.C & Associés</span>, nous mettons à votre disposition une section dédiée aux <strong>actualités et articles</strong>, pour vous tenir à jour des informations qui impactent votre quotidien.
-                    </p>
-                    <p>
-                        Vous y trouverez des analyses approfondies, des conseils pratiques et des mises à jour sur les changements législatifs. Nos experts partagent leurs perspectives pour vous aider à naviguer dans le paysage juridique, que vous soyez professionnel, entrepreneur ou particulier.
-                    </p>
-                    <p>
-                        Explorez cette section pour découvrir des études de cas, des commentaires d'experts et des tendances actuelles du droit. Notre objectif est de vous fournir un contenu fiable, pertinent et à jour pour vous accompagner dans vos décisions.
-                    </p>
-                    <p class="font-semibold">
-                        Bienvenue dans notre section "Actualités et Articles" – votre source d'informations juridiques précieuses.
-                    </p>
+        <div class="relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl">
+                    <div class="mb-12">
+                        <h2 class="mb-8 text-4xl font-bold text-white md:text-5xl">
+                            <span class="bg-gradient-to-r from-gold to-amber-200 bg-clip-text text-transparent">
+                                L'Actualité Juridique
+                            </span>
+                        </h2>
+                        
+                        <div class="space-y-6 text-lg text-gray-200">
+                            <p class="leading-relaxed">
+                                Dans un paysage juridique en constante évolution, <span class="font-semibold text-gold">N.I.C & Associés</span> 
+                                décrypte pour vous les tendances et réformes essentielles.
+                            </p>
+                            
+                            <div class="relative rounded-lg bg-black/10 p-6 backdrop-blur-sm">
+                                <div class="absolute inset-0 bg-gradient-to-r from-gold/10 to-transparent opacity-30"></div>
+                                <svg class="mb-4 h-8 w-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                                </svg>
+                                <p class="text-lg font-medium text-white">
+                                    Notre veille juridique au service de vos intérêts
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-    </div>
-        <section class="m-4">
-            <div class="container mx-auto mt-10">
-                <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Actualités et Articles</h2>
-                <div class="border-t border-gold my-4"></div>
-                <div class="container mx-auto border p-4">
-                    <!-- Champ de recherche -->
-                    <div class="flex justify-center mb-4">
-                        <input type="text" id="search" placeholder="Rechercher des articles..." class="p-2 border rounded">
-                    </div>
-                
-                    <div class="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="articles-container">
-                        @if ($actualites->count() > 0)
+
+        <section class="relative -mt-16 pb-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="rounded-xl bg-white shadow-2xl dark:bg-slate-800">
+                    <div class="px-8 py-12 sm:px-12">
+                        <!-- Search Bar -->
+                        <div class="group relative mb-12 max-w-2xl mx-auto">
+                            <input 
+                                type="text" 
+                                id="search" 
+                                placeholder="Rechercher un article..." 
+                                class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 pl-12 pr-6 text-lg shadow-sm transition-all focus:border-gold focus:ring-2 focus:ring-gold/30 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                                x-on:input="filterArticles">
+                            <svg class="absolute left-4 top-1/2 h-6 w-6 -translate-y-1/2 text-gray-400 dark:text-slate-400" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+
+                        <!-- Articles Grid -->
+                        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3" id="articles-container">
                             @foreach ($actualites as $item)
-                                <div class="bg-white dark:bg-gray-200 shadow-lg overflow-hidden flex flex-col article">
-                                    <img src="{{ asset("$item->image") ?? asset('img/fond.jpg') }}" alt="Titre de l'article 4" class="w-full h-60 object-cover">
-                                    <div class="p-4 flex flex-col justify-center flex-grow">
-                                        <h3 class="text-xl font-semibold">{{ $item->titre }}</h3>
-                                        <p class="text-gray dark:text-black mt-1">{{ Str::limit($item->contenu, 20) }} ...</p>
-                                    </div>
-                                    <div class="mt-auto m-3 flex justify-end ">
-                                        <a href="{{ route('actualites.show', $item->id) }}" class=" md:text-sm bg-slate-800 hover:bg-gold text-white rounded px-6 py-2">Voir plus</a>
-                                    </div>
+                            <article class="group relative overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800">
+                                <!-- Image Container -->
+                                <div class="relative h-60 overflow-hidden">
+                                    <img 
+                                        src="{{ asset($item->image) ?? asset('img/fond.jpg') }}" 
+                                        alt="{{ $item->titre }}"
+                                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        loading="lazy">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+                                    <time class="absolute bottom-4 left-4 rounded-lg bg-black/30 px-3 py-1 text-sm text-white backdrop-blur-sm">
+                                        {{ $item->created_at->translatedFormat('d M Y') }}
+                                    </time>
                                 </div>
+
+                                <!-- Content -->
+                                <div class="p-6">
+                                    <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+                                        {{ $item->titre }}
+                                    </h3>
+                                    <p class="mb-4 text-gray-600 dark:text-gray-300 line-clamp-3">
+                                        {{ $item->contenu }}
+                                    </p>
+                                    <a 
+                                        href="{{ route('actualites.show', $item->id) }}" 
+                                        class="inline-flex items-center font-semibold text-gold transition-colors hover:text-amber-600">
+                                        Lire l'article
+                                        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
                             @endforeach
-                        @endif
+                        </div>
+
+                        <!-- No Results -->
+                        <div id="no-results" class="mt-12 hidden text-center">
+                            <p class="text-xl text-gray-500 dark:text-gray-400">Aucun article trouvé</p>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
+
+        <style>
+            .line-clamp-3 {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .article {
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+        </style>
     @endsection
     @section('content')
-        <div class="container mx-auto">
-            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Les domaines d'interventions</h2>
-            <div class="border-t border-gold  my-4"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center animate-fade-in">Les domaines d'interventions</h2>
+            <div class="border-t border-gold my-4 mx-auto w-1/4"></div>
         </div>
-        <div class="flex items-center justify-center bg-blue-950">
-            <div id="carousel" class="relative w-full m-4 overflow-hidden rounded-lg">
-                <div class="flex transition-transform duration-300 ease-in-out" id="carousel-content">
+        <div class="flex items-center justify-center bg-blue-950 py-8">
+            <div id="carousel" class="relative w-full max-w-7xl m-4 overflow-hidden rounded-lg shadow-2xl">
+                <div class="flex transition-transform duration-500 ease-in-out" id="carousel-content">
                     <!-- Grid Container 1 -->
-                    <div class="flex-shrink-0 w-full grid grid-cols-2 gap-2 p-4 md:grid-rows-2">
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
+                    <div class="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                        <!-- Repeat for each card -->
+                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
                                 <i class="fas fa-balance-scale fa-2x"></i>
                             </div>
                             <div class="mt-12">
                                 <span class="text-lg font-semibold">Droit des affaires</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Notre cabinet offre des conseils juridiques pour les entreprises de toutes tailles.</p>
+                                <p class="text-sm text-gray-600 mt-2">Notre cabinet offre des conseils juridiques pour les entreprises de toutes tailles.</p>
                             </div>
                         </div>
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
-                                <i class="fas fa-building fa-2x"></i>
-                            </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit des sociétés</span>
-                                <p class="text-sm text-gray  dark:text-black mt-2">Nous assistons dans la création et la gestion des sociétés.</p>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
-                                <i class="fas fa-briefcase fa-2x"></i>
-                            </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit du travail et de la sécurité sociale</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Nos experts vous accompagnent dans la gestion des relations de travail.</p>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
+                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
                                 <i class="fas fa-university fa-2x"></i>
                             </div>
                             <div class="mt-12">
@@ -229,97 +302,107 @@
                                 <p class="text-sm text-gray dark:text-black mt-2">Nous proposons des services en matière de régulation bancaire et financière.</p>
                             </div>
                         </div>
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
-                                <i class="fas fa-lightbulb fa-2x"></i>
+                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                <i class="fas fa-briefcase fa-2x"></i>
                             </div>
                             <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit de la propriété intellectuelle et industrielle</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Protection et gestion de vos actifs immatériels.</p>
+                                    <span class="text-lg font-semibold">Droit du travail et de la sécurité sociale</span>
+                                    <p class="text-sm text-gray dark:text-black mt-2">Nos experts vous accompagnent dans la gestion des relations de travail.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
-                                <i class="fas fa-gavel fa-2x"></i>
+                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                <i class="fas fa-building fa-2x"></i>
                             </div>
                             <div class="mt-12">
-                                <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures judiciaires</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Accompagnement complet dans les démarches judiciaires.</p>
+                                <span class="text-lg font-semibold">Droit des sociétés</span>
+                                <p class="text-sm text-gray  dark:text-black mt-2">Nous assistons dans la création et la gestion des sociétés.</p>
                             </div>
                         </div>
+                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                    <i class="fas fa-lightbulb fa-2x"></i>
+                                </div>
+                                <div class="mt-12">
+                                    <span class="text-lg font-semibold">Droit de la propriété intellectuelle et industrielle</span>
+                                    <p class="text-sm text-gray dark:text-black mt-2">Protection et gestion de vos actifs immatériels.</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                    <i class="fas fa-gavel fa-2x"></i>
+                                </div>
+                                <div class="mt-12">
+                                    <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures judiciaires</span>
+                                    <p class="text-sm text-gray dark:text-black mt-2">Accompagnement complet dans les démarches judiciaires.</p>
+                                </div>
+                            </div>
+                        <!-- Add other cards similarly -->
                     </div>
                     <!-- Grid Container 2 -->
-                    <div class="flex-shrink-0 w-full grid grid-cols-2 gap-2 p-4 md:grid-cols-2 md:grid-rows-2">
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2 ">
-                                <i class="fas fa-cogs fa-2x"></i>
+                    <div class="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                        <!-- Repeat for each card -->
+                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                    <i class="fas fa-cogs fa-2x"></i>
+                                </div>
+                                <div class="mt-12">
+                                    <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures administratives</span>
+                                    <p class="text-sm text-gray dark:text-black mt-2">Nous facilitons les démarches administratives complexes.</p>
+                                </div>
                             </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures administratives</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Nous facilitons les démarches administratives complexes.</p>
+                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                    <i class="fas fa-signal fa-2x"></i>
+                                </div>
+                                <div class="mt-12">
+                                    <span class="text-lg font-semibold">Droit de la télécommunication</span>
+                                    <p class="text-sm text-gray dark:text-black mt-2">Conseils spécialisés dans les technologies de l'information.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
-                                <i class="fas fa-signal fa-2x"></i>
+                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                    <i class="fas fa-home fa-2x"></i>
+                                </div>
+                                <div class="mt-12">
+                                    <span class="text-lg font-semibold">Droit immobilier</span>
+                                    <p class="text-sm text-gray dark:text-black mt-2">Assistance dans les transactions et litiges immobiliers.</p>
+                                </div>
                             </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit de la télécommunication</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Conseils spécialisés dans les technologies de l'information.</p>
+                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                    <i class="fas fa-hand-holding-usd fa-2x"></i>
+                                </div>
+                                <div class="mt-12">
+                                    <span class="text-lg font-semibold">Recouvrement de créances civiles et commerciales</span>
+                                    <p class="text-sm text-gray dark:text-black mt-2">Solutions efficaces pour le recouvrement de créances.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
-                                <i class="fas fa-home fa-2x"></i>
+                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                    <i class="fas fa-users fa-2x"></i>
+                                </div>
+                                <div class="mt-12">
+                                    <span class="text-lg font-semibold">Droit de la famille</span>
+                                    <p class="text-sm text-gray dark:text-black mt-2">Accompagnement juridique dans les affaires familiales.</p>
+                                </div>
                             </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit immobilier</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Assistance dans les transactions et litiges immobiliers.</p>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
-                                <i class="fas fa-hand-holding-usd fa-2x"></i>
-                            </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Recouvrement de créances civiles et commerciales</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Solutions efficaces pour le recouvrement de créances.</p>
-                            </div>
-                        </div>
-                        <div
-                        class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
-                                <i class="fas fa-users fa-2x"></i>
-                            </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit de la famille</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Accompagnement juridique dans les affaires familiales.</p>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-transform duration-300 ease-in-out hover:scale-105 hover:border hover:border-white m-4">
-                            <div class="absolute top-2 left-2 text-black p-2 rounded-md mt-2">
-                                <i class="fas fa-leaf fa-2x"></i>
-                            </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit des successions</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Gestion des successions et héritages.</p>
+                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
+                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
+                                    <i class="fas fa-leaf fa-2x"></i>
+                                </div>
+                                <div class="mt-12">
+                                    <span class="text-lg font-semibold">Droit des successions</span>
+                                    <p class="text-sm text-gray dark:text-black mt-2">Gestion des successions et héritages.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
-                <button id="prev" type="button"
-                    class="absolute top-1/2 -translate-y-1/2 left-0 z-30 p-2 rounded-full bg-white hover:bg-gray-800 text-black font-bold">
+                <button id="prev" type="button" class="absolute top-1/2 -translate-y-1/2 left-0 z-30 p-3 rounded-full bg-white hover:bg-gray-800 text-black font-bold shadow-lg hover:text-white transition-colors duration-300">
                     <span>&larr;</span>
                 </button>
-                <button id="next" type="button"
-                    class="absolute top-1/2 -translate-y-1/2 right-0 z-30 p-2 rounded-full bg-white hover:bg-gray-800 text-black">
+                <button id="next" type="button" class="absolute top-1/2 -translate-y-1/2 right-0 z-30 p-3 rounded-full bg-white hover:bg-gray-800 text-black font-bold shadow-lg hover:text-white transition-colors duration-300">
                     <span>&rarr;</span>
                 </button>
             </div>
@@ -328,58 +411,44 @@
     @section('commentaire')
         <div class="container mx-auto p-6 mt-10">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white dark:bg-slate-300 p-6 rounded-md">
+                <div class="bg-white p-6 rounded-md shadow-lg">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Nous laisser un message</h2>
                     <form action="{{route('comment.store')}}" method="POST">
                         @csrf
                         <div class="mb-4">
-                            <label for="name"
-                                class="block text-sm font-medium dark:text-black text-gray-800">Nom</label>
-                            <input type="text" id="name" name="name"
-                            class="mt-1 block w-full px-3 py-2 border dark:bg-slate-500 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2focus:border-transparent"
-                                required>
+                            <label for="name" class="block text-sm font-medium text-gray-800">Nom</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" required>
                         </div>
                         <div class="mb-4">
                             <label for="email" class="block text-sm font-medium text-gray-800">Email</label>
-                            <input type="email" id="email" name="email"
-                                class="mt-1 block w-full px-3 py-2 border dark:bg-slate-500 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2  focus:border-transparent"
-                                required>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" required>
                         </div>
                         <div class="mb-4">
                             <label for="comment" class="block text-sm font-medium text-gray-800">Commentaire</label>
-                            <textarea id="comment" name="comment" rows="4"
-                            class="mt-1 block w-full px-3 py-2 border dark:bg-slate-500 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:border-transparent"
-                                required></textarea>
+                            <textarea id="comment" name="comment" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" required></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit"
-                            class="bg-slate-800 text-white py-2 px-6 rounded-lg hover:bg-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-opacity-50">
+                            <button type="submit" class="bg-slate-800 text-white py-2 px-6 rounded-lg hover:bg-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-opacity-50 transition-colors duration-300">
                                 Soumettre
                             </button>
                         </div>
                     </form>
                 </div>
-                <div class="bg-white dark:bg-slate-300 rounded-md p-6 space-y-4">
+                <div class="bg-white rounded-md p-6 shadow-lg">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Commentaires</h2>
                     <div class="overflow-y-auto max-h-96 space-y-4">
                         @foreach ($commentaires as $item)
-                            <div class=" shadow-md rounded-md p-4 border border-gray-200">
-                                <p class="text-lg text-black font-semibold">
-                                    Nom complet : {{$item->user->name}}
-                                </p>
+                            <div class="shadow-md rounded-md p-4 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                                <p class="text-lg text-black font-semibold">Nom complet : {{$item->user->name}}</p>
                                 <p class="text-md text-gray-700">
                                     @if ($item->actualite)
-                                        <p class="text-md text-gray-700"> actualité : {{ $item->actualite->titre }}</p>
+                                        Actualité : {{ $item->actualite->titre }}
                                     @else
-                                        <p class="text-md text-gray-700">Pas d'actualité associée</p>
+                                        Pas d'actualité associée
                                     @endif
                                 </p>
-                                <p class="text-sm text-gray-600">
-                                    Email : {{$item->user->email}}
-                                </p>
-                                <p class="text-gray-800 mt-2">
-                                    Commentaire : {{$item->contenu}}
-                                </p>
+                                <p class="text-sm text-gray-600">Email : {{$item->user->email}}</p>
+                                <p class="text-gray-800 mt-2">Commentaire : {{$item->contenu}}</p>
                             </div>
                         @endforeach
                     </div>
@@ -388,6 +457,26 @@
         </div>
     @endsection
 </x-layouts.app>
+<script>
+    function filterArticles() {
+        const search = document.getElementById('search').value.toLowerCase();
+        const articles = document.querySelectorAll('.article');
+        let visibleCount = 0;
+
+        articles.forEach(article => {
+            const title = article.querySelector('h3').textContent.toLowerCase();
+            const content = article.querySelector('p').textContent.toLowerCase();
+            if (title.includes(search) || content.includes(search)) {
+                article.style.display = 'block';
+                visibleCount++;
+            } else {
+                article.style.display = 'none';
+            }
+        });
+
+        document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+</script>
 <script>
     const carouselContent = document.getElementById("carousel-content");
     const nextButton = document.getElementById("next");
