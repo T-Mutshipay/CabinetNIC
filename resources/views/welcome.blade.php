@@ -96,31 +96,32 @@
                 </div>
             </div>
         </div>
-
         <section class="relative -mt-24 pb-28">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="rounded-xl bg-white shadow-2xl dark:bg-slate-800">
-                    <div class="px-8 py-16 sm:px-12">
-                        <h2 class="mb-12 text-center text-4xl font-bold md:text-5xl">
+                    <div class="px-6 py-12 sm:px-8 md:px-12">
+                        <h2 class="mb-16 text-center text-3xl font-bold md:text-4xl lg:text-5xl">
                             <span class="bg-gradient-to-r from-gold to-amber-300 bg-clip-text text-transparent">
                                 Notre Équipe
                             </span>
                         </h2>
-
-                        <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="grid grid-cols-1 gap-y-16 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                             @foreach ($avocats as $item)
-                            <div class="group relative">
-                                <div class="absolute -inset-1 rounded-xl bg-gradient-to-r from-gold/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                                
-                                <div class="relative h-full rounded-xl border border-gray-100 bg-white shadow-md transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800 mt-28">
-                                    <div class="relative -mt-16 flex justify-center">
-                                        <div class="relative h-40 w-40 overflow-hidden rounded-full border-4 border-white shadow-2xl dark:border-slate-800">
+                            <div class="flex flex-col">
+                                <div class="group relative flex-1 rounded-xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800">
+                                    <!-- Overlay gradient -->
+                                    <div class="absolute -inset-1 rounded-xl bg-gradient-to-r from-gold/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                                    
+                                    <!-- Photo -->
+                                    <div class="relative -mt-20 mb-6 flex justify-center">
+                                        <div class="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
                                             <img src="{{ asset($item->image) }}" alt="{{ $item->nom_complet }}" 
-                                                class="h-full w-full object-cover transition-transform duration-500 hover:scale-110">
+                                                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
                                         </div>
                                     </div>
 
-                                    <div class="px-6 pb-8 pt-6 text-center">
+                                    <!-- Contenu texte -->
+                                    <div class="text-center">
                                         <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ $item->nom_complet }}</h3>
                                         <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">{{ $item->role }}</p>
                                         
@@ -128,28 +129,16 @@
                                             <svg class="mx-auto h-5 w-5 text-gold" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M12 14l9-5-9-5-9 5 9 5z"/>
                                                 <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
                                             </svg>
-                                            <p class="mt-3 text-sm leading-relaxed">{{ $item->description }}</p>
-                                        </div>
-
-                                        <div class="mt-6 flex justify-center space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                            <a href="#" class="text-gray-400 hover:text-gold">
-                                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.234 3.072h5.159v-6.629h-2.547v-2.705h2.547v-2.005c0-2.621 1.582-4.051 3.974-4.051 1.129 0 2.102.084 2.385.122v2.747h-1.632c-1.281 0-1.531.614-1.531 1.51v1.977h3.063l-.399 2.705h-2.664v6.629h5.315v-7.757h3.923v-3.995h-3.923v-2.959c0-1.075.322-1.811 1.901-1.811h2.039v-3.946h-2.765c-3.304 0-4.966 1.938-4.966 5.168v3.539h-3.062v3.995h3.062v7.757h-6.054z"/></svg>
-                                            </a>
-                                            <a href="#" class="text-gray-400 hover:text-gold">
-                                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085c.626 1.935 2.444 3.35 4.604 3.35a9.89 9.89 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63a9.935 9.935 0 002.46-2.548l-.047-.02z"/></svg>
-                                            </a>
+                                            <p class="mt-3 text-sm leading-relaxed line-clamp-3">{{ $item->description }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
                         </div>
-
-                        <div class="mt-16 flex justify-center">
-                            <a href="{{ route('avocats') }}" 
-                            class="flex items-center rounded-full bg-gradient-to-r from-gold to-amber-300 px-8 py-3 font-semibold text-slate-900 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
+                        <div class="mb-4 mt-6 flex justify-center">
+                            <a href="{{ route('avocats') }}" class="flex items-center rounded-full bg-gradient-to-r from-gold to-amber-300 px-8 py-3 font-semibold text-slate-900 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
                                 <span>Voir toute l'équipe</span>
                                 <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -192,31 +181,37 @@
                 </div>
             </div>
         </div>
-
         <section class="relative -mt-16 pb-20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="rounded-xl bg-white shadow-2xl dark:bg-slate-800">
                     <div class="px-8 py-12 sm:px-12">
-                        <!-- Search Bar -->
+                        <!-- Barre de recherche améliorée -->
                         <div class="group relative mb-12 max-w-2xl mx-auto">
                             <input 
                                 type="text" 
-                                id="search" 
+                                id="search-input"
                                 placeholder="Rechercher un article..." 
-                                class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 pl-12 pr-6 text-lg shadow-sm transition-all focus:border-gold focus:ring-2 focus:ring-gold/30 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                                x-on:input="filterArticles">
+                                class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 pl-12 pr-6 text-lg shadow-sm transition-all focus:border-gold focus:ring-2 focus:ring-gold/30 dark:border-slate-600 dark:bg-slate-700 dark:text-white">
                             <svg class="absolute left-4 top-1/2 h-6 w-6 -translate-y-1/2 text-gray-400 dark:text-slate-400" 
                                 fill="none" 
                                 stroke="currentColor" 
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
+                            <button id="reset-search"
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hidden">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
                         </div>
 
-                        <!-- Articles Grid -->
+                        <!-- Votre grille d'articles conservée -->
                         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3" id="articles-container">
                             @foreach ($actualites as $item)
-                            <article class="group relative overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800">
+                            <article class="article group relative overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+                                    data-title="{{ strtolower($item->titre) }}"
+                                    data-content="{{ strtolower($item->contenu) }}">
                                 <!-- Image Container -->
                                 <div class="relative h-60 overflow-hidden">
                                     <img 
@@ -251,7 +246,7 @@
                             @endforeach
                         </div>
 
-                        <!-- No Results -->
+                        <!-- Message aucun résultat -->
                         <div id="no-results" class="mt-12 hidden text-center">
                             <p class="text-xl text-gray-500 dark:text-gray-400">Aucun article trouvé</p>
                         </div>
@@ -259,7 +254,6 @@
                 </div>
             </div>
         </section>
-
         <style>
             .line-clamp-3 {
                 display: -webkit-box;
@@ -267,11 +261,68 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
-
             .article {
                 transition: transform 0.3s ease, opacity 0.3s ease;
             }
+
+            .hidden-article {
+                display: none !important;
+                opacity: 0;
+                transform: scale(0.9);
+            }
         </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const searchInput = document.getElementById('search-input');
+                const resetButton = document.getElementById('reset-search');
+                const articles = document.querySelectorAll('.article');
+                const noResults = document.getElementById('no-results');
+                
+                // Fonction de filtrage
+                function filterArticles() {
+                    const searchTerm = searchInput.value.toLowerCase();
+                    let visibleCount = 0;
+                    
+                    articles.forEach(article => {
+                        const title = article.dataset.title;
+                        const content = article.dataset.content;
+                        
+                        if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                            article.classList.remove('hidden-article');
+                            visibleCount++;
+                        } else {
+                            article.classList.add('hidden-article');
+                        }
+                    });
+                    
+                    // Afficher/masquer le message "Aucun résultat"
+                    noResults.classList.toggle('hidden', visibleCount > 0 || searchTerm === '');
+                    
+                    // Afficher/masquer le bouton reset
+                    resetButton.classList.toggle('hidden', searchTerm === '');
+                }
+                
+                // Écouteurs d'événements
+                searchInput.addEventListener('input', debounce(filterArticles, 300));
+                resetButton.addEventListener('click', function() {
+                    searchInput.value = '';
+                    filterArticles();
+                    searchInput.focus();
+                });
+                
+                // Fonction debounce pour améliorer les performances
+                function debounce(func, wait) {
+                    let timeout;
+                    return function() {
+                        const context = this, args = arguments;
+                        clearTimeout(timeout);
+                        timeout = setTimeout(function() {
+                            func.apply(context, args);
+                        }, wait);
+                    };
+                }
+            });
+        </script>
     @endsection
     @section('content')
         <div class="container mx-auto px-4">
@@ -434,49 +485,34 @@
                         </div>
                     </form>
                 </div>
-                <div class="bg-white rounded-md p-6 shadow-lg">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Commentaires</h2>
-                    <div class="overflow-y-auto max-h-96 space-y-4">
+                <div class="bg-white rounded-lg p-6 shadow-lg">
+                    <h2 class="text-3xl font-semibold text-gray-900 mb-6 border-b pb-4">Commentaires</h2>
+                    <div class="overflow-y-auto max-h-96 space-y-6">
                         @foreach ($commentaires as $item)
-                            <div class="shadow-md rounded-md p-4 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                                <p class="text-lg text-black font-semibold">Nom complet : {{$item->user->name}}</p>
-                                <p class="text-md text-gray-700">
+                            <div class="bg-gray-50 shadow-md rounded-lg p-6 border border-gray-300 transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+                                <p class="text-lg text-gray-800 font-medium">Nom : <span class="font-normal">{{$item->user->name}}</span></p>
+                                
+                                <p class="text-md text-gray-700 mt-2">
                                     @if ($item->actualite)
-                                        Actualité : {{ $item->actualite->titre }}
+                                        Actualité : <span class="font-medium text-blue-600 hover:underline">{{$item->actualite->titre}}</span>
                                     @else
-                                        Pas d'actualité associée
+                                        <span class="italic text-red-500">Pas d'actualité associée</span>
                                     @endif
                                 </p>
-                                <p class="text-sm text-gray-600">Email : {{$item->user->email}}</p>
-                                <p class="text-gray-800 mt-2">Commentaire : {{$item->contenu}}</p>
+                
+                                <p class="text-sm text-gray-600 mt-2">Email : <span class="font-normal">{{$item->user->email}}</span></p>
+                                
+                                <p class="text-gray-800 mt-3">Commentaire : <span class="font-normal text-gray-700">{{$item->contenu}}</span></p>
                             </div>
                         @endforeach
                     </div>
                 </div>
+                
+                
             </div>
         </div>
     @endsection
 </x-layouts.app>
-<script>
-    function filterArticles() {
-        const search = document.getElementById('search').value.toLowerCase();
-        const articles = document.querySelectorAll('.article');
-        let visibleCount = 0;
-
-        articles.forEach(article => {
-            const title = article.querySelector('h3').textContent.toLowerCase();
-            const content = article.querySelector('p').textContent.toLowerCase();
-            if (title.includes(search) || content.includes(search)) {
-                article.style.display = 'block';
-                visibleCount++;
-            } else {
-                article.style.display = 'none';
-            }
-        });
-
-        document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
-    }
-</script>
 <script>
     const carouselContent = document.getElementById("carousel-content");
     const nextButton = document.getElementById("next");
@@ -499,30 +535,4 @@
         const width = carouselContent.children[0].offsetWidth;
         carouselContent.style.transform = `translateX(-${currentIndex * width}px)`;
     }
-</script>
-
-    
-<script>
-        document.getElementById('search').addEventListener('input', function() {
-            var query = this.value.toLowerCase();
-            var articles = document.querySelectorAll('.article');
-    
-            articles.forEach(function(article) {
-                var title = article.querySelector('h3').innerText.toLowerCase();
-                if (title.includes(query)) {
-                    article.style.display = 'block';
-                } else {
-                    article.style.display = 'none';
-                }
-            });
-        });
-    
-        window.addEventListener('load', function() {
-            var articlesContainer = document.getElementById('articles-container');
-            var articles = articlesContainer.children;
-            if (articles.length > 4) {
-                articlesContainer.style.maxHeight = '600px';
-                articlesContainer.style.overflowY = 'scroll';
-            }
-        });            
 </script>

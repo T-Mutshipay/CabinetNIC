@@ -13,7 +13,7 @@
                     <i class="fas fa-comments mr-2 text-blue-500"></i>
                     Contactez-nous
                 </h3>
-                <button type="button" class="text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full p-2 transition-colors duration-200">
+                <button type="button"  data-modal-hide="static-modal" class="text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full p-2 transition-colors duration-200">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
@@ -27,9 +27,9 @@
                         Nous sommes disponibles via ces canaux :
                     </p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <!-- Email -->
-                        <a href="mailto:contact@votre-cabinet.com" 
+                        <a href="mailto:cabinetnicetassocies@gmail.com" 
                            class="group flex flex-col items-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-blue-200 dark:hover:border-gray-600">
                             <div class="w-14 h-14 bg-red-50 dark:bg-red-900/20 rounded-full flex items-center justify-center mb-3 group-hover:bg-red-100 transition-colors">
                                 <i class="fas fa-envelope text-2xl text-red-500 group-hover:text-red-600"></i>
@@ -38,18 +38,10 @@
                             <span class="text-sm text-gray-500 dark:text-gray-400">Réponse sous 24h</span>
                         </a>
 
-                        <!-- WhatsApp -->
-                        <a href="https://wa.me/1234567890" target="_blank" 
-                           class="group flex flex-col items-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-green-200 dark:hover:border-gray-600">
-                            <div class="w-14 h-14 bg-green-50 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-3 group-hover:bg-green-100 transition-colors">
-                                <i class="fab fa-whatsapp text-2xl text-green-500 group-hover:text-green-600"></i>
-                            </div>
-                            <span class="text-gray-700 dark:text-gray-300 font-medium">WhatsApp</span>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Réponse instantanée</span>
                         </a>
 
                         <!-- Téléphone -->
-                        <a href="tel:+1234567890" 
+                        <a href="tel:+2438166301931" 
                            class="group flex flex-col items-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-blue-200 dark:hover:border-gray-600">
                             <div class="w-14 h-14 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-3 group-hover:bg-blue-100 transition-colors">
                                 <i class="fas fa-phone-alt text-2xl text-blue-500 group-hover:text-blue-600"></i>

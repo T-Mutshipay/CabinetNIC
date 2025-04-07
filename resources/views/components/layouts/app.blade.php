@@ -21,31 +21,54 @@
         style="background-image: url('{{ asset('img/fond.jpg') }}');">
         
         <!-- NAVBAR -->
-        <nav class="border-b border-gray-300 bg-white/80 backdrop-blur-md dark:bg-gray-900/80 dark:border-gray-700 fixed top-0 w-full z-50">
-            <div class="max-w-screen-xl mx-auto flex items-center justify-between px-6 py-4">
-                
-                <!-- Logo -->
-                <a href="{{ route('/') }}" class="flex items-center space-x-3">
-                    <img src="{{ asset('img/Cabinet.png') }}" class="h-12 md:h-14" alt="Logo" />
-                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">N.I.C & Associés</span>
-                </a>
-                
-                <!-- Mobile Menu Button -->
-                <button id="menu-toggle" class="md:hidden text-gray-800 dark:text-gray-200 focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+        <nav class="fixed top-0 z-50 w-full border-b border-gray-300 bg-white/80 backdrop-blur-md transition-all duration-300 dark:border-gray-700 dark:bg-gray-900/80">
+            <div class="mx-auto max-w-screen-xl px-4 py-3 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <a href="{{ route('/') }}" class="flex items-center space-x-3">
+                        <img src="{{ asset('img/Cabinet.png') }}" class="h-10 md:h-12 transition-all duration-300" alt="Logo Cabinet N.I.C & Associés" />
+                        <span class="text-xl font-semibold text-gray-900 dark:text-white md:text-2xl">N.I.C & Associés</span>
+                    </a>
 
-                <!-- Navigation Links -->
-                <div id="menu" class=" dark:text-white hidden md:flex md:space-x-8 items-center">
-                    <a href="{{ route('/') }}" class="nav-link">Accueil</a>
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-toggle" type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-800 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold/50 dark:text-gray-200 dark:hover:bg-gray-700 md:hidden" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Ouvrir le menu</span>
+                        <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="close-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+
+                    <!-- Navigation Desktop -->
+                    <div class="hidden items-center space-x-6 md:flex">
+                        <a href="{{ route('/') }}" class="nav-link relative px-3 py-2 text-gray-900 transition-all duration-300 hover:text-gold dark:text-gray-200 dark:hover:text-gold">
+                            <span class="relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full">Accueil</span>
+                        </a>
+                        @if (request()->routeIs('/'))
+                        <a href="#services" class="nav-link relative px-3 py-2 text-gray-900 transition-all duration-300 hover:text-gold dark:text-gray-200 dark:hover:text-gold">
+                            <span class="relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full">Nos services</span>
+                        </a>
+                        @endif
+                        <a href="{{ route('honoraires') }}" class="nav-link relative px-3 py-2 text-gray-900 transition-all duration-300 hover:text-gold dark:text-gray-200 dark:hover:text-gold">
+                            <span class="relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full">Honoraires</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu (Dropdown) -->
+            <div id="mobile-menu" class="hidden max-h-0 overflow-hidden bg-white transition-all duration-300 dark:bg-gray-900 md:hidden">
+                <div class="space-y-1 px-4 pb-3 pt-2">
+                    <a href="{{ route('/') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-100 hover:text-gold dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gold">Accueil</a>
                     @if (request()->routeIs('/'))
-                        <a href="#services" class="nav-link">Nos services</a>
+                    <a href="#services" class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-100 hover:text-gold dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gold">Nos services</a>
                     @endif
-                    <a href="{{ route('honoraires') }}" class="nav-link">Honoraires</a>
+                    <a href="{{ route('honoraires') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-100 hover:text-gold dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gold">Honoraires</a>
                 </div>
             </div>
         </nav>
-
         <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left px-6 md:px-16 py-20 md:py-36">
             <div class="md:w-2/3">
                 <h1 class="text-4xl md:text-5xl font-bold text-white drop-shadow-lg animate-fade-in">
@@ -90,10 +113,10 @@
         <div class="border-t border-gray-700 my-4"></div>
 
         <div class="container mx-auto flex flex-col md:flex-row items-center md:items-start justify-between text-center md:text-left space-y-4 md:space-y-0">
-            <div>
-                <a href="tel:+243893374786" class="block text-sm md:text-base">Téléphone : +243893374786</a>
-                <a href="mailto:nicetassocies@gmail.com" class="block text-sm md:text-base hover:text-gray-400">Email : nicetassocies@gmail.com</a>
-                <a href="#" class="text-sm md:text-base hover:text-gray-400">Adresse : 287, Mweka, Kinshasa</a>
+            <div class="m-1 md:items-start mb-4 md:mb-0">
+                <a href="tel:+243816301931" class="block text-sm md:text-base">Téléphone : +2438166301931</a>
+                <a href="mailto:cabinetnicetassocies@gmail.com" class="block text-sm md:text-base hover:text-gray-400">Email : cabinetnicetassocies@gmail.com</a>
+                <a href="#" class="text-sm md:text-base hover:text-gray-400">Adresse : 287, Mweka, 1er étage.<br> Appartement 1 A. Q/Pakadjuma,Lingwala</a>
             </div>
 
             <div class="flex space-x-4">
@@ -120,27 +143,33 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Menu mobile toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('menu').classList.toggle('hidden');
+    </script>
+        
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = mobileMenu.classList.toggle('hidden');
+                
+                // Animation pour l'ouverture/fermeture
+                if (isExpanded) {
+                    mobileMenu.style.maxHeight = '0';
+                } else {
+                    mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                }
+                // Changer les icônes
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+                // Accessibilité
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !expanded);
+            });
         });
     </script>
-
-    <style>
-        .nav-link {
-            @apply block py-2 px-3 text-gray-900 dark:text-white hover:text-gold transition;
-        }
-        .social-link {
-            @apply text-white text-2xl hover:text-gold transition;
-        }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
     <x-contacts/>
 </body>
 </html>
