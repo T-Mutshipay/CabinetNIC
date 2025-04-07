@@ -16,6 +16,9 @@ class Avocat extends Model
         'description', 
         'image'
     ];
-
+    public function social_links()
+    {
+        return $this->hasMany(SocialLink::class);
+    }
 }
 
