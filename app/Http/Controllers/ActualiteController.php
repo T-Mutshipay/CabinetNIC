@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avocat;
+use App\Models\SocialLink;
 use App\Models\Actualite;
 use App\Models\Commentaire;
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class ActualiteController extends Controller
     {   
         $commentaires = Commentaire::orderBy('created_at', 'desc')->get();
         $actualites = Actualite::orderBy('created_at','desc')->get();
-        $avocats = Avocat::all();
-        return view('welcome', compact('actualites', 'avocats','commentaires'));
+        $avocats = Avocat::with('social_links')->get();
+        $socialLinks = SocialLink::all();
+        return view('welcome', compact('actualites', 'avocats','commentaires', 'socialLinks'));
     }
 
 

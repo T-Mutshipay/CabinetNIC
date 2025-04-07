@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Avocat;
 use App\Models\Collaborateur;
 use Illuminate\Http\Request;
-
+use App\Models\SocialLink;
 class AvocatController extends Controller
 {
     /**
@@ -15,7 +15,7 @@ class AvocatController extends Controller
     public function index()
     {
         $collaborateurs = Collaborateur::all();
-        $avocats = Avocat::all();
+        $avocats = Avocat::with('social_links')->get();
         return view('avocats', compact('avocats', 'collaborateurs'));
     }
     
