@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use PharIo\Manifest\Email;
 
 class CollaborateurSeeder extends Seeder
 {
@@ -18,29 +16,20 @@ class CollaborateurSeeder extends Seeder
     {
         DB::table('collaborateurs')->insert([
             [
-                'nom_complet' => 'Jean Dupont',
-                'post' => 'coursier',
-                'email' => 'jean@gmail.com',
-                'description' => 'Jean Dupont est spécialisé dans le droit civil avec plus de 10 ans d\'expérience.',
-                'image' => 'avocat1.jpg',
+                'nom_complet' => 'Dahlia Muya',
+                'post' => 'Secrétaire',
+                'email' => 'dahliamuya@gmail.com',
+                'description' => 'Secrétaire expérimentée dans la gestion administrative et les services juridiques.',
+                'image' => 'img/secretaire_dahlia.JPEG',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nom_complet' => 'Marie Curie',
-                'post' => 'consultant ',
-                'email' =>'marie@gmail.com',
-                'description' => 'Marie Curie est une experte reconnue en droit pénal, défendant des cas complexes.',
-                'image' => 'avocat1.jpg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'nom_complet' => 'Albert Einstein',
-                'post' => 'Secretaire',
-                'email' => 'albert@gmail.com',
-                'description' => 'Albert Einstein a une grande expérience en droit des affaires et en gestion de litiges commerciaux.',
-                'image' => 'avocat.jpg',
+                'nom_complet' => 'Clarisse Odia Munyinga',
+                'post' => 'Assistante',
+                'email' => 'clarisseodia8@gmail.com',
+                'description' => 'Gérante en communication au Cabinet N.I.C et Associés, depuis novembre 2024',
+                'image' => 'img/assistante_clarisse.JPEG',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
