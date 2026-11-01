@@ -1,538 +1,320 @@
-<x-layouts.app>
-    @section('services')
-        <div id="services" class="p-8 flex justify-center mt-10">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center">Nos services</h2>
-                <div class="border-t border-gold my-4"></div>
-                <div class="text-gold grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                    <!-- Service 1: Consultations et Conseils Juridiques -->
-                    <div class="flex flex-col items-center m-1">
-                        <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
-                            <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <div class="mt-2 text-center">
-                            <h1 class="text-xl md:text-2xl font-bold mb-4">Consultations et Conseils Juridiques</h1>
-                            <p class="text-center text-sm md:text-base">
-                                Consultations juridiques, Conseils juridiques, et Conciliations
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Service 2: Assistance et Représentation Judiciaire -->
-                    <div class="flex flex-col items-center m-1">
-                        <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
-                            <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <div class="mt-2 text-center">
-                            <h1 class="text-xl md:text-2xl font-bold mb-4">Assistance et Représentation Judiciaire</h1>
-                            <p class="text-center text-sm md:text-base">
-                                Assistance judiciaire, Représentation judiciaire
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Service 3: Assistance et Représentation Extrajudiciaire -->
-                    <div class="flex flex-col items-center m-1">
-                        <div class="rounded-lg flex items-center justify-center h-48 w-48 sm:h-60 sm:w-60 bg-gold">
-                            <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <div class="mt-2 text-center">
-                            <h1 class="text-xl md:text-2xl font-bold mb-4">Assistance et Représentation Extrajudiciaire</h1>
-                            <p class="text-center text-sm md:text-base">
-                                Rédaction des actes juridiques, Assistance extrajudiciaire, et Représentation
-                                extrajudiciaire
-                            </p>
-                        </div>
-                    </div>
+@php $container = 'mx-auto max-w-[1440px] px-gutter-mobile md:px-gutter-tablet lg:px-margin'; @endphp
 
+<x-layouts.app
+    description="Cabinet d'avocats à Kinshasa : conseil, assistance et représentation en droit des affaires, du travail, de la famille, immobilier et recouvrement.">
+
+    @php
+        $schema = [
+                '@context' => 'https://schema.org',
+                '@type' => 'LegalService',
+                'name' => config('cabinet.name'),
+                'description' => config('cabinet.description'),
+                'url' => route('/'),
+                'logo' => asset('img/icon-192.png'),
+                'image' => asset(config('cabinet.og_image')),
+                'telephone' => config('cabinet.phone_link'),
+                'email' => config('cabinet.email'),
+                'address' => ['@type' => 'PostalAddress'] + config('cabinet.adresse_structuree'),
+                'areaServed' => 'République Démocratique du Congo',
+                'knowsAbout' => array_column(config('cabinet.domaines'), 'titre'),
+                'sameAs' => array_column(config('cabinet.reseaux'), 'url'),
+        ];
+    @endphp
+    @push('meta')
+        <script type="application/ld+json">{!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) !!}</script>
+    @endpush
+
+    {{-- 1. Bannière --}}
+    <section class="overflow-hidden bg-surface py-12 lg:py-20">
+        <div class="{{ $container }} grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
+            <div class="flex flex-col items-start gap-space-xl lg:col-span-7">
+                <div
+                    class="inline-flex items-center gap-2.5 rounded-lg bg-surface-container-low px-3.5 py-1.5 shadow-sm motion-safe:animate-fade-up">
+                    <span class="h-2 w-2 rounded-full bg-secondary"></span>
+                    <span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-secondary">
+                        Barreau de Kinshasa / Gombe • Espace OHADA
+                    </span>
                 </div>
 
+                <div class="flex max-w-2xl flex-col gap-space-md motion-safe:animate-fade-up motion-safe:[animation-delay:120ms]">
+                    <h1
+                        class="font-display-hero-mobile text-display-hero-mobile tracking-tight text-primary-container lg:text-display-hero">
+                        Défendre vos droits, avec rigueur et engagement
+                    </h1>
+                    <p class="font-body-lg text-body-lg leading-relaxed text-on-surface-variant">
+                        {{ config('cabinet.description') }} Nous accompagnons particuliers et entreprises à Kinshasa,
+                        en conseil comme en contentieux.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-4 motion-safe:animate-fade-up motion-safe:[animation-delay:240ms]">
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-3.5 font-title-md text-title-md text-on-secondary shadow-md transition duration-200 hover:bg-primary-container hover:text-secondary-fixed motion-safe:hover:-translate-y-0.5">
+                        Prendre rendez-vous
+                        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">calendar_today</span>
+                    </a>
+                    <a href="{{ route('honoraires') }}" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 rounded-lg bg-surface-container-lowest px-6 py-3.5 font-title-md text-title-md text-primary-container shadow-sm transition duration-200 hover:bg-surface-container-high motion-safe:hover:-translate-y-0.5">
+                        Consulter les honoraires
+                        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">picture_as_pdf</span>
+                    </a>
+                </div>
+
+                <dl
+                    class="grid w-full grid-cols-3 gap-6 rounded-xl bg-surface-container-lowest p-6 shadow-sm motion-safe:animate-fade-up motion-safe:[animation-delay:360ms]">
+                    <div class="flex flex-col">
+                        <dt class="order-2 mt-1 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+                            Fondateur inscrit au Barreau</dt>
+                        <dd class="font-headline-md-mobile text-headline-md-mobile font-bold text-primary-container lg:text-headline-lg">
+                            {{ config('cabinet.fondateur_inscrit_en') }}</dd>
+                    </div>
+                    <div class="flex flex-col">
+                        <dt class="order-2 mt-1 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+                            Avocats</dt>
+                        <dd class="font-headline-md-mobile text-headline-md-mobile font-bold text-secondary lg:text-headline-lg">
+                            <span data-count="{{ $nbAvocats }}">{{ $nbAvocats }}</span></dd>
+                    </div>
+                    <div class="flex flex-col">
+                        <dt class="order-2 mt-1 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+                            Domaines d'intervention</dt>
+                        <dd class="font-headline-md-mobile text-headline-md-mobile font-bold text-primary-container lg:text-headline-lg">
+                            <span data-count="{{ count(config('cabinet.domaines')) }}">{{ count(config('cabinet.domaines')) }}</span></dd>
+                    </div>
+                </dl>
             </div>
-        </div>
-    @endsection
-    @section('team')
-        <div class="relative overflow-hidden bg-gradient-to-br from-slate-900 to-blue-900 py-16 dark:from-slate-800 dark:to-slate-900">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="mb-20 max-w-4xl">
-                    <div class="mb-12">
-                        <h2 class="mb-8 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-                            <span class="bg-gradient-to-r from-gold to-amber-200 bg-clip-text text-transparent">
-                                Rencontrez notre équipe d'avocats
-                            </span>
-                        </h2>
-                        
-                        <div class="space-y-8 text-lg text-gray-100">
-                            <p class="leading-relaxed">
-                                Chez <span class="font-semibold text-gold">N.I.C & Associés</span>, notre équipe allie expertise et passion pour défendre vos droits. 
-                                <span class="block mt-2 text-amber-100">Chaque cas est unique, chaque solution sur mesure.</span>
-                            </p>
-                            
-                            <div class="rounded-lg bg-black/10 p-6 backdrop-blur-sm">
-                                <svg class="mb-4 h-8 w-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                                </svg>
-                                <p class="font-medium text-white">Nos valeurs : <span class="text-gold">Intégrité</span>, <span class="text-gold">Transparence</span>, <span class="text-gold">Excellence</span></p>
-                            </div>
+
+            <div class="relative lg:col-span-5 motion-safe:animate-fade-in motion-safe:[animation-delay:200ms]">
+                <div class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-surface-container-high shadow-xl">
+                    <img src="{{ asset(config('cabinet.hero_image')) }}" alt="Balance de la justice et ouvrages de droit"
+                        class="h-full w-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent">
+                    </div>
+                    <div
+                        class="absolute bottom-6 left-6 right-6 flex items-center gap-3 rounded-lg bg-surface-container-lowest/90 p-4 shadow-md backdrop-blur-md">
+                        <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/15">
+                            <span class="material-symbols-outlined text-[22px] text-secondary" aria-hidden="true">apartment</span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-title-md text-title-md leading-tight text-primary-container">Notre cabinet</p>
+                            <p class="truncate font-label-sm text-label-sm text-on-surface-variant">
+                                {{ config('cabinet.address')[1] ?? '' }} • Kinshasa</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <section class="relative -mt-24 pb-28">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="rounded-xl bg-white shadow-2xl dark:bg-slate-800">
-                    <div class="px-6 py-12 sm:px-8 md:px-12">
-                        <h2 class="mb-16 text-center text-3xl font-bold md:text-4xl lg:text-5xl">
-                            <span class="bg-gradient-to-r from-gold to-amber-300 bg-clip-text text-transparent">
-                                Notre Équipe
-                            </span>
-                        </h2>
-                        <div class="grid grid-cols-1 gap-y-16 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                            @foreach ($avocats as $item)
-                            <div class="flex flex-col">
-                                <div class="group relative flex-1 rounded-xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800">
-                                    <!-- Overlay gradient -->
-                                    <div class="absolute -inset-1 rounded-xl bg-gradient-to-r from-gold/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                                    
-                                    <!-- Photo -->
-                                    <div class="relative -mt-20 mb-6 flex justify-center">
-                                        <div class="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
-                                            <img src="{{ asset($item->image) }}" alt="{{ $item->nom_complet }}" 
-                                                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                        </div>
-                                    </div>
+    </section>
 
-                                    <!-- Contenu texte -->
-                                    <div class="text-center">
-                                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ $item->nom_complet }}</h3>
-                                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">{{ $item->role }}</p>
-                                        
-                                        <div class="mt-4 text-gray-600 dark:text-gray-400">
-                                            <svg class="mx-auto h-5 w-5 text-gold" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 14l9-5-9-5-9 5 9 5z"/>
-                                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                                            </svg>
-                                            <p class="mt-3 text-sm leading-relaxed line-clamp-3">{{ $item->description }}</p>
-                                        </div>
-                                    </div>
-                                </div>
+    {{-- 2. Atouts --}}
+    <section class="bg-surface-container-low py-14">
+        <div class="{{ $container }} grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
+            @foreach (config('cabinet.atouts') as $atout)
+                <div class="carte-survol flex flex-col rounded-xl bg-surface-container-lowest p-8 shadow-sm">
+                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+                        <span class="material-symbols-outlined text-[28px]" aria-hidden="true">{{ $atout['icon'] }}</span>
+                    </div>
+                    <h3 class="mb-2 font-title-lg text-title-lg text-primary-container">{{ $atout['titre'] }}</h3>
+                    <p class="font-body-sm text-body-sm leading-relaxed text-on-surface-variant">{{ $atout['texte'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- 3. Présentation --}}
+    <section class="bg-surface py-20">
+        <div class="{{ $container }} grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            <div class="relative lg:col-span-6" data-reveal>
+                <div class="aspect-[4/3] w-full overflow-hidden rounded-xl bg-surface-container-high shadow-xl">
+                    <img src="{{ asset(config('cabinet.presentation_image')) }}"
+                        alt="Me Christian Ngandu Ilunga, avocat fondateur" class="h-full w-full object-cover object-top"
+                        loading="lazy">
+                </div>
+                <div
+                    class="absolute -bottom-6 right-8 hidden max-w-xs rounded-lg bg-surface-container-lowest p-5 shadow-lg sm:block">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-[26px] text-secondary" aria-hidden="true">account_balance</span>
+                        <div>
+                            <p class="font-title-md text-title-md leading-none text-primary-container">
+                                {{ implode(' • ', array_column(config('cabinet.valeurs'), 'titre')) }}</p>
+                            <p class="mt-1 font-label-sm text-label-sm text-on-surface-variant">Nos valeurs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-start gap-space-lg lg:col-span-6" data-reveal style="--reveal-delai: 150ms">
+                <x-section-header surtitre="Notre vocation" titre="Un cabinet dédié à la défense de vos intérêts"
+                    class="mb-0">
+                    {{ config('cabinet.description') }}
+                </x-section-header>
+                <p class="font-body-md text-body-md leading-relaxed text-on-surface-variant">
+                    Chaque dossier est unique, chaque solution sur mesure. Notre équipe allie expertise et passion pour
+                    vous conseiller, vous assister et vous représenter, devant les juridictions comme en dehors.
+                </p>
+
+                <div>
+                    <span class="mb-3 block font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface">
+                        Champs de pratique privilégiés :</span>
+                    <ul class="flex flex-wrap gap-2.5">
+                        @foreach (config('cabinet.appetences') as $appetence)
+                            <li
+                                class="rounded-lg bg-surface-container-low px-3.5 py-1.5 font-label-md text-label-md text-on-surface shadow-sm">
+                                {{ $appetence }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <a href="{{ route('a-propos') }}"
+                    class="group inline-flex items-center gap-2 rounded-lg bg-primary-container px-6 py-3 font-title-md text-title-md text-on-primary shadow-sm transition-colors hover:bg-secondary">
+                    En savoir plus sur le cabinet
+                    <span class="fleche material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{-- 4. Domaines d'intervention --}}
+    <section id="domaines" class="bg-surface-container-low py-20">
+        <div class="{{ $container }}">
+            <x-section-header surtitre="Pôles d'expertise" titre="Nos domaines d'intervention" centre data-reveal>
+                Une assistance taillée sur mesure pour répondre à vos besoins juridiques, en conseil comme en contentieux.
+            </x-section-header>
+
+            <div class="grid grid-cols-1 gap-space-md md:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
+                @foreach (config('cabinet.domaines') as $domaine)
+                    <div class="carte-survol group flex gap-space-md rounded-xl bg-surface-container-lowest p-6 shadow-sm">
+                        <div
+                            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary transition-colors group-hover:bg-secondary group-hover:text-on-secondary">
+                            <span class="material-symbols-outlined text-[26px]" aria-hidden="true">{{ $domaine['icon'] }}</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline-sm text-headline-sm text-primary-container">{{ $domaine['titre'] }}</h3>
+                            <p class="mt-1 font-body-sm text-body-sm leading-relaxed text-on-surface-variant">
+                                {{ $domaine['texte'] }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- 5. Services --}}
+    <section id="services" class="bg-surface py-20">
+        <div class="{{ $container }}">
+            <x-section-header surtitre="Nos services" titre="Une prise en charge complète" data-reveal>
+                Trois volets complémentaires pour assurer la sécurité juridique de nos clients, du conseil à la
+                représentation.
+            </x-section-header>
+
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3" data-reveal-stagger>
+                @foreach (config('cabinet.services') as $service)
+                    <article class="carte-survol rounded-xl bg-surface-container-lowest p-8 shadow-sm lg:p-10">
+                        <div class="mb-8 flex items-center justify-between">
+                            <span class="font-display-hero text-[44px] font-bold leading-none text-secondary/30">
+                                {{ sprintf('%02d', $loop->iteration) }}</span>
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-lg bg-surface-container text-primary-container">
+                                <span class="material-symbols-outlined text-[22px]" aria-hidden="true">{{ $service['icon'] }}</span>
                             </div>
+                        </div>
+                        <h3 class="mb-4 font-headline-sm text-headline-sm text-primary-container">{{ $service['titre'] }}</h3>
+                        <p class="mb-6 font-body-md text-body-md leading-relaxed text-on-surface-variant">
+                            {{ $service['texte'] }}</p>
+                        <ul class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+                            @foreach ($service['points'] as $point)
+                                <li class="flex items-center gap-2">
+                                    <span class="h-1.5 w-1.5 rounded-full bg-secondary"></span>
+                                    {{ $point }}
+                                </li>
                             @endforeach
-                        </div>
-                        <div class="mb-4 mt-6 flex justify-center">
-                            <a href="{{ route('avocats') }}" class="flex items-center rounded-full bg-gradient-to-r from-gold to-amber-300 px-8 py-3 font-semibold text-slate-900 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
-                                <span>Voir toute l'équipe</span>
-                                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
+                        </ul>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- 6. Actualités --}}
+    @if ($actualites->isNotEmpty())
+        <section class="bg-surface-container-low py-20">
+            <div class="{{ $container }}">
+                <div class="mb-space-xl flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
+                    <x-section-header surtitre="Veille juridique" titre="Actualités & décryptages" class="mb-0">
+                        Analyses et notes d'information publiées par nos avocats sur l'actualité juridique en RDC et dans
+                        l'espace OHADA.
+                    </x-section-header>
+                    <a href="{{ route('actualites') }}"
+                        class="inline-flex shrink-0 items-center gap-2 self-start rounded-lg bg-surface-container-lowest px-5 py-2.5 font-title-md text-title-md text-primary-container shadow-sm transition-colors hover:bg-secondary hover:text-on-secondary md:self-auto">
+                        Toutes les publications
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
+                    @foreach ($actualites as $actualite)
+                        <x-actualite-card :actualite="$actualite" />
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
+    {{-- 7. Contact --}}
+    <section id="contact" class="relative overflow-hidden bg-primary-container py-20 text-on-primary">
+        <div class="pointer-events-none absolute -bottom-20 -right-20 h-96 w-96 rounded-full bg-secondary/10 blur-3xl"></div>
+
+        <div class="{{ $container }} relative grid grid-cols-1 gap-12 lg:grid-cols-12">
+            <div class="flex flex-col gap-space-lg lg:col-span-5" data-reveal>
+                <x-section-header surtitre="Contact" titre="Parlons de votre dossier" clair class="mb-0">
+                    Décrivez-nous brièvement votre situation : un avocat du cabinet vous recontactera.
+                </x-section-header>
+
+                <ul class="flex flex-col gap-6 rounded-xl bg-surface-container-lowest/5 p-8 backdrop-blur-sm">
+                    <li class="flex items-start gap-4">
+                        <span
+                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/20 text-secondary-fixed">
+                            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">location_on</span>
+                        </span>
+                        <div>
+                            <p class="font-title-md text-title-md">Adresse du cabinet</p>
+                            <a href="{{ config('cabinet.maps_url') }}" target="_blank" rel="noopener"
+                                class="mt-1 block font-body-sm text-body-sm text-primary-fixed hover:underline">
+                                {{ implode(', ', config('cabinet.address')) }}
                             </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endsection
-    @section('articles')
-        <div class="relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 py-20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-4xl">
-                    <div class="mb-12">
-                        <h2 class="mb-8 text-4xl font-bold text-white md:text-5xl">
-                            <span class="bg-gradient-to-r from-gold to-amber-200 bg-clip-text text-transparent">
-                                L'Actualité Juridique
-                            </span>
-                        </h2>
-                        
-                        <div class="space-y-6 text-lg text-gray-200">
-                            <p class="leading-relaxed">
-                                Dans un paysage juridique en constante évolution, <span class="font-semibold text-gold">N.I.C & Associés</span> 
-                                décrypte pour vous les tendances et réformes essentielles.
-                            </p>
-                            
-                            <div class="relative rounded-lg bg-black/10 p-6 backdrop-blur-sm">
-                                <div class="absolute inset-0 bg-gradient-to-r from-gold/10 to-transparent opacity-30"></div>
-                                <svg class="mb-4 h-8 w-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
-                                </svg>
-                                <p class="text-lg font-medium text-white">
-                                    Notre veille juridique au service de vos intérêts
-                                </p>
-                            </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span
+                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/20 text-secondary-fixed">
+                            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">phone_in_talk</span>
+                        </span>
+                        <div>
+                            <p class="font-title-md text-title-md">Téléphone</p>
+                            <a href="tel:{{ config('cabinet.phone_link') }}"
+                                class="mt-1 block font-headline-sm text-headline-sm text-secondary-fixed hover:underline">
+                                {{ config('cabinet.phone') }}</a>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span
+                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/20 text-secondary-fixed">
+                            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">mail</span>
+                        </span>
+                        <div class="min-w-0">
+                            <p class="font-title-md text-title-md">Email</p>
+                            <a href="mailto:{{ config('cabinet.email') }}"
+                                class="mt-1 block break-all font-body-sm text-body-sm text-primary-fixed hover:underline">
+                                {{ config('cabinet.email') }}</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="rounded-xl bg-surface-container-lowest p-space-lg text-on-surface shadow-xl lg:col-span-7 lg:p-space-xl"
+                data-reveal style="--reveal-delai: 150ms">
+                <h3 class="mb-space-lg font-headline-sm text-headline-sm text-primary-container">Envoyez-nous un message</h3>
+                <x-message-form />
             </div>
         </div>
-        <section class="relative -mt-16 pb-20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="rounded-xl bg-white shadow-2xl dark:bg-slate-800">
-                    <div class="px-8 py-12 sm:px-12">
-                        <!-- Barre de recherche améliorée -->
-                        <div class="group relative mb-12 max-w-2xl mx-auto">
-                            <input 
-                                type="text" 
-                                id="search-input"
-                                placeholder="Rechercher un article..." 
-                                class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 pl-12 pr-6 text-lg shadow-sm transition-all focus:border-gold focus:ring-2 focus:ring-gold/30 dark:border-slate-600 dark:bg-slate-700 dark:text-white">
-                            <svg class="absolute left-4 top-1/2 h-6 w-6 -translate-y-1/2 text-gray-400 dark:text-slate-400" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                            </svg>
-                            <button id="reset-search"
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hidden">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <!-- Votre grille d'articles conservée -->
-                        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3" id="articles-container">
-                            @foreach ($actualites as $item)
-                            <article class="article group relative overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
-                                    data-title="{{ strtolower($item->titre) }}"
-                                    data-content="{{ strtolower($item->contenu) }}">
-                                <!-- Image Container -->
-                                <div class="relative h-60 overflow-hidden">
-                                    <img 
-                                        src="{{ asset($item->image) ?? asset('img/fond.jpg') }}" 
-                                        alt="{{ $item->titre }}"
-                                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        loading="lazy">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
-                                    <time class="absolute bottom-4 left-4 rounded-lg bg-black/30 px-3 py-1 text-sm text-white backdrop-blur-sm">
-                                        {{ $item->created_at->translatedFormat('d M Y') }}
-                                    </time>
-                                </div>
-
-                                <!-- Content -->
-                                <div class="p-6">
-                                    <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
-                                        {{ $item->titre }}
-                                    </h3>
-                                    <p class="mb-4 text-gray-600 dark:text-gray-300 line-clamp-3">
-                                        {{ $item->contenu }}
-                                    </p>
-                                    <a 
-                                        href="{{ route('actualites.show', $item->id) }}" 
-                                        class="inline-flex items-center font-semibold text-gold transition-colors hover:text-amber-600">
-                                        Lire l'article
-                                        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </article>
-                            @endforeach
-                        </div>
-
-                        <!-- Message aucun résultat -->
-                        <div id="no-results" class="mt-12 hidden text-center">
-                            <p class="text-xl text-gray-500 dark:text-gray-400">Aucun article trouvé</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <style>
-            .line-clamp-3 {
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            .article {
-                transition: transform 0.3s ease, opacity 0.3s ease;
-            }
-
-            .hidden-article {
-                display: none !important;
-                opacity: 0;
-                transform: scale(0.9);
-            }
-        </style>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const searchInput = document.getElementById('search-input');
-                const resetButton = document.getElementById('reset-search');
-                const articles = document.querySelectorAll('.article');
-                const noResults = document.getElementById('no-results');
-                
-                // Fonction de filtrage
-                function filterArticles() {
-                    const searchTerm = searchInput.value.toLowerCase();
-                    let visibleCount = 0;
-                    
-                    articles.forEach(article => {
-                        const title = article.dataset.title;
-                        const content = article.dataset.content;
-                        
-                        if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                            article.classList.remove('hidden-article');
-                            visibleCount++;
-                        } else {
-                            article.classList.add('hidden-article');
-                        }
-                    });
-                    
-                    // Afficher/masquer le message "Aucun résultat"
-                    noResults.classList.toggle('hidden', visibleCount > 0 || searchTerm === '');
-                    
-                    // Afficher/masquer le bouton reset
-                    resetButton.classList.toggle('hidden', searchTerm === '');
-                }
-                
-                // Écouteurs d'événements
-                searchInput.addEventListener('input', debounce(filterArticles, 300));
-                resetButton.addEventListener('click', function() {
-                    searchInput.value = '';
-                    filterArticles();
-                    searchInput.focus();
-                });
-                
-                // Fonction debounce pour améliorer les performances
-                function debounce(func, wait) {
-                    let timeout;
-                    return function() {
-                        const context = this, args = arguments;
-                        clearTimeout(timeout);
-                        timeout = setTimeout(function() {
-                            func.apply(context, args);
-                        }, wait);
-                    };
-                }
-            });
-        </script>
-    @endsection
-    @section('content')
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-gold text-center animate-fade-in">Les domaines d'interventions</h2>
-            <div class="border-t border-gold my-4 mx-auto w-1/4"></div>
-        </div>
-        <div class="flex items-center justify-center bg-blue-950 py-8">
-            <div id="carousel" class="relative w-full max-w-7xl m-4 overflow-hidden rounded-lg shadow-2xl">
-                <div class="flex transition-transform duration-500 ease-in-out" id="carousel-content">
-                    <!-- Grid Container 1 -->
-                    <div class="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-                        <!-- Repeat for each card -->
-                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                <i class="fas fa-balance-scale fa-2x"></i>
-                            </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit des affaires</span>
-                                <p class="text-sm text-gray-600 mt-2">Notre cabinet offre des conseils juridiques pour les entreprises de toutes tailles.</p>
-                            </div>
-                        </div>
-                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                <i class="fas fa-university fa-2x"></i>
-                            </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit bancaire</span>
-                                <p class="text-sm text-gray dark:text-black mt-2">Nous proposons des services en matière de régulation bancaire et financière.</p>
-                            </div>
-                        </div>
-                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                <i class="fas fa-briefcase fa-2x"></i>
-                            </div>
-                            <div class="mt-12">
-                                    <span class="text-lg font-semibold">Droit du travail et de la sécurité sociale</span>
-                                    <p class="text-sm text-gray dark:text-black mt-2">Nos experts vous accompagnent dans la gestion des relations de travail.</p>
-                                </div>
-                            </div>
-                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                <i class="fas fa-building fa-2x"></i>
-                            </div>
-                            <div class="mt-12">
-                                <span class="text-lg font-semibold">Droit des sociétés</span>
-                                <p class="text-sm text-gray  dark:text-black mt-2">Nous assistons dans la création et la gestion des sociétés.</p>
-                            </div>
-                        </div>
-                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                    <i class="fas fa-lightbulb fa-2x"></i>
-                                </div>
-                                <div class="mt-12">
-                                    <span class="text-lg font-semibold">Droit de la propriété intellectuelle et industrielle</span>
-                                    <p class="text-sm text-gray dark:text-black mt-2">Protection et gestion de vos actifs immatériels.</p>
-                                </div>
-                            </div>
-                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                    <i class="fas fa-gavel fa-2x"></i>
-                                </div>
-                                <div class="mt-12">
-                                    <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures judiciaires</span>
-                                    <p class="text-sm text-gray dark:text-black mt-2">Accompagnement complet dans les démarches judiciaires.</p>
-                                </div>
-                            </div>
-                        <!-- Add other cards similarly -->
-                    </div>
-                    <!-- Grid Container 2 -->
-                    <div class="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-                        <!-- Repeat for each card -->
-                        <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                            <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                    <i class="fas fa-cogs fa-2x"></i>
-                                </div>
-                                <div class="mt-12">
-                                    <span class="text-lg font-semibold">Mise en œuvre et suivi des procédures administratives</span>
-                                    <p class="text-sm text-gray dark:text-black mt-2">Nous facilitons les démarches administratives complexes.</p>
-                                </div>
-                            </div>
-                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                    <i class="fas fa-signal fa-2x"></i>
-                                </div>
-                                <div class="mt-12">
-                                    <span class="text-lg font-semibold">Droit de la télécommunication</span>
-                                    <p class="text-sm text-gray dark:text-black mt-2">Conseils spécialisés dans les technologies de l'information.</p>
-                                </div>
-                            </div>
-                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                    <i class="fas fa-home fa-2x"></i>
-                                </div>
-                                <div class="mt-12">
-                                    <span class="text-lg font-semibold">Droit immobilier</span>
-                                    <p class="text-sm text-gray dark:text-black mt-2">Assistance dans les transactions et litiges immobiliers.</p>
-                                </div>
-                            </div>
-                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                    <i class="fas fa-hand-holding-usd fa-2x"></i>
-                                </div>
-                                <div class="mt-12">
-                                    <span class="text-lg font-semibold">Recouvrement de créances civiles et commerciales</span>
-                                    <p class="text-sm text-gray dark:text-black mt-2">Solutions efficaces pour le recouvrement de créances.</p>
-                                </div>
-                            </div>
-                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                    <i class="fas fa-users fa-2x"></i>
-                                </div>
-                                <div class="mt-12">
-                                    <span class="text-lg font-semibold">Droit de la famille</span>
-                                    <p class="text-sm text-gray dark:text-black mt-2">Accompagnement juridique dans les affaires familiales.</p>
-                                </div>
-                            </div>
-                            <div class="bg-gray-200 p-6 text-center relative hover:bg-gold transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg m-2 rounded-lg">
-                                <div class="absolute top-4 left-4 text-black p-2 rounded-md">
-                                    <i class="fas fa-leaf fa-2x"></i>
-                                </div>
-                                <div class="mt-12">
-                                    <span class="text-lg font-semibold">Droit des successions</span>
-                                    <p class="text-sm text-gray dark:text-black mt-2">Gestion des successions et héritages.</p>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <button id="prev" type="button" class="absolute top-1/2 -translate-y-1/2 left-0 z-30 p-3 rounded-full bg-white hover:bg-gray-800 text-black font-bold shadow-lg hover:text-white transition-colors duration-300">
-                    <span>&larr;</span>
-                </button>
-                <button id="next" type="button" class="absolute top-1/2 -translate-y-1/2 right-0 z-30 p-3 rounded-full bg-white hover:bg-gray-800 text-black font-bold shadow-lg hover:text-white transition-colors duration-300">
-                    <span>&rarr;</span>
-                </button>
-            </div>
-        </div>
-    @endsection
-    @section('commentaire')
-        <div class="container mx-auto p-6 mt-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-md shadow-lg">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Nous laisser un message</h2>
-                    <form action="{{route('comment.store')}}" method="POST">
-                        @csrf
-                        <div class="mb-4">
-                            <label for="name" class="block text-sm font-medium text-gray-800">Nom</label>
-                            <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-sm font-medium text-gray-800">Email</label>
-                            <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="comment" class="block text-sm font-medium text-gray-800">Commentaire</label>
-                            <textarea id="comment" name="comment" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="bg-slate-800 text-white py-2 px-6 rounded-lg hover:bg-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-opacity-50 transition-colors duration-300">
-                                Soumettre
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg">
-                    <h2 class="text-3xl font-semibold text-gray-900 mb-6 border-b pb-4">Commentaires</h2>
-                    <div class="overflow-y-auto max-h-96 space-y-6">
-                        @foreach ($commentaires as $item)
-                            <div class="bg-gray-50 shadow-md rounded-lg p-6 border border-gray-300 transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
-                                <p class="text-lg text-gray-800 font-medium">Nom : <span class="font-normal">{{$item->user->name}}</span></p>
-                                
-                                <p class="text-md text-gray-700 mt-2">
-                                    @if ($item->actualite)
-                                        Actualité : <span class="font-medium text-blue-600 hover:underline">{{$item->actualite->titre}}</span>
-                                    @else
-                                        <span class="italic text-red-500">Pas d'actualité associée</span>
-                                    @endif
-                                </p>
-                
-                                <p class="text-sm text-gray-600 mt-2">Email : <span class="font-normal">{{$item->user->email}}</span></p>
-                                
-                                <p class="text-gray-800 mt-3">Commentaire : <span class="font-normal text-gray-700">{{$item->contenu}}</span></p>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                
-                
-            </div>
-        </div>
-    @endsection
+    </section>
 </x-layouts.app>
-<script>
-    const carouselContent = document.getElementById("carousel-content");
-    const nextButton = document.getElementById("next");
-    const prevButton = document.getElementById("prev");
-    let currentIndex = 0;
-    nextButton.addEventListener("click", () => {
-        if (currentIndex < carouselContent.children.length - 1) {
-            currentIndex++;
-            updateCarousel();
-        }
-    });
-    prevButton.addEventListener("click", () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateCarousel();
-        }
-    });
-
-    function updateCarousel() {
-        const width = carouselContent.children[0].offsetWidth;
-        carouselContent.style.transform = `translateX(-${currentIndex * width}px)`;
-    }
-</script>
