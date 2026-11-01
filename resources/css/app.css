@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    html { scroll-padding-top: 5rem; }
+    @media (prefers-reduced-motion: no-preference) {
+        html { scroll-behavior: smooth; }
+    }
+}
+
+@layer components {
+    /* Carte qui s'élève légèrement au survol (ombre « halo » du DESIGN.md) */
+    .carte-survol {
+        @apply transition duration-300 ease-out hover:shadow-[0_14px_40px_-6px_rgba(11,31,58,0.08)] motion-safe:hover:-translate-y-1;
+    }
+
+    /* Flèche qui avance au survol du lien parent (.group) */
+    .fleche {
+        @apply transition-transform duration-200 group-hover:translate-x-1;
+    }
+}
+
+/*
+ * Apparition au défilement : l'état masqué n'est appliqué que lorsque le script est prêt
+ * (classe .anim-pret sur <html>), pour que le contenu reste visible si le JavaScript échoue.
+ */
+@media (prefers-reduced-motion: no-preference) {
+    .anim-pret [data-reveal]:not(.est-visible) {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    .anim-pret [data-reveal] {
+        transition: opacity 0.7s cubic-bezier(0.2, 0.65, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.65, 0.3, 1);
+        transition-delay: var(--reveal-delai, 0ms);
+    }
+
+    #mobile-menu:not(.hidden) {
+        animation: menu-ouverture 0.25s ease-out;
+    }
+
+    @keyframes menu-ouverture {
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: none; }
+    }
+}

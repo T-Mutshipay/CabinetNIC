@@ -1,3 +1,5 @@
 import './bootstrap';
 import 'flowbite';
-import 'font-awesome/css/font-awesome.min.css';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/playfair-display';
+import './animations';

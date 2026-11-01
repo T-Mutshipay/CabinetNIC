@@ -1,175 +1,214 @@
+@props(['title' => null, 'description' => null, 'image' => null, 'type' => 'website'])
+@php
+    $title ??= config('cabinet.name') . " | Cabinet d'avocats à Kinshasa";
+    $description = Str::limit($description ?? config('cabinet.description'), 160);
+    $image = asset($image ?: config('cabinet.og_image'));
+
+    // Police d'icônes chargée uniquement avec les icônes utilisées (4 Mo sinon).
+    // Ajouter ici toute nouvelle icône écrite en dur dans une vue ; celles de config/cabinet.php sont ajoutées seules.
+    $icones = collect(['account_balance', 'apartment', 'arrow_back', 'arrow_forward', 'calendar_today', 'call',
+        'check_circle', 'groups', 'location_on', 'mail', 'menu', 'menu_book', 'phone_in_talk', 'picture_as_pdf',
+        'search', 'send'])
+        ->merge(collect(['atouts', 'valeurs', 'services', 'domaines'])->flatMap(fn ($cle) => array_column(config("cabinet.$cle"), 'icon')))
+        ->unique()->sort()->implode(',');
+
+    $nav = [
+        ['Accueil', route('/'), request()->routeIs('/')],
+        ['À propos', route('a-propos'), request()->routeIs('a-propos')],
+        ['Actualités', route('actualites'), request()->routeIs('actualites', 'actualites.show')],
+        ['Contact', route('/') . '#contact', false],
+    ];
+    $container = 'mx-auto max-w-[1440px] px-gutter-mobile md:px-gutter-tablet lg:px-margin';
+@endphp
+
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="fr">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'N.I.C & Associés')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
-    <!-- FontAwesome & Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $description }}">
+    <link rel="canonical" href="{{ url()->current() }}">
+    @unless (app()->isProduction())
+        <meta name="robots" content="noindex, nofollow">
+    @endunless
 
-    <!-- Styles & Scripts -->
+    <meta property="og:type" content="{{ $type }}">
+    <meta property="og:site_name" content="{{ config('cabinet.name') }}">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ $image }}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/png" href="{{ asset('img/icon-192.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('img/icon-192.png') }}">
+    <meta name="theme-color" content="#0b1f3a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&icon_names={{ $icones }}&display=block">
+    @stack('meta')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="dark:bg-slate-300">
 
-    <!-- HEADER -->
-    <header class="relative bg-cover bg-center bg-fixed bg-no-repeat min-h-screen flex flex-col justify-between" 
-        style="background-image: url('{{ asset('img/fond.jpg') }}');">
-        
-        <!-- NAVBAR -->
-        <nav class="fixed top-0 z-50 w-full border-b border-gray-300 bg-white/80 backdrop-blur-md transition-all duration-300 dark:border-gray-700 dark:bg-gray-900/80">
-            <div class="mx-auto max-w-screen-xl px-4 py-3 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between">
-                    <!-- Logo -->
-                    <a href="{{ route('/') }}" class="flex items-center space-x-3">
-                        <img src="{{ asset('img/Cabinet.png') }}" class="h-10 md:h-12 transition-all duration-300" alt="Logo Cabinet N.I.C & Associés" />
-                        <span class="text-xl font-semibold text-gray-900 dark:text-white md:text-2xl">N.I.C & Associés</span>
-                    </a>
+<body class="flex min-h-screen flex-col bg-surface font-body-md text-on-surface antialiased">
+    <header data-entete
+        class="fixed inset-x-0 top-0 z-50 bg-surface/90 shadow-[0_1px_12px_rgba(11,31,58,0.04)] backdrop-blur-xl transition-[background-color,box-shadow] duration-300 data-[defile]:bg-surface/95 data-[defile]:shadow-[0_8px_30px_-4px_rgba(11,31,58,0.12)]">
+        <div class="{{ $container }} flex h-20 items-center justify-between gap-space-md">
+            <a href="{{ route('/') }}" class="flex min-w-0 items-center gap-space-sm">
+                <img src="{{ asset('img/icon-192.png') }}" alt="" width="44" height="44"
+                    class="h-11 w-11 shrink-0 object-contain">
+                <span class="flex min-w-0 flex-col">
+                    <span
+                        class="font-headline-sm text-headline-sm font-semibold leading-none tracking-tight text-primary-container">{{ config('cabinet.name') }}</span>
+                    <span
+                        class="mt-1 hidden truncate font-label-sm text-label-sm uppercase tracking-widest text-secondary sm:block">{{ config('cabinet.tagline') }}</span>
+                </span>
+            </a>
 
-                    <!-- Mobile Menu Button -->
-                    <button id="menu-toggle" type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-800 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold/50 dark:text-gray-200 dark:hover:bg-gray-700 md:hidden" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Ouvrir le menu</span>
-                        <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg id="close-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
+            <nav class="hidden items-center gap-space-xs lg:flex" aria-label="Navigation principale">
+                @foreach ($nav as [$label, $href, $active])
+                    <a href="{{ $href }}" @if ($active) aria-current="page" @endif
+                        class="rounded-lg px-3 py-2 font-body-sm text-body-sm transition-colors {{ $active ? 'bg-primary-container font-semibold text-on-primary' : 'text-on-surface-variant hover:text-on-surface' }}">{{ $label }}</a>
+                @endforeach
+            </nav>
 
-                    <!-- Navigation Desktop -->
-                    <div class="hidden items-center space-x-6 md:flex">
-                        <a href="{{ route('/') }}" class="nav-link relative px-3 py-2 text-gray-900 transition-all duration-300 hover:text-gold dark:text-gray-200 dark:hover:text-gold">
-                            <span class="relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full">Accueil</span>
-                        </a>
-                        @if (request()->routeIs('/'))
-                        <a href="#services" class="nav-link relative px-3 py-2 text-gray-900 transition-all duration-300 hover:text-gold dark:text-gray-200 dark:hover:text-gold">
-                            <span class="relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full">Nos services</span>
-                        </a>
-                        @endif
-                        <a href="{{ route('honoraires') }}" class="nav-link relative px-3 py-2 text-gray-900 transition-all duration-300 hover:text-gold dark:text-gray-200 dark:hover:text-gold">
-                            <span class="relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full">Honoraires</span>
-                        </a>
-                    </div>
+            <div class="flex shrink-0 items-center gap-space-md">
+                <div class="hidden flex-col text-right xl:flex">
+                    <span
+                        class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Permanence</span>
+                    <a href="tel:{{ config('cabinet.phone_link') }}"
+                        class="font-title-md text-title-md text-primary-container transition-colors hover:text-secondary">{{ config('cabinet.phone') }}</a>
                 </div>
-            </div>
-
-            <!-- Mobile Menu (Dropdown) -->
-            <div id="mobile-menu" class="hidden max-h-0 overflow-hidden bg-white transition-all duration-300 dark:bg-gray-900 md:hidden">
-                <div class="space-y-1 px-4 pb-3 pt-2">
-                    <a href="{{ route('/') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-100 hover:text-gold dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gold">Accueil</a>
-                    @if (request()->routeIs('/'))
-                    <a href="#services" class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-100 hover:text-gold dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gold">Nos services</a>
-                    @endif
-                    <a href="{{ route('honoraires') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-100 hover:text-gold dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gold">Honoraires</a>
-                </div>
-            </div>
-        </nav>
-        <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left px-6 md:px-16 py-20 md:py-36">
-            <div class="md:w-2/3">
-                <h1 class="text-4xl md:text-5xl font-bold text-white drop-shadow-lg animate-fade-in">
-                    Une équipe au cœur de votre stratégie
-                </h1>
-                <p class="text-lg text-gray-100 mt-4">Nous vous accompagnons dans tous vos défis juridiques avec expertise et engagement.</p>
-                <a href="#" class="mt-6 inline-block bg-gold text-white font-semibold rounded-lg px-8 py-3 text-lg shadow-md hover:scale-105 transition-transform" data-modal-target="static-modal" data-modal-toggle="static-modal">
-                    Parler à un Avocat
+                <a href="{{ route('honoraires') }}" target="_blank" rel="noopener"
+                    class="hidden items-center gap-2 rounded-lg bg-secondary px-4 py-2.5 font-label-md text-label-md uppercase tracking-wider text-on-secondary transition-colors hover:bg-primary-container hover:text-secondary-fixed sm:inline-flex">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">picture_as_pdf</span>
+                    Honoraires
                 </a>
-            </div>
-            <div class="hidden md:block">
-                <img src="{{ asset('img/balance.jpg') }}" alt="Image Balance" 
-                     class="rounded-full w-64 h-64 object-cover ring-4 ring-gray-300 dark:ring-gray-500 animate-fade-in">
+                <button type="button" data-collapse-toggle="mobile-menu" aria-controls="mobile-menu"
+                    aria-expanded="false"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-primary-container hover:bg-surface-container lg:hidden">
+                    <span class="sr-only">Ouvrir le menu</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+                </button>
             </div>
         </div>
-    </header> 
 
-    <main class="relative z-10 bg-white dark:bg-gray-900 py-10">
-        @yield('services')
-        @yield('team')
-        @yield('articles')
-        @yield('content')
-        @yield('commentaire')
-    </main>
+        <div id="mobile-menu" class="hidden border-t border-outline-variant/40 bg-surface lg:hidden">
+            <nav class="{{ $container }} flex flex-col gap-1 py-space-md" aria-label="Navigation mobile">
+                @foreach ($nav as [$label, $href, $active])
+                    <a href="{{ $href }}"
+                        class="rounded-lg px-3 py-3 font-body-md text-body-md {{ $active ? 'bg-primary-container font-semibold text-on-primary' : 'text-on-surface-variant hover:bg-surface-container' }}">{{ $label }}</a>
+                @endforeach
+                <a href="{{ route('honoraires') }}" target="_blank" rel="noopener"
+                    class="mt-space-sm inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-3 py-3 font-label-md text-label-md uppercase tracking-wider text-on-secondary">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">picture_as_pdf</span>
+                    Honoraires
+                </a>
+                <a href="tel:{{ config('cabinet.phone_link') }}"
+                    class="inline-flex items-center justify-center gap-2 rounded-lg px-3 py-3 font-title-md text-title-md text-primary-container">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">call</span>
+                    {{ config('cabinet.phone') }}
+                </a>
+            </nav>
+        </div>
+    </header>
 
-    <footer class="absolute w-full bg-gray-800 text-white py-4">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="flex flex-col items-center m-1 md:items-start mb-4 md:mb-0">
-                <img src="{{asset('img/Cabinet.png')}}" class="h-16" alt="Logo" />
-            </div>
-            
-            <div class="flex justify-end space-y-2 md:space-y-0 md:space-x-4">
-                <p class="text-sm md:text-base m-2">
-                    <span class="font-bold text-2xl">À Propos</span> : 
-                    <br>
-                    N.I.C & Associés est un cabinet d'avocats dédié à la défense de vos droits et à la fourniture de conseils juridiques de qualité.
-                    appétence: droit judiciaire, droit du recouvrement, droit de la propriété intellectuelle, droit du travail, contentieux fiscal et administratifs, droit de la communication audiovisuelle et droit des affaires en général
+    <main class="flex-1 pt-20">
+        @if (session('success'))
+            <div role="status" class="{{ $container }} mt-space-md">
+                <p
+                    class="flex items-center gap-space-sm rounded-lg bg-secondary-fixed px-space-md py-3 font-body-md text-body-md text-on-secondary-fixed">
+                    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+                    {{ session('success') }}
                 </p>
             </div>
-        </div>
+        @endif
 
-        <div class="border-t border-gray-700 my-4"></div>
+        {{ $slot }}
+    </main>
 
-        <div class="container mx-auto flex flex-col md:flex-row items-center md:items-start justify-between text-center md:text-left space-y-4 md:space-y-0">
-            <div class="m-1 md:items-start mb-4 md:mb-0">
-                <a href="tel:+243816301931" class="block text-sm md:text-base">Téléphone : +2438166301931</a>
-                <a href="mailto:cabinetnicetassocies@gmail.com" class="block text-sm md:text-base hover:text-gray-400">Email : cabinetnicetassocies@gmail.com</a>
-                <a href="#" class="text-sm md:text-base hover:text-gray-400">Adresse : 287, Mweka, 1er étage.<br> Appartement 1 A. Q/Pakadjuma,Lingwala</a>
+    <footer class="bg-surface-container-low pb-space-lg pt-space-xl">
+        <div class="{{ $container }}">
+            <div class="grid grid-cols-1 gap-space-xl pb-space-xl md:grid-cols-2 lg:grid-cols-4">
+                <div class="flex flex-col gap-space-sm">
+                    <div class="flex items-center gap-space-xs">
+                        <img src="{{ asset('img/icon-192.png') }}" alt="" width="36" height="36" class="h-9 w-9 object-contain" loading="lazy">
+                        <span
+                            class="font-headline-sm text-headline-sm font-semibold tracking-tight text-primary-container">{{ config('cabinet.name') }}</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm leading-relaxed text-on-surface-variant">
+                        {{ config('cabinet.description') }}</p>
+                    <div class="flex items-center gap-space-xs pt-2">
+                        <span class="h-2 w-2 rounded-full bg-secondary"></span>
+                        <span
+                            class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">{{ config('cabinet.tagline') }}</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-space-sm">
+                    <span class="font-title-md text-title-md text-primary-container">Nous contacter</span>
+                    <address class="flex flex-col gap-1 font-body-sm text-body-sm not-italic text-on-surface-variant">
+                        <a href="{{ config('cabinet.maps_url') }}" target="_blank" rel="noopener"
+                            class="hover:text-secondary">
+                            @foreach (config('cabinet.address') as $line)
+                                <span class="block">{{ $line }}</span>
+                            @endforeach
+                        </a>
+                        <a href="tel:{{ config('cabinet.phone_link') }}" class="pt-2 hover:text-secondary">Tél. :
+                            {{ config('cabinet.phone') }}</a>
+                        <a href="mailto:{{ config('cabinet.email') }}" class="break-all hover:text-secondary">Email :
+                            {{ config('cabinet.email') }}</a>
+                    </address>
+                </div>
+
+                <div class="flex flex-col gap-space-sm">
+                    <span class="font-title-md text-title-md text-primary-container">Champs de pratique</span>
+                    <ul class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+                        @foreach (array_slice(config('cabinet.appetences'), 0, 5) as $appetence)
+                            <li>{{ $appetence }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <div class="flex flex-col gap-space-sm">
+                    <span class="font-title-md text-title-md text-primary-container">Navigation</span>
+                    <ul class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+                        @foreach ($nav as [$label, $href])
+                            <li><a href="{{ $href }}" class="hover:text-secondary">{{ $label }}</a></li>
+                        @endforeach
+                        <li><a href="{{ route('honoraires') }}" target="_blank" rel="noopener"
+                                class="hover:text-secondary">Honoraires (PDF)</a></li>
+                    </ul>
+                    @if (config('cabinet.reseaux'))
+                        <span class="pt-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary">Suivez-nous</span>
+                        <div class="flex flex-wrap gap-space-md">
+                            @foreach (config('cabinet.reseaux') as $reseau)
+                                <a href="{{ $reseau['url'] }}" target="_blank" rel="noopener noreferrer"
+                                    class="font-body-sm text-body-sm font-medium text-on-surface hover:text-secondary">{{ $reseau['nom'] }}</a>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
             </div>
 
-            <div class="flex space-x-4">
-                <a href="#" class="p-2 text-white rounded hover:bg-gold" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#" class="p-2 text-white rounded hover:bg-gold" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="#" class="p-2 text-white rounded hover:bg-gold" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="p-2 text-white rounded hover:bg-gold" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
+            <div
+                class="flex flex-col items-start justify-between gap-space-sm border-t border-outline-variant/40 pt-space-lg font-body-sm text-body-sm text-on-surface-variant md:flex-row md:items-center">
+                <span>&copy; {{ date('Y') }} {{ config('cabinet.name') }}. Tous droits réservés.</span>
+                <span class="flex items-center gap-2 font-label-sm text-label-sm uppercase tracking-wider">
+                    <span class="h-2 w-2 rounded-full bg-secondary-container"></span>
+                    Kinshasa • RDC
+                </span>
             </div>
-        </div>
-
-        <div class="text-center mt-4">
-            <p>&copy; <span id="currentYear"></span> N.I.C & Associés. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-    </script>
-        
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-            
-            menuToggle.addEventListener('click', function() {
-                const isExpanded = mobileMenu.classList.toggle('hidden');
-                
-                // Animation pour l'ouverture/fermeture
-                if (isExpanded) {
-                    mobileMenu.style.maxHeight = '0';
-                } else {
-                    mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-                }
-                // Changer les icônes
-                menuIcon.classList.toggle('hidden');
-                closeIcon.classList.toggle('hidden');
-                // Accessibilité
-                const expanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', !expanded);
-            });
-        });
-    </script>
-    <x-contacts/>
+    @stack('scripts')
 </body>
+
 </html>

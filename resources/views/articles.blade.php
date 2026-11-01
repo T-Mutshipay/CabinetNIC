@@ -1,60 +1,72 @@
-<x-layouts.app>
-    @section('content')
-    <div class="bg-white dark:bg-gray-900 min-h-screen">
-        <div class="flex justify-end m-4">
-            <a href="{{ route('/') }}" 
-                class="flex items-center space-x-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
-                <svg class="w-5 h-5 rotate-180" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                </svg>
-                <span class="font-semibold">Retour</span>
-            </a>         
-        </div>
-        <div class="container mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-            <!-- En-tête de l'article -->
-            @if ($actualites)
-                <div class="text-black dark:text-white p-4 mb-6">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4">{{ $actualites->titre }}</h1>
-                    <p class="mt-2 text-xl md:text-2xl text-gray-700 dark:text-gray-300">{{ $actualites->description }}</p>
+<x-layouts.app :title="$actualite->titre . ' | ' . config('cabinet.name')" :description="$actualite->description"
+    :image="$actualite->image" type="article">
+    @if ($actualite->created_at)
+        @push('meta')
+            <meta property="article:published_time" content="{{ $actualite->created_at->toIso8601String() }}">
+        @endpush
+    @endif
+
+        <article class="bg-surface pb-space-xl lg:pb-24">
+            <header class="bg-primary-container">
+                <div class="mx-auto max-w-3xl px-gutter-mobile py-space-xl md:px-gutter-tablet lg:py-24 motion-safe:animate-fade-up">
+                    <a href="{{ route('actualites') }}"
+                        class="mb-space-lg inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-wider text-secondary-fixed hover:text-on-primary">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_back</span>
+                        Toutes les actualités
+                    </a>
+                    @if ($actualite->created_at)
+                        <time datetime="{{ $actualite->created_at->toDateString() }}"
+                            class="block font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed">
+                            {{ $actualite->created_at->translatedFormat('d F Y') }}
+                        </time>
+                    @endif
+                    <h1
+                        class="mt-space-sm font-headline-lg-mobile text-headline-lg-mobile text-on-primary lg:text-headline-lg">
+                        {{ $actualite->titre }}
+                    </h1>
+                    <p class="mt-space-md font-body-lg text-body-lg text-primary-fixed">{{ $actualite->description }}</p>
                 </div>
-        
-                <article class="bg-white dark:bg-gray-700 p-6 rounded-md shadow-md text-gray-800 dark:text-gray-200">
-                    {{ $actualites->contenu }}
-                </article>
-        
-                <div id="commentSection" class="mt-8 p-6 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-sm">
-                    <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Commentaires</h2>
-                    <form action="{{ route('comment.store') }}" method="POST" class="space-y-4">
-                        @csrf
-                        <input type="hidden" name="actualite_id" value="{{ $actualites->id }}">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-800 dark:text-gray-200">Nom</label>
-                            <input type="text" id="name" name="name"
-                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-600 dark:text-white"
-                                   required>
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-800 dark:text-gray-200">Email</label>
-                            <input type="email" id="email" name="email"
-                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-600 dark:text-white"
-                                   required>
-                        </div>
-                        <div>
-                            <label for="comment" class="block text-sm font-medium text-gray-800 dark:text-gray-200">Commentaire</label>
-                            <textarea id="comment" name="comment" rows="4"
-                                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-600 dark:text-white"
-                                      required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit"
-                                    class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 transform hover:scale-105">
-                                Soumettre
-                            </button>
-                        </div>
-                    </form>
+            </header>
+
+            <div class="mx-auto max-w-3xl px-gutter-mobile md:px-gutter-tablet">
+                @if ($actualite->image)
+                    <img src="{{ asset($actualite->image) }}" alt=""
+                        class="-mt-space-lg motion-safe:animate-fade-in motion-safe:[animation-delay:200ms] aspect-[16/9] w-full rounded-xl object-cover shadow-md">
+                @endif
+
+                <div class="mt-space-xl font-body-lg text-body-lg leading-relaxed text-on-surface">
+                    {!! nl2br(e($actualite->contenu)) !!}
                 </div>
-            @endif
-        </div>
-    </div>
-    @endsection
-    </x-layouts.app>
+
+                <section id="commentaires" class="mt-space-xl border-t border-outline-variant/40 pt-space-xl">
+                    <h2 class="font-headline-md-mobile text-headline-md-mobile text-primary-container lg:text-headline-md">
+                        Commentaires ({{ $commentaires->count() }})
+                    </h2>
+
+                    @if ($commentaires->isNotEmpty())
+                        <ul class="mt-space-lg flex flex-col gap-space-md">
+                            @foreach ($commentaires as $commentaire)
+                                <li class="rounded-xl bg-surface-container-low p-space-md">
+                                    <p class="font-title-md text-title-md text-primary-container">
+                                        {{ $commentaire->user?->name ?? 'Anonyme' }}
+                                        @if ($commentaire->created_at)
+                                            <time datetime="{{ $commentaire->created_at->toDateString() }}"
+                                                class="ml-2 font-body-sm text-body-sm font-normal text-on-surface-variant">
+                                                {{ $commentaire->created_at->translatedFormat('d F Y') }}
+                                            </time>
+                                        @endif
+                                    </p>
+                                    <p class="mt-1 font-body-md text-body-md text-on-surface-variant">
+                                        {{ $commentaire->contenu }}</p>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+                    <div class="mt-space-lg rounded-xl bg-surface-container-lowest p-space-lg shadow-sm">
+                        <x-message-form :actualite="$actualite" />
+                    </div>
+                </section>
+            </div>
+        </article>
+</x-layouts.app>
