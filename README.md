@@ -21,8 +21,9 @@ En ligne : <https://www.cabinetnic-et-associes.com>
 | -------------------- | ----------------------------------------------------------------------- |
 | `/`                  | Accueil : présentation, domaines, services, dernières actualités, contact |
 | `/a-propos`          | Histoire, valeurs, équipe d'avocats et équipe de soutien                |
+| `/domaines-d-intervention` | Les 12 domaines d'intervention et la méthode de travail du cabinet |
 | `/actualites`        | Liste des actualités avec recherche                                     |
-| `/articles/{id}`     | Article, commentaires et formulaire de commentaire                      |
+| `/articles/{id}`     | Article, commentaires validés et formulaire de commentaire              |
 | `/honoraires`        | Ouvre le PDF de la grille des honoraires                                |
 | `/sitemap.xml`, `/robots.txt` | Générés automatiquement à partir de `APP_URL`                  |
 
@@ -83,8 +84,30 @@ Le reste est en base de données :
 | `Actualite`     | Articles de la section Actualités               |
 | `Commentaire`   | Messages du formulaire de contact et commentaires d'articles |
 
-Les messages envoyés depuis le formulaire de contact de l'accueil sont enregistrés comme
-`Commentaire` **sans** `actualite_id` ; ils ne sont jamais affichés publiquement.
+### Messages et modération
+
+Chaque message envoyé depuis le site est enregistré comme `Commentaire` et **envoyé par email**
+à l'adresse du cabinet (`email` dans `config/cabinet.php`) :
+
+- **Message de contact** (accueil, sans `actualite_id`) : jamais affiché sur le site. « Répondre »
+  dans la messagerie répond directement au visiteur.
+- **Commentaire d'article** : masqué jusqu'à validation. L'email contient deux liens signés,
+  **Publier** et **Supprimer**, valables 30 jours ; ils ouvrent une page de confirmation avant
+  toute action. Aucun compte n'est nécessaire, et un lien modifié est refusé (403).
+
+En local, `MAIL_MAILER=log` écrit les emails dans `storage/logs/laravel.log`. En production, il
+faut configurer un vrai serveur d'envoi dans le `.env`, sinon le cabinet ne reçoit rien :
+
+```dotenv
+MAIL_MAILER=smtp
+MAIL_HOST=...           # fourni par l'hébergeur ou le service d'envoi
+MAIL_PORT=587
+MAIL_USERNAME=...
+MAIL_PASSWORD=...
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="no-reply@cabinetnic-et-associes.com"
+MAIL_FROM_NAME="N.I.C & Associés"
+```
 
 Le PDF des honoraires est `public/Honoraire.pdf` (attention à la majuscule : le serveur de
 production est sensible à la casse).

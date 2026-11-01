@@ -83,6 +83,13 @@ return [
         ['icon' => 'family_restroom', 'titre' => 'Droit de la famille', 'texte' => 'Accompagnement juridique dans les affaires familiales.'],
         ['icon' => 'volunteer_activism', 'titre' => 'Droit des successions', 'texte' => 'Gestion des successions et héritages.'],
     ],
+    // Page « Domaines d'intervention » : étapes de prise en charge d'un dossier
+    'methodologie' => [
+        ['icon' => 'forum', 'titre' => 'Écoute et analyse', 'texte' => 'Nous étudions votre situation et vos pièces pour identifier les enjeux juridiques et les risques.'],
+        ['icon' => 'description', 'titre' => 'Conseil et stratégie', 'texte' => 'Nous vous présentons les options possibles et la stratégie recommandée, avec une estimation claire des honoraires.'],
+        ['icon' => 'gavel', 'titre' => 'Action et suivi', 'texte' => 'Nous rédigeons les actes, négocions ou plaidons pour vous, et vous tenons informé à chaque étape.'],
+    ],
+
     'appetences' => [
         'Droit judiciaire',
         'Droit du recouvrement',

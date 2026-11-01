@@ -19,7 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-      //
+        $middleware->web(append: [\App\Http\Middleware\SecurityHeaders::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (AccessDeniedHttpException $exception, Request $request) {
@@ -38,8 +38,12 @@ return Application::configure(basePath: dirname(__DIR__))
             return response()->view('errors.419', [], 419);
         });
 
+        // Garde le vrai code HTTP (429 trop de requêtes, 405…) au lieu de tout transformer en 500
         $exceptions->render(function (HttpException $exception, Request $request) {
-            return response()->view('errors.500', [], 500);
+            $code = $exception->getStatusCode();
+            $vue = view()->exists("errors.$code") ? "errors.$code" : 'errors.500';
+
+            return response()->view($vue, [], $code, $exception->getHeaders());
         });
 
         $exceptions->render(function (ServiceUnavailableHttpException $exception, Request $request) {

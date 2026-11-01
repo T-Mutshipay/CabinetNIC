@@ -181,7 +181,7 @@
             </x-section-header>
 
             <div class="grid grid-cols-1 gap-space-md md:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
-                @foreach (config('cabinet.domaines') as $domaine)
+                @foreach (array_slice(config('cabinet.domaines'), 0, 6) as $domaine)
                     <div class="carte-survol group flex gap-space-md rounded-xl bg-surface-container-lowest p-6 shadow-sm">
                         <div
                             class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary transition-colors group-hover:bg-secondary group-hover:text-on-secondary">
@@ -194,6 +194,14 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <div class="mt-12 text-center" data-reveal>
+                <a href="{{ route('domaines') }}"
+                    class="group inline-flex items-center gap-2 rounded-lg bg-primary-container px-8 py-3.5 font-title-md text-title-md text-on-primary shadow-md transition-colors hover:bg-secondary">
+                    Voir les {{ count(config('cabinet.domaines')) }} domaines d'intervention
+                    <span class="fleche material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span>
+                </a>
             </div>
         </div>
     </section>
