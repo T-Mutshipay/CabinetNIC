@@ -8,13 +8,14 @@
     // Ajouter ici toute nouvelle icône écrite en dur dans une vue ; celles de config/cabinet.php sont ajoutées seules.
     $icones = collect(['account_balance', 'apartment', 'arrow_back', 'arrow_forward', 'calendar_today', 'call',
         'check_circle', 'groups', 'location_on', 'mail', 'menu', 'menu_book', 'phone_in_talk', 'picture_as_pdf',
-        'search', 'send'])
-        ->merge(collect(['atouts', 'valeurs', 'services', 'domaines'])->flatMap(fn ($cle) => array_column(config("cabinet.$cle"), 'icon')))
+        'search', 'send', 'gavel', 'lock'])
+        ->merge(collect(['atouts', 'valeurs', 'services', 'domaines', 'methodologie'])->flatMap(fn ($cle) => array_column(config("cabinet.$cle"), 'icon')))
         ->unique()->sort()->implode(',');
 
     $nav = [
         ['Accueil', route('/'), request()->routeIs('/')],
         ['À propos', route('a-propos'), request()->routeIs('a-propos')],
+        ['Domaines', route('domaines'), request()->routeIs('domaines')],
         ['Actualités', route('actualites'), request()->routeIs('actualites', 'actualites.show')],
         ['Contact', route('/') . '#contact', false],
     ];

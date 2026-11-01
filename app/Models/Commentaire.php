@@ -14,6 +14,17 @@ class Commentaire extends Model
         'user_id', 
         'contenu'
     ];
+
+    // « valide » n'est volontairement pas fillable : seul le lien de modération peut publier un commentaire
+    protected $casts = [
+        'valide' => 'boolean',
+    ];
+
+    public function scopeValides($query)
+    {
+        return $query->where('valide', true);
+    }
+
     public function actualite()
     {
         return $this->belongsTo(Actualite::class);
