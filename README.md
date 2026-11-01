@@ -1,66 +1,164 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# N.I.C & Associés — Site du cabinet
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Site vitrine du cabinet d'avocats **N.I.C & Associés** (Barreau de Kinshasa / Gombe) :
+présentation du cabinet et de son équipe, actualités juridiques, grille des honoraires et
+formulaire de contact.
 
-## About Laravel
+En ligne : <https://www.cabinetnic-et-associes.com>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Stack
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Couche     | Outils                                                                 |
+| ---------- | ---------------------------------------------------------------------- |
+| Back-end   | PHP 8.2+, Laravel 12, MySQL                                            |
+| Front-end  | Blade, Tailwind CSS 3, Vite, Flowbite (menu mobile)                    |
+| Typographie | Inter et Playfair Display (auto-hébergées), Material Symbols (Google Fonts) |
+| Design     | Template « Sovereign Juris » conçu sur Google Stitch                   |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Pages
 
-## Learning Laravel
+| URL                  | Contenu                                                                 |
+| -------------------- | ----------------------------------------------------------------------- |
+| `/`                  | Accueil : présentation, domaines, services, dernières actualités, contact |
+| `/a-propos`          | Histoire, valeurs, équipe d'avocats et équipe de soutien                |
+| `/actualites`        | Liste des actualités avec recherche                                     |
+| `/articles/{id}`     | Article, commentaires et formulaire de commentaire                      |
+| `/honoraires`        | Ouvre le PDF de la grille des honoraires                                |
+| `/sitemap.xml`, `/robots.txt` | Générés automatiquement à partir de `APP_URL`                  |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+`/avocats` redirige vers `/a-propos#equipe` (ancienne URL conservée).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation en local
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Prérequis : PHP 8.2+, Composer, Node.js 18+, MySQL (WAMP fait l'affaire).
 
-## Laravel Sponsors
+```bash
+git clone https://github.com/T-Mutshipay/CabinetNIC.git
+cd CabinetNIC
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+composer install
+npm install
 
-### Premium Partners
+cp .env.example .env
+php artisan key:generate
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Dans `.env`, renseigner la base de données :
 
-## Contributing
+```dotenv
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nic_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Puis créer les tables avec les données de démonstration (avocats, collaborateurs, actualités) :
 
-## Code of Conduct
+```bash
+php artisan migrate --seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Lancer le site (deux terminaux) :
 
-## Security Vulnerabilities
+```bash
+php artisan serve   # http://127.0.0.1:8000
+npm run dev         # recompilation CSS/JS à chaud
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Modifier le contenu
 
-## License
+**La plupart des textes du site se trouvent dans [`config/cabinet.php`](config/cabinet.php)** :
+nom, coordonnées, adresse, réseaux sociaux, services, domaines d'intervention, valeurs, atouts,
+devise, images de la page d'accueil et nom du PDF des honoraires.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Le reste est en base de données :
+
+| Modèle          | Contenu                                         |
+| --------------- | ----------------------------------------------- |
+| `Avocat`        | Avocats (le premier est affiché comme fondateur) |
+| `SocialLink`    | Réseaux sociaux de chaque avocat                |
+| `Collaborateur` | Équipe de soutien                               |
+| `Actualite`     | Articles de la section Actualités               |
+| `Commentaire`   | Messages du formulaire de contact et commentaires d'articles |
+
+Les messages envoyés depuis le formulaire de contact de l'accueil sont enregistrés comme
+`Commentaire` **sans** `actualite_id` ; ils ne sont jamais affichés publiquement.
+
+Le PDF des honoraires est `public/Honoraire.pdf` (attention à la majuscule : le serveur de
+production est sensible à la casse).
+
+## Organisation du code
+
+```
+config/cabinet.php                  Données éditables du cabinet
+routes/web.php                      Toutes les routes (pages, formulaire, sitemap, robots)
+resources/views/
+├── components/layouts/app.blade.php  Layout : en-tête, pied de page, balises SEO
+├── components/                       Composants réutilisables (cartes, formulaire, en-têtes de section)
+├── welcome.blade.php                 Accueil
+├── a-propos.blade.php
+├── actualites.blade.php
+└── articles.blade.php                Détail d'un article
+resources/js/animations.js          Apparition au défilement, compteurs, en-tête
+resources/css/app.css               Styles globaux et animations
+tailwind.config.js                  Couleurs, typographies et espacements du design system
+```
+
+### Animations
+
+Ajoutées par attributs dans les vues, sans écrire de JavaScript :
+
+| Attribut / classe       | Effet                                                       |
+| ----------------------- | ----------------------------------------------------------- |
+| `data-reveal`           | L'élément apparaît en fondu quand il entre à l'écran        |
+| `data-reveal-stagger`   | Sur une grille : les enfants apparaissent l'un après l'autre |
+| `data-count="12"`       | Le nombre défile de 0 à 12 quand il devient visible         |
+| `carte-survol`          | La carte s'élève légèrement au survol                       |
+| `fleche` (dans un `.group`) | L'icône avance au survol du lien                        |
+
+Les animations sont désactivées si le visiteur a choisi « réduire les animations » dans son
+système, et le contenu reste visible si le JavaScript ne se charge pas.
+
+### Icônes
+
+Les icônes Material Symbols sont chargées **à la demande** (seulement celles utilisées, ~12 Ko
+au lieu de 4 Mo). Celles déclarées dans `config/cabinet.php` sont prises en compte
+automatiquement ; une icône écrite directement dans une vue doit être ajoutée à la liste
+`$icones` en haut du layout, sinon elle ne s'affiche pas.
+
+## Mise en production
+
+```bash
+composer install --no-dev --optimize-autoloader
+npm ci && npm run build
+php artisan migrate --force
+php artisan config:cache && php artisan route:cache && php artisan view:cache
+```
+
+Variables indispensables dans le `.env` du serveur :
+
+```dotenv
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://www.cabinetnic-et-associes.com
+APP_LOCALE=fr
+```
+
+- `APP_ENV=production` est nécessaire pour que Google indexe le site : dans tout autre
+  environnement, les pages portent une balise `noindex` et `robots.txt` bloque les robots.
+- `APP_URL` sert à construire les adresses canoniques, les aperçus de partage et le sitemap.
+- `public/build` n'est pas versionné : il faut lancer `npm run build` sur le serveur (ou y
+  envoyer le dossier généré en local).
+- S'il existe un ancien fichier `public/robots.txt` sur le serveur, le supprimer : il
+  remplacerait celui généré par l'application.
+
+Après la mise en ligne : soumettre `https://www.cabinetnic-et-associes.com/sitemap.xml` dans
+Google Search Console.
+
+## Workflow Git
+
+- Travailler sur une branche (`feature/...`), jamais directement sur `main`.
+- Ouvrir une Pull Request vers `main` sur GitHub, puis fusionner après relecture.
+- Ne jamais versionner le fichier `.env` (il contient les mots de passe).
