@@ -1,19 +1,25 @@
 @props(['actualite'])
 
 <article {{ $attributes->merge(['class' => 'group relative flex flex-col overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm carte-survol']) }}>
-    <div class="relative aspect-[16/10] overflow-hidden bg-surface-container-high">
-        <img src="{{ asset($actualite->image ?: 'img/fond.jpg') }}" alt=""
-            class="h-full w-full object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
-            loading="lazy">
+    <div class="relative aspect-[16/10] overflow-hidden bg-primary-container">
+        @if ($actualite->visuel)
+            <img src="{{ asset($actualite->visuel) }}" alt=""
+                class="h-full w-full object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
+                loading="lazy">
+        @else
+            <span class="flex h-full items-center justify-center" aria-hidden="true">
+                <span class="material-symbols-outlined text-[56px] text-secondary-fixed/70">account_balance</span>
+            </span>
+        @endif
     </div>
     <div class="flex flex-1 flex-col gap-space-sm p-space-lg">
         @if ($actualite->created_at)
             <time datetime="{{ $actualite->created_at->toDateString() }}"
                 class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">
-                {{ $actualite->created_at->translatedFormat('d F Y') }}
+                {{ $actualite->created_at->translatedFormat('j F Y') }}
             </time>
         @endif
-        <h3 class="font-headline-sm text-headline-sm text-primary-container">
+        <h3 class="font-headline-sm text-headline-sm lining-nums text-primary-container">
             <a href="{{ route('actualites.show', $actualite) }}" class="after:absolute after:inset-0">
                 {{ $actualite->titre }}
             </a>

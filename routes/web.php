@@ -28,6 +28,7 @@ Route::get('/actualites', fn () => view('actualites', [
 Route::get('/articles/{actualite}', fn (Actualite $actualite) => view('articles', [
     'actualite'    => $actualite,
     'commentaires' => Commentaire::with('user')->whereBelongsTo($actualite)->valides()->latest()->get(),
+    'autres'       => Actualite::whereKeyNot($actualite->getKey())->latest()->take(3)->get(),
 ]))->name('actualites.show');
 
 Route::get('/domaines-d-intervention', fn () => view('domaines'))->name('domaines');
@@ -52,7 +53,6 @@ Route::post('/commentaires', function (Request $request) {
         'actualite_id.*' => "L'article concerné est introuvable.",
     ]);
 
-    // Champ piège invisible : seul un robot le remplit. 
     if ($request->filled('site_web')) {
         return back()->with('success', 'Merci, votre message a bien été envoyé.');
     }
@@ -65,7 +65,6 @@ Route::post('/commentaires', function (Request $request) {
         'contenu'      => $data['comment'],
     ]);
 
-    // Le cabinet est prévenu par email ; un échec d'envoi ne doit pas faire échouer le formulaire
     try {
         Mail::to(config('cabinet.email'))->send(new NouveauMessage($commentaire));
     } catch (Throwable $e) {

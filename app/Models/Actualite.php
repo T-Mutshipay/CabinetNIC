@@ -16,4 +16,12 @@ class Actualite extends Model
         'contenu',
         'image'
     ];
+
+    // Illustration à afficher : le fond uni par défaut et les fichiers absents ne donnent rien de présentable
+    public function getVisuelAttribute(): ?string
+    {
+        $image = $this->image;
+
+        return $image && $image !== 'img/fond.jpg' && is_file(public_path($image)) ? $image : null;
+    }
 }

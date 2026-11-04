@@ -3,12 +3,10 @@
     $title ??= config('cabinet.name') . " | Cabinet d'avocats à Kinshasa";
     $description = Str::limit($description ?? config('cabinet.description'), 160);
     $image = asset($image ?: config('cabinet.og_image'));
-
-    // Police d'icônes chargée uniquement avec les icônes utilisées (4 Mo sinon).
-    // Ajouter ici toute nouvelle icône écrite en dur dans une vue ; celles de config/cabinet.php sont ajoutées seules.
+er ici toute nouvelle icône écrite en dur dans une vue ; celles de config/cabinet.php sont ajoutées seules.
     $icones = collect(['account_balance', 'apartment', 'arrow_back', 'arrow_forward', 'calendar_today', 'call',
-        'check_circle', 'groups', 'location_on', 'mail', 'menu', 'menu_book', 'phone_in_talk', 'picture_as_pdf',
-        'search', 'send', 'gavel', 'lock'])
+        'chat_bubble', 'check_circle', 'groups', 'link', 'location_on', 'mail', 'menu', 'menu_book', 'phone_in_talk',
+        'picture_as_pdf', 'schedule', 'search', 'send', 'gavel', 'lock'])
         ->merge(collect(['atouts', 'valeurs', 'services', 'domaines', 'methodologie'])->flatMap(fn ($cle) => array_column(config("cabinet.$cle"), 'icon')))
         ->unique()->sort()->implode(',');
 
@@ -122,7 +120,7 @@
 
     <main class="flex-1 pt-20">
         @if (session('success'))
-            <div role="status" class="{{ $container }} mt-space-md">
+            <div role="status" class="{{ $container }} my-space-md">
                 <p
                     class="flex items-center gap-space-sm rounded-lg bg-secondary-fixed px-space-md py-3 font-body-md text-body-md text-on-secondary-fixed">
                     <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
