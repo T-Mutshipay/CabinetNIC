@@ -14,15 +14,20 @@ class Commentaire extends Model
         'user_id', 
         'contenu'
     ];
-
-    // « valide » n'est volontairement pas fillable : seul le lien de modération peut publier un commentaire
     protected $casts = [
         'valide' => 'boolean',
+        'traite' => 'boolean',
     ];
 
     public function scopeValides($query)
     {
         return $query->where('valide', true);
+    }
+
+    // Les messages du formulaire de contact sont les lignes sans article
+    public function scopeContacts($query)
+    {
+        return $query->whereNull('actualite_id');
     }
 
     public function actualite()

@@ -37,9 +37,14 @@ class User extends Authenticatable implements FilamentUser
         'password' => 'hashed',
     ];
 
-    // Les visiteurs qui commentent n'ont pas de mot de passe : seuls les comptes make:filament-user en ont un
+    // Les visiteurs qui commentent n'ont pas de mot de passe : seuls les comptes d'administration en ont un
     public function canAccessPanel(Panel $panel): bool
     {
         return filled($this->password);
+    }
+
+    public function scopeComptes($query)
+    {
+        return $query->whereNotNull('password');
     }
 }
