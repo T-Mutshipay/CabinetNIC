@@ -26,6 +26,9 @@ return [
         'addressCountry' => 'CD',
     ],
 
+    // Dossier (dans public/) des images envoyées depuis l'administration
+    'images_uploads' => 'img/uploads',
+
     'hero_image' => 'img/balance.jpg',
     'presentation_image' => 'img/maitre_christian_ngandu.JPG',
 

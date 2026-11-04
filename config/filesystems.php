@@ -45,6 +45,15 @@ return [
             'throw' => false,
         ],
 
+        // Images gérées depuis l'administration : servies directement depuis public/, comme celles de public/img
+        'site' => [
+            'driver' => 'local',
+            'root' => public_path(),
+            'url' => '/', // relatif : l'image vient du serveur qui affiche la page, quel que soit APP_URL
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
