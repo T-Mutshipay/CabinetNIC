@@ -23,33 +23,6 @@ class AvocatSeeder extends Seeder
                 'role' => 'Avocat Fondateur',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ],
-            [
-                'nom_complet' => 'Marlene Lotis Kisengam',
-                'email' => 'lotikisengam@gmail.com',
-                'description' => 'Avocate au barreau du sud kivu, Spécialiste en droit du travail, droit de la famille, procédure civile et droit de sociétés.',
-                'image' => 'img/maitre_lotis.jpeg',
-                'role' => 'Avocate',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'nom_complet' => 'Gracien Ilwa',
-                'email' => 'gracienilwa@gmail.com',
-                'description' => '',
-                'image' => 'img/maitre_gracien.jpeg',
-                'role' => 'Avocat',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'nom_complet' => 'Tyler Kabu',
-                'email' => 'kabualophonse37@gmail.com',
-                'description' => 'avocat au barreau près la cour d’appel de Kinshasa/matete, chercheur en droit du travail et  sécurité sociale , droit civil les obligations, les biens et en droit ohada ',
-                'image' => 'img/maitre_alphonse.jpeg',
-                'role' => 'Avocat',
-                'created_at' => now(),
-                'updated_at' => now(),
             ]
         ]);
     }
