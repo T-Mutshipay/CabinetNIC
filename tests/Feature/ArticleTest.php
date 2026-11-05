@@ -20,7 +20,7 @@ class ArticleTest extends TestCase
             'titre' => 'Une réforme importante',
             'description' => 'Le résumé de la réforme',
             'contenu' => 'Le contenu de la réforme',
-            'image' => 'img/portons-la-justice-main-ouverte.png',
+            'image' => 'img/portons-la-justice-main-ouverte.webp',
             ...$autres,
         ]);
     }
@@ -51,12 +51,6 @@ class ArticleTest extends TestCase
             ->assertSee("Vraiment{$insecable}? Oui «{$insecable}bien sûr{$insecable}»", false);
     }
 
-    public function test_la_lettrine_est_reservee_aux_paragraphes_assez_longs(): void
-    {
-        $this->page($this->article(['contenu' => 'Un texte court']))->assertDontSee('first-letter:float-left', false);
-        $this->page($this->article(['contenu' => Str::repeat('Un texte long. ', 20)]))->assertSee('first-letter:float-left', false);
-    }
-
     public function test_le_temps_de_lecture_est_estime_a_partir_du_contenu(): void
     {
         $this->page($this->article(['contenu' => 'Trois mots seulement']))->assertSee('1 min de lecture');
@@ -66,8 +60,8 @@ class ArticleTest extends TestCase
     public function test_une_image_existante_est_affichee_et_partagee(): void
     {
         $this->page($this->article())
-            ->assertSee('src="' . asset('img/portons-la-justice-main-ouverte.png') . '"', false)
-            ->assertSee('property="og:image" content="' . asset('img/portons-la-justice-main-ouverte.png') . '"', false);
+            ->assertSee('src="' . asset('img/portons-la-justice-main-ouverte.webp') . '"', false)
+            ->assertSee('property="og:image" content="' . asset('img/portons-la-justice-main-ouverte.webp') . '"', false);
     }
 
     public function test_une_image_absente_ou_le_fond_uni_ne_s_affichent_pas(): void

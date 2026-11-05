@@ -98,7 +98,7 @@
                 <div
                     class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-surface-container-high shadow-xl">
                     <img src="{{ asset(config('cabinet.hero_image')) }}"
-                        alt="Balance de la justice et ouvrages de droit" class="h-full w-full object-cover">
+                        alt="Balance de la justice dorée posée sur une main ouverte" class="h-full w-full object-cover">
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent">
                     </div>
