@@ -87,9 +87,9 @@
         class="fixed inset-x-0 top-0 z-50 bg-surface/90 shadow-[0_1px_12px_rgba(11,31,58,0.04)] backdrop-blur-xl transition-[background-color,box-shadow] duration-300 data-[defile]:bg-surface/95 data-[defile]:shadow-[0_8px_30px_-4px_rgba(11,31,58,0.12)]">
         <div class="{{ $container }} flex h-20 items-center justify-between gap-space-md">
             <a href="{{ route('/') }}" class="flex min-w-0 items-center gap-space-sm">
-                <img src="{{ asset('img/icon-192.png') }}" alt="" width="44" height="44"
-                    class="h-11 w-11 shrink-0 object-contain">
-                <span class="flex min-w-0 flex-col">
+                <img src="{{ asset('img/icon-192.png') }}" alt="" width="88" height="88"
+                    class="h-16 w-16 shrink-0 object-contain">
+                <span class="flex min-w-0 flex-col m-auto">
                     <span
                         class="mt-1 hidden truncate font-label-sm text-label-sm uppercase tracking-widest text-secondary sm:block">{{ config('cabinet.tagline') }}</span>
                     <span

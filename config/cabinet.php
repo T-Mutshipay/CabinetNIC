@@ -25,7 +25,7 @@ return [
 
     'images_uploads' => 'img/uploads',
 
-    'hero_image' => 'img/balance.jpg',
+    'hero_image' => 'img/portons-la-justice-main-ouverte.png',
     'presentation_image' => 'img/maitre_christian_ngandu.JPG',
 
     // Année d'inscription au Barreau de l'avocat fondateur (Me Christian Ngandu Ilunga)

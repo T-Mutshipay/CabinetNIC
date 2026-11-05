@@ -20,7 +20,7 @@ class ArticleTest extends TestCase
             'titre' => 'Une réforme importante',
             'description' => 'Le résumé de la réforme',
             'contenu' => 'Le contenu de la réforme',
-            'image' => 'img/balance.jpg',
+            'image' => 'img/portons-la-justice-main-ouverte.png',
             ...$autres,
         ]);
     }
@@ -66,8 +66,8 @@ class ArticleTest extends TestCase
     public function test_une_image_existante_est_affichee_et_partagee(): void
     {
         $this->page($this->article())
-            ->assertSee('src="' . asset('img/balance.jpg') . '"', false)
-            ->assertSee('property="og:image" content="' . asset('img/balance.jpg') . '"', false);
+            ->assertSee('src="' . asset('img/portons-la-justice-main-ouverte.png') . '"', false)
+            ->assertSee('property="og:image" content="' . asset('img/portons-la-justice-main-ouverte.png') . '"', false);
     }
 
     public function test_une_image_absente_ou_le_fond_uni_ne_s_affichent_pas(): void

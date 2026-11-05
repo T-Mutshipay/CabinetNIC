@@ -102,19 +102,6 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent">
                     </div>
-                    <div
-                        class="absolute bottom-6 left-6 right-6 flex items-center gap-3 rounded-lg bg-surface-container-lowest/90 p-4 shadow-md backdrop-blur-md">
-                        <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/15">
-                            <span class="material-symbols-outlined text-[22px] text-secondary"
-                                aria-hidden="true">apartment</span>
-                        </div>
-                        <div class="min-w-0">
-                            <p class="font-title-md text-title-md leading-tight text-primary-container">Notre cabinet
-                            </p>
-                            <p class="truncate font-label-sm text-label-sm text-on-surface-variant">
-                                {{ config('cabinet.address')[1] ?? '' }} • Kinshasa</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
