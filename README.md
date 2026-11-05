@@ -14,7 +14,7 @@ En ligne : <https://www.cabinetnic-et-associes.com>
 | Back-end   | PHP 8.2+, Laravel 12, MySQL                                            |
 | Administration | Filament 5 (panneau `/admin`)                                      |
 | Front-end  | Blade, Tailwind CSS 3, Vite, Flowbite (menu mobile)                    |
-| Typographie | Inter et Playfair Display (auto-hébergées), Material Symbols (Google Fonts) |
+| Typographie | Source Sans 3 et Source Serif 4 (auto-hébergées), Material Symbols (Google Fonts) |
 | Design     | Template « Sovereign Juris » conçu sur Google Stitch                   |
 
 ## Pages

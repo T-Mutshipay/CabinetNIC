@@ -1,8 +1,8 @@
 import forms from '@tailwindcss/forms';
 import flowbite from 'flowbite/plugin';
 
-const sans = ['"Inter Variable"', 'system-ui', 'sans-serif'];
-const serif = ['"Playfair Display Variable"', 'Georgia', 'serif'];
+const sans = ['"Source Sans 3 Variable"', 'system-ui', 'sans-serif'];
+const serif = ['"Source Serif 4 Variable"', 'Georgia', 'serif'];
 const sansKeys = ['label-sm', 'label-md', 'title-md', 'title-lg', 'body-sm', 'body-md', 'body-lg'];
 const serifKeys = ['display-hero', 'display-hero-mobile', 'headline-lg', 'headline-lg-mobile', 'headline-md', 'headline-md-mobile', 'headline-sm'];
 

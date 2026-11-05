@@ -1,4 +1,4 @@
 import 'flowbite';
-import '@fontsource-variable/inter';
-import '@fontsource-variable/playfair-display';
+import '@fontsource-variable/source-sans-3';
+import '@fontsource-variable/source-serif-4';
 import './animations';

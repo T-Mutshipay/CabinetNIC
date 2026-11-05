@@ -14,19 +14,15 @@ return [
         ['nom' => 'Instagram', 'url' => 'https://www.instagram.com/nica_asso'],
     ],
 
-    // Fichier servi par la route « honoraires » (attention à la casse sur un serveur Linux)
     'honoraires_pdf' => 'Honoraire.pdf',
 
-    // SEO : image affichée lors du partage d'un lien (WhatsApp, Facebook…), 1200x630
     'og_image' => 'img/og-image.jpg',
-    // Données structurées (schema.org) : adresse découpée pour Google
     'adresse_structuree' => [
-        'streetAddress' => '287, Mweka, 1er étage, appartement 1 A, Q/Pakadjuma',
+        'streetAddress' => '289, Mweka, 3er étage, appartement 3B, Q/Pakadjuma',
         'addressLocality' => 'Lingwala, Kinshasa',
         'addressCountry' => 'CD',
     ],
 
-    // Dossier (dans public/) des images envoyées depuis l'administration
     'images_uploads' => 'img/uploads',
 
     'hero_image' => 'img/balance.jpg',
