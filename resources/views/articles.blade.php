@@ -132,11 +132,7 @@
                 <div
                     class="{{ $lecture }} space-y-space-lg break-words font-body-lg text-body-lg leading-8 text-on-surface">
                     @foreach ($paragraphes as $paragraphe)
-                        <p @class([
-                            'text-pretty',
-                            'first-letter:float-left first-letter:mr-3 first-letter:font-serif first-letter:text-[4rem] first-letter:font-semibold first-letter:leading-[0.85] first-letter:text-secondary' =>
-                                $loop->first,
-                        ])>{!! nl2br(e($typo($paragraphe))) !!}</p>
+                        <p class="text-pretty">{!! nl2br(e($typo($paragraphe))) !!}</p>
                     @endforeach
                 </div>
 
