@@ -3,12 +3,37 @@
     $title ??= config('cabinet.name') . " | Cabinet d'avocats à Kinshasa";
     $description = Str::limit($description ?? config('cabinet.description'), 160);
     $image = asset($image ?: config('cabinet.og_image'));
-er ici toute nouvelle icône écrite en dur dans une vue ; celles de config/cabinet.php sont ajoutées seules.
-    $icones = collect(['account_balance', 'apartment', 'arrow_back', 'arrow_forward', 'calendar_today', 'call',
-        'chat_bubble', 'check_circle', 'groups', 'link', 'location_on', 'mail', 'menu', 'menu_book', 'phone_in_talk',
-        'picture_as_pdf', 'schedule', 'search', 'send', 'gavel', 'lock'])
-        ->merge(collect(['atouts', 'valeurs', 'services', 'domaines', 'methodologie'])->flatMap(fn ($cle) => array_column(config("cabinet.$cle"), 'icon')))
-        ->unique()->sort()->implode(',');
+    $icones = collect([
+        'account_balance',
+        'apartment',
+        'arrow_back',
+        'arrow_forward',
+        'calendar_today',
+        'call',
+        'chat_bubble',
+        'check_circle',
+        'groups',
+        'link',
+        'location_on',
+        'mail',
+        'menu',
+        'menu_book',
+        'phone_in_talk',
+        'picture_as_pdf',
+        'schedule',
+        'search',
+        'send',
+        'gavel',
+        'lock',
+    ])
+        ->merge(
+            collect(['atouts', 'valeurs', 'services', 'domaines', 'methodologie'])->flatMap(
+                fn($cle) => array_column(config("cabinet.$cle"), 'icon'),
+            ),
+        )
+        ->unique()
+        ->sort()
+        ->implode(',');
 
     $nav = [
         ['Accueil', route('/'), request()->routeIs('/')],
@@ -51,6 +76,7 @@ er ici toute nouvelle icône écrite en dur dans une vue ; celles de config/cabi
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&icon_names={{ $icones }}&display=block">
+
     @stack('meta')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -137,7 +163,8 @@ er ici toute nouvelle icône écrite en dur dans une vue ; celles de config/cabi
             <div class="grid grid-cols-1 gap-space-xl pb-space-xl md:grid-cols-2 lg:grid-cols-4">
                 <div class="flex flex-col gap-space-sm">
                     <div class="flex items-center gap-space-xs">
-                        <img src="{{ asset('img/icon-192.png') }}" alt="" width="36" height="36" class="h-9 w-9 object-contain" loading="lazy">
+                        <img src="{{ asset('img/icon-192.png') }}" alt="" width="36" height="36"
+                            class="h-9 w-9 object-contain" loading="lazy">
                         <span
                             class="font-headline-sm text-headline-sm font-semibold tracking-tight text-primary-container">{{ config('cabinet.name') }}</span>
                     </div>
@@ -179,13 +206,15 @@ er ici toute nouvelle icône écrite en dur dans une vue ; celles de config/cabi
                     <span class="font-title-md text-title-md text-primary-container">Navigation</span>
                     <ul class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
                         @foreach ($nav as [$label, $href])
-                            <li><a href="{{ $href }}" class="hover:text-secondary">{{ $label }}</a></li>
+                            <li><a href="{{ $href }}" class="hover:text-secondary">{{ $label }}</a>
+                            </li>
                         @endforeach
                         <li><a href="{{ route('honoraires') }}" target="_blank" rel="noopener"
                                 class="hover:text-secondary">Honoraires (PDF)</a></li>
                     </ul>
                     @if (config('cabinet.reseaux'))
-                        <span class="pt-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary">Suivez-nous</span>
+                        <span
+                            class="pt-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary">Suivez-nous</span>
                         <div class="flex flex-wrap gap-space-md">
                             @foreach (config('cabinet.reseaux') as $reseau)
                                 <a href="{{ $reseau['url'] }}" target="_blank" rel="noopener noreferrer"
