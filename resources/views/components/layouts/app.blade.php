@@ -90,9 +90,9 @@
                     class="h-11 w-11 shrink-0 object-contain">
                 <span class="flex min-w-0 flex-col">
                     <span
-                        class="font-headline-sm text-headline-sm font-semibold leading-none tracking-tight text-primary-container">{{ config('cabinet.name') }}</span>
-                    <span
                         class="mt-1 hidden truncate font-label-sm text-label-sm uppercase tracking-widest text-secondary sm:block">{{ config('cabinet.tagline') }}</span>
+                    <span
+                        class="font-headline-sm text-headline-sm font-semibold leading-none tracking-tight text-primary-container">{{ config('cabinet.name') }}</span>
                 </span>
             </a>
 
