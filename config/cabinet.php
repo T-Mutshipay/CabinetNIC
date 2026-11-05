@@ -7,8 +7,8 @@ return [
     'phone' => '+243 816 301 931',
     'phone_link' => '+243816301931',
     'email' => 'cabinetnicetassocies@gmail.com',
-    'address' => ['287, Mweka, 1er étage, appartement 1 A', 'Q/Pakadjuma, Lingwala', 'Kinshasa, République Démocratique du Congo'],
-    'maps_url' => 'https://www.google.com/maps/search/?api=1&query=' . urlencode('287 Mweka, Lingwala, Kinshasa'),
+    'address' => ['289, Mweka, 3er étage, appartement 3B', 'Q/Pakadjuma, Lingwala', 'Kinshasa, République Démocratique du Congo'],
+    'maps_url' => 'https://www.google.com/maps/search/?api=1&query=' . urlencode('289 Mweka, Lingwala, Kinshasa'),
     'reseaux' => [
         ['nom' => 'Facebook', 'url' => 'https://www.facebook.com/share/1DomMXAhMA/'],
         ['nom' => 'Instagram', 'url' => 'https://www.instagram.com/nica_asso'],
