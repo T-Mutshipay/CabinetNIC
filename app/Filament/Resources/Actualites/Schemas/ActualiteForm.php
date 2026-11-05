@@ -24,6 +24,11 @@ class ActualiteForm
                     ->required()
                     ->maxLength(191)
                     ->columnSpanFull(),
+                TextInput::make('auteur')
+                    ->label('Auteur')
+                    ->helperText('Affiché sur la page de l\'article. Laisser vide pour ne pas afficher d\'auteur.')
+                    ->maxLength(191)
+                    ->columnSpanFull(),
                 ImageUpload::make('actualites', 'Image')
                     ->columnSpanFull(),
                 // Texte brut : l'article public l'affiche échappé, avec ses retours à la ligne

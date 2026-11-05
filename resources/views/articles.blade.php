@@ -76,6 +76,13 @@
 
                     <ul
                         class="mt-space-lg flex flex-wrap items-center gap-x-space-lg gap-y-space-sm font-body-sm text-body-sm text-primary-fixed">
+                        @if ($actualite->auteur)
+                            <li class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-secondary-fixed"
+                                    aria-hidden="true">person</span>
+                                Par {{ $actualite->auteur }}
+                            </li>
+                        @endif
                         @if ($actualite->created_at)
                             <li class="flex items-center gap-2">
                                 <span class="material-symbols-outlined text-[18px] text-secondary-fixed"

@@ -107,6 +107,14 @@ class ArticleTest extends TestCase
         $this->page($this->article())->assertDontSee('À lire aussi');
     }
 
+    public function test_l_auteur_n_est_affiche_que_s_il_est_renseigne(): void
+    {
+        $this->page($this->article(['auteur' => 'Me <b>Kabongo</b>']))
+            ->assertSee('Par Me &lt;b&gt;Kabongo&lt;/b&gt;', false);
+
+        $this->page($this->article())->assertDontSee('Par ');
+    }
+
     public function test_les_liens_de_partage_sont_encodes(): void
     {
         $actualite = $this->article(['titre' => 'Droit & devoirs']);

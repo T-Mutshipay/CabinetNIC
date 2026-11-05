@@ -18,6 +18,7 @@
         'mail',
         'menu',
         'menu_book',
+        'person',
         'phone_in_talk',
         'picture_as_pdf',
         'schedule',

@@ -27,6 +27,11 @@ class ActualitesTable
                     ->label('Résumé')
                     ->searchable()
                     ->limit(60),
+                TextColumn::make('auteur')
+                    ->label('Auteur')
+                    ->searchable()
+                    ->sortable()
+                    ->placeholder('—'),
                 TextColumn::make('created_at')
                     ->label('Publié le')
                     ->date('d/m/Y')

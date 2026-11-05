@@ -14,6 +14,7 @@ class Actualite extends Model
         'titre',
         'description',
         'contenu',
+        'auteur',
         'image'
     ];
 

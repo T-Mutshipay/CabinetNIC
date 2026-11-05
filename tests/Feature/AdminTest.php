@@ -260,6 +260,7 @@ class AdminTest extends TestCase
                 'titre' => 'Nouvelle loi',
                 'description' => 'Résumé',
                 'contenu' => "Premier paragraphe\nDeuxième <b>paragraphe</b>",
+                'auteur' => 'Me Kabongo',
                 'image' => $this->image(),
             ])
             ->call('create')
@@ -271,6 +272,7 @@ class AdminTest extends TestCase
 
         $this->get(route('actualites.show', $actualite))
             ->assertOk()
+            ->assertSee('Par Me Kabongo')
             ->assertSee('Premier paragraphe')
             ->assertSee('&lt;b&gt;paragraphe&lt;/b&gt;', false);
 
